@@ -21,7 +21,7 @@ $wgExtensionCredits['other'][] = array(
 	'version' => '1.5',
 	'author' => array( 'Ryan Schmidt', 'Jack Phoenix' ),
 	'description' => 'Theme loader extension for skins',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:Theme'
+	'url' => 'https://www.mediawiki.org/wiki/Extension:Theme'
 );
 
 // For ShoutWiki, $wgDefaultTheme is set in GlobalSettings.php to 'default'
