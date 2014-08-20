@@ -416,3 +416,12 @@ td.diff-addedline {
 td.diff-addedline ins, td.diff-deletedline del {
 	color: #a33d3d;
 }
+
+/* Make diffs readable */
+table.diff,
+td.diff-otitle,
+td.diff-ntitle,
+td.diff-context {
+	background-color: transparent !important;
+	color: #d2d2d2;
+}

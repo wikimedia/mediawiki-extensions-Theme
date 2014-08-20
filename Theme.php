@@ -4,11 +4,11 @@
  *
  * @file
  * @ingroup Extensions
- * @version 1.5
+ * @version 1.7
  * @author Ryan Schmidt <skizzerz at gmail dot com>
  * @author Jack Phoenix <jack@countervandalism.net>
- * @license http://en.wikipedia.org/wiki/Public_domain Public domain
- * @link http://www.mediawiki.org/wiki/Extension:Theme Documentation
+ * @license https://en.wikipedia.org/wiki/Public_domain Public domain
+ * @link https://www.mediawiki.org/wiki/Extension:Theme Documentation
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
@@ -18,7 +18,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 // Extension credits that will show up on Special:Version
 $wgExtensionCredits['other'][] = array(
 	'name' => 'Theme',
-	'version' => '1.5',
+	'version' => '1.7',
 	'author' => array( 'Ryan Schmidt', 'Jack Phoenix' ),
 	'description' => 'Theme loader extension for skins',
 	'url' => 'https://www.mediawiki.org/wiki/Extension:Theme'
@@ -33,15 +33,44 @@ $wgExtensionCredits['other'][] = array(
 // in the custom skin's Skinname.php file
 //
 // Monobook
-$wgResourceModules['skins.monobook.dark'] = array(
+/**
+ * XXX FILTHY HACK ALERT!
+ * The 'themeloader.' prefix is needed to work around a dumb MediaWiki core bug
+ * introduced in MW 1.23. Without a prefix of any kind (i.e. if we have
+ * 'skins.monobook.foobar'), the modules are loaded *before* the skin's core
+ * CSS, and hence shit hits the fan.
+ * Same goes if the prefix sorts *above* 'skins' in the alphabet (hence why we
+ * can't use 'shoutwiki.' as the prefix, for example).
+ * Apparently™ this "never should have worked" and it only worked "due to dumb luck",
+ * despite working consistently from MW 1.16 to 1.22.
+ * I honestly have no idea anymore.
+ *
+ * @see https://bugzilla.wikimedia.org/show_bug.cgi?id=45229
+ * @see https://bugzilla.wikimedia.org/show_bug.cgi?id=66508
+ */
+$wgResourceModules['themeloader.skins.monobook.dark'] = array(
 	'styles' => array(
 		'extensions/Theme/monobook/dark.css' => array( 'media' => 'screen' )
 	)
 );
 
-$wgResourceModules['skins.monobook.pink'] = array(
+$wgResourceModules['themeloader.skins.monobook.pink'] = array(
 	'styles' => array(
 		'extensions/Theme/monobook/pink.css' => array( 'media' => 'screen' )
+	)
+);
+
+$wgResourceModules['themeloader.skins.monobook.stellarbook'] = array(
+	'styles' => array(
+		'extensions/Theme/monobook/stellarbook.css' => array( 'media' => 'screen' )
+	)
+
+);
+
+// Vector
+$wgResourceModules['themeloader.skins.vector.dark'] = array(
+	'styles' => array(
+		'extensions/Theme/vector/dark.css' => array( 'media' => 'screen' )
 	)
 );
 
@@ -49,14 +78,14 @@ $wgResourceModules['skins.monobook.pink'] = array(
 $wgHooks['BeforePageDisplay'][] = 'wfDisplayTheme';
 
 function wfDisplayTheme( &$out, &$sk ) {
-	global $wgRequest, $wgStylePath, $wgStyleDirectory, $wgDefaultTheme, $wgValidSkinNames;
+	global $wgRequest, $wgDefaultTheme, $wgValidSkinNames;
 	global $wgResourceModules;
 
 	$theme = $wgRequest->getVal( 'usetheme', false );
 	$useskin = $wgRequest->getVal( 'useskin', false );
 	$skin = $useskin ? $useskin : $sk->getSkinName();
 
-	if( !array_key_exists( strtolower( $skin ), $wgValidSkinNames ) ) {
+	if ( !array_key_exists( strtolower( $skin ), $wgValidSkinNames ) ) {
 		// so we don't load themes for skins when we can't actually load the skin
 		$skin = $sk->getSkinName();
 	}
@@ -67,26 +96,23 @@ function wfDisplayTheme( &$out, &$sk ) {
 		return true;
 	}
 
-	if( $theme ) {
+	if ( $theme ) {
 		$themeName = $theme;
-	} elseif( isset( $wgDefaultTheme ) && $wgDefaultTheme != 'default' ) {
+	} elseif ( isset( $wgDefaultTheme ) && $wgDefaultTheme != 'default' ) {
 		$themeName = $wgDefaultTheme;
 	} else {
 		$themeName = false;
 	}
 
-	$moduleName = 'skins.' . strtolower( $skin ) . '.' .
+	$moduleName = 'themeloader.skins.' . strtolower( $skin ) . '.' .
 		strtolower( $themeName );
 
 	// Check that we have something to include later on; if not, bail out
-	if( !$themeName || !isset( $wgResourceModules[$moduleName] ) ) {
+	if ( !$themeName || !isset( $wgResourceModules[$moduleName] ) ) {
 		return true;
 	}
 
-	// Add the CSS file, either via ResourceLoader or the old (1.16) way.
-	// When adding via RL, we also check that such a module has been registered
-	// (above, in the if() loop) because RL may explode if we try to add a
-	// module that does not exist.
+	// Add the CSS file via ResourceLoader.
 	$out->addModuleStyles( $moduleName );
 
 	return true;
