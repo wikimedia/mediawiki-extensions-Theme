@@ -2,7 +2,7 @@
 ** Dark theme for MonoBook
 ** Originally from ZeldaWiki.org and modified by Skizzerz <skizzerz@shoutwiki.com> for ShoutWiki
 **
-** @date 14 September 2011
+** @date 1 November 2014
 */
 div#content {
 	background: #1c3855;
@@ -313,7 +313,7 @@ tr.sv-space td { display: none; }
 
 /* also used on Special:Version */
 table.wikitable {
-	background-color: transparent;
+	background-color: transparent !important;
 	color: #d2d2d2;
 }
 
@@ -424,4 +424,14 @@ td.diff-ntitle,
 td.diff-context {
 	background-color: transparent !important;
 	color: #d2d2d2;
+}
+
+/**
+ * This class appears to be the new version of TablePager, I guess?
+ * Everywhere where I see that this is used, the element also has the TablePager
+ * class, but all CSS definitions are on this class and its children.
+ * Anyway, Special:ListFiles, Special:AbuseFilter, etc. use this class.
+ */
+table.mw-datatable th, table.mw-datatable tr:hover td, table.mw-datatable td {
+	background-color: transparent;
 }

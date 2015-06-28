@@ -178,10 +178,17 @@ div#mw-head div.vectorMenu h5 {
 }
 
 /* OVERRIDDEN BY COMPLIANT BROWSERS */
+/* ashley 21 June 2015: maybe not? anyway, this was breaking the little arrow
+icon next to the "More" menu, hence why it's now commented out
 div.vectorMenu h3 a,
 div.vectorMenu h5 a {
-	/* @embed */
 	background-image: url('dark/tab-break.png');
+}
+*/
+
+/* Make the text for the "More [actions]" menu more readable */
+div.vectorMenu h3 span {
+	color: inherit;
 }
 
 /* Search */
@@ -192,6 +199,21 @@ div#simpleSearch {
 }
 
 div#simpleSearch input#searchInput {
+	color: #e0e0e0;
+}
+
+/**
+ * Make the search box placeholder text a tad bit lighter
+ * It's beyond stupid that these rules cannot be combined into one...browsers,
+ * why must you be so random?!
+ */
+div#simpleSearch #searchInput.placeholder {
+	color: #e0e0e0;
+}
+div#simpleSearch :-ms-input-placeholder#searchInput {
+	color: #e0e0e0;
+}
+div#simpleSearch :-moz-placeholder#searchInput {
 	color: #e0e0e0;
 }
 
@@ -218,10 +240,11 @@ div#mw-panel {
 	padding: 0;
 }
 
+/* ashley 21 June 2015: this doesn't look good anymore, so removing it
 div#mw-panel div.portal div.body {
-	/* @embed */
 	background-image: url('dark/portal-break.png');
 }
+*/
 
 div#mw-panel div.portal div.body ul li a {
 	color: #F4F26B;

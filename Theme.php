@@ -4,7 +4,7 @@
  *
  * @file
  * @ingroup Extensions
- * @version 1.7
+ * @version 1.7.1
  * @author Ryan Schmidt <skizzerz at gmail dot com>
  * @author Jack Phoenix <jack@countervandalism.net>
  * @license https://en.wikipedia.org/wiki/Public_domain Public domain
@@ -18,7 +18,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 // Extension credits that will show up on Special:Version
 $wgExtensionCredits['other'][] = array(
 	'name' => 'Theme',
-	'version' => '1.7',
+	'version' => '1.7.1',
 	'author' => array( 'Ryan Schmidt', 'Jack Phoenix' ),
 	'description' => 'Theme loader extension for skins',
 	'url' => 'https://www.mediawiki.org/wiki/Extension:Theme'
@@ -64,7 +64,6 @@ $wgResourceModules['themeloader.skins.monobook.stellarbook'] = array(
 	'styles' => array(
 		'extensions/Theme/monobook/stellarbook.css' => array( 'media' => 'screen' )
 	)
-
 );
 
 // Vector
