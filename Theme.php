@@ -18,11 +18,14 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 // Extension credits that will show up on Special:Version
 $wgExtensionCredits['other'][] = array(
 	'name' => 'Theme',
+	'namemsg' => 'extensionname-theme',
 	'version' => '1.7.1',
 	'author' => array( 'Ryan Schmidt', 'Jack Phoenix' ),
-	'description' => 'Theme loader extension for skins',
+	'descriptionmsg' => 'theme-desc',
 	'url' => 'https://www.mediawiki.org/wiki/Extension:Theme'
 );
+
+$wgMessagesDirs['Theme'] =  __DIR__ . '/i18n';
 
 // For ShoutWiki, $wgDefaultTheme is set in GlobalSettings.php to 'default'
 // For a non-ShoutWiki site where you want to use this extension, you should
