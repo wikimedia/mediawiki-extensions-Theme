@@ -3,5 +3,5 @@
 		"authors": []
 	},
 	"extensionname-theme": "{{optional}}",
-	"theme-desc": "{{desc|name=Theme|url=https://www.mediawiki.org/wiki/Extension:Theme}}",
+	"theme-desc": "{{desc|name=Theme|url=https://www.mediawiki.org/wiki/Extension:Theme}}"
 }
