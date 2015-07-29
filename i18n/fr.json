@@ -1,8 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ash Crow"
+			"Ash Crow",
+			"Wladek92"
 		]
 	},
-	"theme-desc": "Extension de chargeur de thèmes"
+	"theme-desc": "Extension de chargeur de thèmes pour les habillages"
 }
