@@ -2,6 +2,6 @@
 	"@metadata": {
 		"authors": []
 	},
-	"extensionname-theme": "Theme",
+	"theme-extensionname": "Theme",
 	"theme-desc": "Theme loader extension for skins"
 }

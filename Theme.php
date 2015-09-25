@@ -18,7 +18,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 // Extension credits that will show up on Special:Version
 $wgExtensionCredits['other'][] = array(
 	'name' => 'Theme',
-	'namemsg' => 'extensionname-theme',
+	'namemsg' => 'theme-extensionname',
 	'version' => '1.7.1',
 	'author' => array( 'Ryan Schmidt', 'Jack Phoenix' ),
 	'descriptionmsg' => 'theme-desc',
