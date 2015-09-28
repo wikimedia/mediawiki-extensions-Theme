@@ -177,7 +177,7 @@ span.diffchange {
 #bodyContent a.external[href ^="mailto:"],
 .link-mailto {
 	/* @embed */
-	background-image: url(stellarbook/mail_icon.gif);
+	background-image: url(stellarbook/mail_icon.png);
 }
 #bodyContent a.external[href ^="news:"] {
 	/* @embed */
@@ -211,13 +211,6 @@ span.diffchange {
 .link-video {
 	/* @embed */
 	background-image: url(stellarbook/video.png);
-}
-#bodyContent a.external[href $=".pdf"], #bodyContent a.external[href $=".PDF"],
-#bodyContent a.external[href *=".pdf#"], #bodyContent a.external[href *=".PDF#"],
-#bodyContent a.external[href *=".pdf?"], #bodyContent a.external[href *=".PDF?"],
-.link-document {
-	/* @embed */
-	background-image: url(stellarbook/document.png);
 }
 
 /* Interwiki styling */
