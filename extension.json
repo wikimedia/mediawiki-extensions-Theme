@@ -1,0 +1,60 @@
+{
+	"name": "Theme",
+	"namemsg": "theme-extensionname",
+	"version": "1.7.1",
+	"author": [
+		"Ryan Schmidt",
+		"Jack Phoenix"
+	],
+	"url": "https://www.mediawiki.org/wiki/Extension:Theme",
+	"descriptionmsg": "theme-desc",
+	"type": "other",
+	"MessagesDirs": {
+		"Theme": [
+			"i18n"
+		]
+	},
+	"AutoloadClasses": {
+		"ThemeHooks": "Theme.hooks.php"
+	},
+	"ResourceModules": {
+		"themeloader.skins.monobook.dark": {
+			"styles": {
+				"monobook/dark.css": {
+					"media": "screen"
+				}
+			}
+		},
+		"themeloader.skins.monobook.pink": {
+			"styles": {
+				"monobook/pink.css": {
+					"media": "screen"
+				}
+			}
+		},
+		"themeloader.skins.monobook.stellarbook": {
+			"styles": {
+				"monobook/stellarbook.css": {
+					"media": "screen"
+				}
+			}
+		},
+		"themeloader.skins.vector.dark": {
+			"styles": {
+				"vector/dark.css": {
+					"media": "screen"
+				}
+			}
+		}
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "",
+		"remoteExtPath": "Theme"
+	},
+	"Hooks": {
+		"BeforePageDisplay": [
+			"ThemeHooks::onBeforePageDisplay"
+		]
+	},
+	"manifest_version": 1
+}
