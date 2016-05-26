@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Purodha"
+		]
+	},
+	"theme-desc": "Theme loader extension for skins <!-- https://phabricator.wikimedia.org/T136291  -->"
+}
