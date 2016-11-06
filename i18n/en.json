@@ -3,5 +3,5 @@
 		"authors": []
 	},
 	"theme-extensionname": "Theme",
-	"theme-desc": "Theme loader extension for skins"
+	"theme-desc": "Controls the installation of CSS variants of the wiki's skins"
 }
