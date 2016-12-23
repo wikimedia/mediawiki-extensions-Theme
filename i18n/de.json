@@ -5,5 +5,5 @@
 		]
 	},
 	"theme-extensionname": "Theme",
-	"theme-desc": "Ermöglicht das Laden von Themes für Benutzeroberflächen"
+	"theme-desc": "Steuert die Installation von CSS-Varianten der Benutzeroberflächen des Wikis"
 }

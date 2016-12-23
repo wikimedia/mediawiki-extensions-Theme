@@ -2,8 +2,9 @@
 	"@metadata": {
 		"authors": [
 			"Ash Crow",
-			"Wladek92"
+			"Wladek92",
+			"Gomoko"
 		]
 	},
-	"theme-desc": "Extension de chargeur de thèmes pour les habillages"
+	"theme-desc": "Contrôle l’installation de variantes CSS sur les habillages du wiki"
 }

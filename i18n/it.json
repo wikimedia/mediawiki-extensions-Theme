@@ -1,8 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"Selven"
+			"Selven",
+			"Beta16"
 		]
 	},
-	"theme-desc": "Estensione per cambiare tema per le skin"
+	"theme-desc": "Controlla l'installazione di varianti CSS per il tema del wiki"
 }
