@@ -1,8 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"Macofe"
+			"Macofe",
+			"Dgstranz"
 		]
 	},
-	"theme-desc": "Extensión para cambiar temas para apariencias"
+	"theme-desc": "Controla la instalación de variantes CSS de las apariencias del wiki"
 }
