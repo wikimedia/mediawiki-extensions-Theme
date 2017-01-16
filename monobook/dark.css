@@ -435,3 +435,12 @@ td.diff-context {
 table.mw-datatable th, table.mw-datatable tr:hover td, table.mw-datatable td {
 	background-color: transparent;
 }
+
+/**
+ * The default background color of the edit summary area container on
+ * action=edit is a real eyesore with a dark color scheme (such as this one!),
+ * so let's make it a tad bit less obnoxious, yes?
+ */
+div.editOptions {
+	background-color: transparent;
+}
