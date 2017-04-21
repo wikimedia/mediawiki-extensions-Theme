@@ -1,8 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"Toliño"
+			"Toliño",
+			"Elisardojm"
 		]
 	},
-	"theme-desc": "Extensión para cargar os temas das aparencias"
+	"theme-desc": "Controla a instalación de variantes CSS das aparencias da wiki"
 }
