@@ -1,0 +1,218 @@
+/* colors */
+body {
+	background: #eaecf0;
+}
+
+/* main colors */
+#p-search,
+#p-personal ul li,
+div.vectorTabs ul li,
+div#mw-head div.vectorMenu h3,
+div#mw-panel div.portal div.body ul li {
+	background: #f8f9fa;
+}
+
+/* hover colors */
+#p-personal ul li:hover,
+div.vectorTabs li:hover,
+div#mw-panel div.portal div.body ul li:hover {
+	background: #fff;
+}
+
+/* headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.mw-body h1,
+.mw-body h2 {
+	color: #222;
+	font-family: "Helvetica","Arial",sans-serif;
+}
+
+/* main content */
+#mw-page-base {
+	background: none;
+	height: 6em;
+}
+
+#mw-head-base {
+	height: 6em;
+	margin-top: -6em;
+	margin-left: 15%;
+}
+
+.mw-body {
+	border: 0;
+}
+
+/* personal */
+#p-personal {
+	top: 0;
+	right: 0;
+	border-radius: 0 0 0 1em;
+}
+
+#p-personal ul {
+	padding: 0;
+}
+
+#p-personal ul li {
+	margin: 0;
+}
+
+#p-personal li:first-child {
+	border-radius: 0 0 0 1em;
+}
+
+#p-personal ul li a {
+	text-decoration: none;
+	padding: .75em 1em;
+	display: block;
+}
+
+#p-personal #pt-notifications-alert,
+#p-personal #pt-notifications-notice {
+	margin: 0;
+
+}
+
+#pt-notifications-alert .mw-echo-notifications-badge,
+#pt-notifications-notice .mw-echo-notifications-badge {
+	top: 0;
+	height: 1.1em;
+	width: 1.25em;
+}
+
+#pt-notifications-alert .mw-echo-notifications-badge:before,
+#pt-notifications-notice .mw-echo-notifications-badge:before {
+	top: .125em;
+	left: .5em;
+}
+
+/* navigation */
+#left-navigation {
+	position: absolute;
+}
+
+div#mw-head div.vectorMenu h3 {
+	background-image: none;
+}
+
+#right-navigation div.emptyPortlet + div.emptyPortlet + div {
+	border-radius: 1em 0 0 0;
+}
+
+div.vectorMenu {
+	margin-right: -.5em;
+}
+
+div.vectorMenu h3 span {
+	line-height: .5;
+	padding: 1.375em 1em 0 1em;
+}
+
+div.vectorMenu h3 a {
+	top: -.25em;
+	left: 3em;
+}
+
+div.vectorMenu div.menu {
+	background-color: #fff;
+	border: 1px solid #a2a9b1;
+	border-radius: 2px;
+	box-shadow: 0 0.15em 0 0 rgba(0,0,0,0.15);
+}
+
+div.vectorMenu li a {
+	text-decoration: none;
+}
+
+div.vectorMenu li:hover {
+	background: #f9f9f9;
+}
+
+/* search */
+#p-search {
+	background: #fff;
+	height: 1.5em;
+	padding: 0.48em 1em;
+}
+
+div#simpleSearch,
+#p-search form,
+#p-search input {
+	margin: 0;
+}
+
+/* tabs */
+div.vectorTabs {
+	padding: 0;
+}
+
+div.vectorTabs,
+div.vectorTabs ul,
+div.vectorTabs ul li,
+div.vectorTabs span {
+	background-image: none;
+}
+
+div.vectorTabs li a {
+	text-decoration: none;
+	height: 1em;
+	padding: 1em;
+	display: inline-block;
+}
+
+#p-namespaces li:first-of-type,
+#p-views li:first-of-type {
+	border-radius: 1em 0 0 0;
+}
+
+#p-namespaces li:last-of-type {
+	border-radius: 0 1em 0 0;
+}
+
+/* portals */
+div#mw-panel {
+	width: 14%;
+}
+
+div#mw-panel div.portal {
+	background: none;
+	margin: 0 0 .5em 0;
+}
+
+
+div#mw-panel #p-logo + div.portal h3,
+div#mw-panel div.portal h3 {
+	background: #fff;
+	color: #444;
+	padding-left: 1.75em;
+	display: block;
+}
+
+div#mw-panel div.portal div.body,
+div#mw-panel #p-logo + div.portal div.body {
+	margin: 0;
+}
+
+div#mw-panel div.portal div.body ul li {
+	font-size: 0.75em;
+	padding: .35em 1.25em;
+}
+
+div#mw-panel div.portal div.body ul li:last-child {
+	border-radius: 0 0 1em 0;
+}
+
+div#mw-panel div.portal div.body ul li a {
+	display: block;
+	cursor: pointer;
+}
+
+div#mw-panel div.portal div.body ul li a:hover {
+	text-decoration: none;
+}

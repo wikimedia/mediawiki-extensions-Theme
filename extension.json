@@ -1,10 +1,11 @@
 {
 	"name": "Theme",
 	"namemsg": "theme-extensionname",
-	"version": "1.7.2",
+	"version": "1.8.0",
 	"author": [
 		"Ryan Schmidt",
-		"Jack Phoenix"
+		"Jack Phoenix",
+		"Samantha Nguyen"
 	],
 	"url": "https://www.mediawiki.org/wiki/Extension:Theme",
 	"descriptionmsg": "theme-desc",
@@ -43,6 +44,19 @@
 			"styles": {
 				"vector/dark.css": {
 					"media": "screen"
+				}
+			}
+		},
+		"themeloader.skins.vector.deepsea": {
+			"styles": {
+				"vector/deepsea/deepsea-screen.css": {
+					"media": "screen"
+				},
+				"vector/deepsea/deepsea-screen-big.css": {
+					"media": "only screen and (min-width: 800px), only screen and (min-device-width: 800px)"
+				},
+				"vector/deepsea/deepsea-screen-hd.css": {
+					"media": "screen and (min-width: 982px)"
 				}
 			}
 		}
