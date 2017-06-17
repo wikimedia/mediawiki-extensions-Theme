@@ -30,7 +30,7 @@ div#content {
 div#mw-page-base {
 	background-color: #17456E;
 	/* @embed */
-	background-image: url(dark/page-fade.png);
+	background-image: url(page-fade.png);
 }
 
 /* Link colors */
@@ -116,7 +116,7 @@ div#left-navigation {
 div.vectorTabs,
 div.vectorTabs ul {
 	/* @embed */
-	background-image: url('dark/tab-break.png');
+	background-image: url('tab-break.png');
 }
 /* OVERRIDDEN BY COMPLIANT BROWSERS */
 div.vectorTabs ul li { /* @todo */
@@ -135,7 +135,7 @@ div.vectorTabs li a, div.vectorTabs li a span {
 
 div.vectorTabs li.selected {
 	/* @embed */
-	background-image: url('dark/tab-current-fade.png');
+	background-image: url('tab-current-fade.png');
 }
 
 div.vectorTabs li.selected a,
@@ -161,7 +161,7 @@ div.vectorMenu li a {
 
 div.vectorTabs span {
 	/* @embed */
-	background-image: url('dark/tab-break.png');
+	background-image: url('tab-break.png');
 }
 
 div.vectorMenu li.selected a,
@@ -174,7 +174,7 @@ div.vectorMenu li.selected a:visited {
 div#mw-head div.vectorMenu h3,
 div#mw-head div.vectorMenu h5 {
 	/* @embed */
-	background-image: url('dark/tab-break.png');
+	background-image: url('tab-break.png');
 }
 
 /* OVERRIDDEN BY COMPLIANT BROWSERS */
@@ -229,7 +229,7 @@ div#simpleSearch :-moz-placeholder#searchInput {
  */
 button#searchButton img {
 	/* @embed */
-	background: url(dark/search-ltr.png);
+	background: url(search-ltr.png);
 	height: 0px !important;
 	padding: 6px !important;
 	width: 0px !important;
@@ -282,39 +282,6 @@ div#footer ul li {
 #p-logo {
 	left: 0;
 	top: -150px;
-}
-
-/* Preferences */
-#preftoc {
-	/* @embed */
-	background-image: url(dark/preferences-break.png);
-}
-#preftoc a,
-#preftoc a:active {
-	color: #F4F26B;
-	text-decoration: none;
-}
-#preftoc li {
-	/* @embed */
-	background-image: url(dark/preferences-break.png);
-}
-#preftoc li.selected a {
-	/* @embed */
-	background-image: url(dark/preferences-fade.png);
-	color: #d2d2d2;
-	text-decoration: none;
-}
-#preferences { /* @todo */
-	border: solid 1px #426787;
-	background-color: #1D578B;
-}
-
-#preferences legend {
-	color: #b6b6b6;
-}
-
-.htmlform-tip {
-	color: #b6b6b6;
 }
 
 /* Links */
@@ -399,7 +366,7 @@ fieldset table {
 ul {
 	list-style-type: disc;
 	/* @embed */
-	list-style-image: url(dark/bullet-icon.png);
+	list-style-image: url(bullet-icon.png);
 }
 
 .mw-code {

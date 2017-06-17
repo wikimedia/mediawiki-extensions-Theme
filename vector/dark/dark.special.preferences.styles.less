@@ -1,0 +1,52 @@
+@color_1: #f4f26b;
+@color_2: #d2d2d2;
+@color_3: #b6b6b6;
+@background_color_1: #1d578b;
+
+.client-js {
+	#preferences {
+		background-color: @background_color_1;
+		border: 0;
+
+		legend {
+			color: @color_3;
+		}
+	}
+
+	#preftoc {
+		background-image: url(preferences-break.png);
+
+		a {
+			color: @color_1;
+			text-decoration: none;
+
+			&:active {
+				color: @color_1;
+				text-decoration: none;
+			}
+		}
+
+		li {
+			background-image: url(preferences-break.png);
+
+			&.selected {
+				a {
+					background-image: url(preferences-fade.png);
+					color: @color_2;
+					text-decoration: none;
+				}
+                	}
+		}
+	}
+
+	.htmlform-tip {
+		color: @color_3;
+	}
+
+	.mw-email-not-authenticated .mw-input {
+		background: #17456e;
+		border: 0;
+		color: #d2d2d2;
+		padding: .5em;
+	}
+}

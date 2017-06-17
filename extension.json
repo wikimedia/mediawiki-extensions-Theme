@@ -42,7 +42,10 @@
 		},
 		"themeloader.skins.vector.dark": {
 			"styles": {
-				"vector/dark.css": {
+				"vector/dark/dark.css": {
+					"media": "screen"
+				},
+				"vector/dark/dark.special.preferences.styles.less": {
 					"media": "screen"
 				}
 			}
