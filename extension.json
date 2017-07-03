@@ -1,7 +1,7 @@
 {
 	"name": "Theme",
 	"namemsg": "theme-extensionname",
-	"version": "1.9.0",
+	"version": "2.0",
 	"author": [
 		"Ryan Schmidt",
 		"Jack Phoenix",
@@ -15,10 +15,20 @@
 			"i18n"
 		]
 	},
+	"ThemeModules": {
+		"monobook": [ "dark", "pink", "stellarbook" ],
+		"vector": [ "dark", "deepsea" ]
+	},
 	"AutoloadClasses": {
+		"Theme": "Theme.class.php",
 		"ThemeHooks": "Theme.hooks.php"
 	},
 	"ResourceModules": {
+		"ext.theme.livepreview": {
+			"scripts": "ext.theme.livepreview.js",
+			"dependencies": [ "mediawiki.user", "mediawiki.util" ],
+			"messages": [ "theme-livepreview-note" ]
+		},
 		"themeloader.skins.monobook.dark": {
 			"styles": {
 				"monobook/dark.css": {
@@ -76,8 +86,10 @@
 	},
 	"Hooks": {
 		"BeforePageDisplay": [
-			"ThemeHooks::onBeforePageDisplay"
-		]
+			"ThemeHooks::onBeforePageDisplay",
+			"ThemeHooks::addJSonPreferences"
+		],
+		"GetPreferences": "ThemeHooks::onGetPreferences"
 	},
 	"manifest_version": 1
 }

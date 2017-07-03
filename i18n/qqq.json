@@ -1,5 +1,8 @@
 {
 	"@metadata": [],
 	"theme-extensionname": "{{name}}",
+	"theme-prefs-label": "Label shown on Special:Preferences",
+	"theme-livepreview-note": "Note shown on Special:Preferences, in the appearance tab, when previewing a theme. $1 is the name of a theme, e.g. <code>dark</code>, <code>stellarbook</code> etc.",
+	"theme-unsupported-skin": "Note shown on Special:Preferences, in the appearance tab, instead of the theme selector if the user is using a skin which does not support themes.",
 	"theme-desc": "{{desc|name=Theme|url=https://www.mediawiki.org/wiki/Extension:Theme}}"
 }
