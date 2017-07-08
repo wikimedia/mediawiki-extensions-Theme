@@ -5,5 +5,8 @@
 		]
 	},
 	"theme-extensionname": "Theme",
+	"theme-prefs-label": "Thema:",
+	"theme-livepreview-note": "Beachte, dass du das Thema $1 nur vorschaust. Um die Änderungen dauerhaft zu machen, drücke unten auf die Schaltfläche „Speichern“.",
+	"theme-unsupported-skin": "Die Benutzeroberfläche, die du derzeit verwendest, unterstützt keine Themen. Bitte verwende eine andere Benutzeroberfläche, wenn du ein Nicht-Standard-Thema verwenden möchtest.",
 	"theme-desc": "Steuert die Installation von CSS-Varianten der Benutzeroberflächen des Wikis"
 }

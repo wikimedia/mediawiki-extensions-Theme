@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Chrumps"
+			"Chrumps",
+			"InternerowyGołąb"
 		]
 	},
+	"theme-prefs-label": "Motyw:",
 	"theme-desc": "Rozszerzenie pobierania tematu dla skórek"
 }

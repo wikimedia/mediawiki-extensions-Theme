@@ -2,9 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Hwangjy9",
-			"Revi"
+			"Revi",
+			"Ykhwong"
 		]
 	},
 	"theme-extensionname": "테마",
+	"theme-prefs-label": "테마:",
 	"theme-desc": "스킨을 위한 테마 로더 확장기능"
 }
