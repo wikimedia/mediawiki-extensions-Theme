@@ -1,7 +1,7 @@
 {
 	"name": "Theme",
 	"namemsg": "theme-extensionname",
-	"version": "2.0.1",
+	"version": "2.1",
 	"author": [
 		"Ryan Schmidt",
 		"Jack Phoenix",
@@ -89,7 +89,8 @@
 			"ThemeHooks::onBeforePageDisplay",
 			"ThemeHooks::addJSonPreferences"
 		],
-		"GetPreferences": "ThemeHooks::onGetPreferences"
+		"GetPreferences": "ThemeHooks::onGetPreferences",
+		"OutputPageBodyAttributes": "ThemeHooks::onOutputPageBodyAttributes"
 	},
 	"manifest_version": 1
 }

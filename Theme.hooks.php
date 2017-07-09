@@ -110,4 +110,40 @@ class ThemeHooks {
 		return true;
 	}
 
+	/**
+	 * Add theme-<theme name> class to the <body> element to allow per-theme
+	 * styling on on-wiki CSS pages, such as MediaWiki:Vector.css.
+	 * The class is added only for non-default themes.
+	 *
+	 * @param OutputPage $out
+	 * @param Skin $sk
+	 * @param array $bodyAttrs Existing attributes of the <body> tag as an array
+	 */
+	public static function onOutputPageBodyAttributes( $out, $sk, &$bodyAttrs ) {
+		global $wgDefaultTheme;
+
+		// Check the following things in this order:
+		// 1) value of $wgDefaultTheme (set in site configuration)
+		// 2) user's personal preference/override
+		// 3) per-page usetheme URL parameter
+		$userTheme = $wgDefaultTheme;
+		// User's personal theme override, if any
+		$user = $out->getUser();
+		if ( $user->getOption( 'theme' ) ) {
+			$userTheme = $user->getOption( 'theme' );
+		}
+		$theme = $out->getRequest()->getVal( 'usetheme', $userTheme );
+		$theme = strtolower( htmlspecialchars( $theme ) ); // paranoia
+
+		if ( !Theme::skinHasTheme( $sk->getSkinName(), $theme ) ) {
+			return true;
+		}
+
+		if ( isset( $theme ) && $theme !== 'default' ) {
+			$bodyAttrs['class'] .= ' theme-' . $theme;
+		}
+
+		return true;
+	}
+
 }
