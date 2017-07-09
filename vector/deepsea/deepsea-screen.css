@@ -67,7 +67,7 @@ h6,
 	border-radius: 0 0 0 1em;
 }
 
-#p-personal ul li a {
+#p-personal ul li > a {
 	text-decoration: none;
 	padding: .75em 1em;
 	display: block;
