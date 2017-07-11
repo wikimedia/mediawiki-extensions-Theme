@@ -3,8 +3,10 @@
 		"authors": [
 			"Ash Crow",
 			"Wladek92",
-			"Gomoko"
+			"Gomoko",
+			"Thibaut120094"
 		]
 	},
+	"theme-prefs-label": "Thème :",
 	"theme-desc": "Contrôle l’installation de variantes CSS sur les habillages du wiki"
 }

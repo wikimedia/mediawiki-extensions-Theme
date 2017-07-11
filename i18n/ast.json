@@ -4,5 +4,8 @@
 			"Xuacu"
 		]
 	},
+	"theme-prefs-label": "Tema:",
+	"theme-livepreview-note": "Repara que sólo ye una vista previa de $1. Pa facer permanentes los cambios, primi nel botón «Guardar más abaxo.»",
+	"theme-unsupported-skin": "La piel que tas usando anguaño nun tien encontu pa temes. Usa otra piel si quies usar un tema distintu del predetermináu.",
 	"theme-desc": "Controla la instalación de variantes CSS de los aspeutos de la wiki"
 }

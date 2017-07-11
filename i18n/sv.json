@@ -4,5 +4,8 @@
 			"WikiPhoenix"
 		]
 	},
+	"theme-prefs-label": "Tema:",
+	"theme-livepreview-note": "Observera att du endast förhandsvisar temat $1. För att göra ändringar permanent, klicka på knappen \"Spara\" nedan.",
+	"theme-unsupported-skin": "Utseendet du för tillfället använder stöder inte teman. Välj ett annat utseende om du önskar att använda ett tema som inte är standard.",
 	"theme-desc": "Tillägg för temainläsning av utseenden"
 }
