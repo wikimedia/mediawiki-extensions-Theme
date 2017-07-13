@@ -6,5 +6,6 @@
 		]
 	},
 	"theme-prefs-label": "Motyw:",
+	"theme-livepreview-note": "Miej na uwadze, że widzisz tylko podgląd skórki $1. By zmienić skórkę permanentnie, naciśnij przycisk \"zapisz\" umieszczony poniżej.",
 	"theme-desc": "Rozszerzenie pobierania tematu dla skórek"
 }
