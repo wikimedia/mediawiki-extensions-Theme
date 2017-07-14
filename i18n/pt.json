@@ -4,5 +4,8 @@
 			"Hamilton Abreu"
 		]
 	},
+	"theme-prefs-label": "Variante:",
+	"theme-livepreview-note": "Note que esta é apenas uma antevisão da variante $1. Para tornar as alterações permanentes, carregue no botão \"gravar\" abaixo.",
+	"theme-unsupported-skin": "O tema que está a usar não suporta variantes. Use outro tema se pretende utilizar uma variante diferente daquela por padrão, por favor.",
 	"theme-desc": "Controla a instalação de variantes CSS dos temas da wiki"
 }
