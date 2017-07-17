@@ -1,9 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"Cainamarques"
+			"Cainamarques",
+			"Felipe L. Ewald"
 		]
 	},
 	"theme-extensionname": "Tema",
-	"theme-desc": "Extensão para carregar temas para skins"
+	"theme-prefs-label": "Tema:",
+	"theme-livepreview-note": "Observe que você está apenas visualizando o tema $1. Para tornar as alterações permanentes, pressione o botão \"salvar\" abaixo.",
+	"theme-unsupported-skin": "A skin que você está usando atualmente não suporta temas. Por favor, use outra skin se desejar usar um tema não padrão.",
+	"theme-desc": "Controla a instalação de variantes CSS das skins da wiki"
 }
