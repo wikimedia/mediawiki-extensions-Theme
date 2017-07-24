@@ -2,8 +2,10 @@
 	"@metadata": {
 		"authors": [
 			"Ата",
-			"Piramidion"
+			"Piramidion",
+			"SimondR"
 		]
 	},
+	"theme-prefs-label": "Тема:",
 	"theme-desc": "Контролює встановлення CSS-варіантів тем оформлення вікі"
 }
