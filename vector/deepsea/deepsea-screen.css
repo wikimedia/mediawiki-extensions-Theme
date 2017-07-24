@@ -199,6 +199,14 @@ div#mw-panel #p-logo + div.portal div.body {
 	margin: 0;
 }
 
+div#mw-panel div.portal div.body {
+	background: none;
+}
+
+div#mw-panel div.portal div.body ul {
+	padding: 0;
+}
+
 div#mw-panel div.portal div.body ul li {
 	font-size: 0.75em;
 	padding: .35em 1.25em;
