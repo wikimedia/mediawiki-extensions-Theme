@@ -5,5 +5,7 @@
 		]
 	},
 	"theme-prefs-label": "Thema:",
+	"theme-livepreview-note": "Let op: Er wordt alleen een voorvertoning van het $1 thema getoond. Om deze wijzigingen toe te passen, klik op de \"opslaan\" knop verder beneden.",
+	"theme-unsupported-skin": "De vormgeving die u momenteel gebruikt ondersteunt geen thema's. Selecteer een andere vormgeving als u een niet-standaard thema wilt gebruiken.",
 	"theme-desc": "Beheert de installatie van CSS thema's van de vormgevingen op de wiki"
 }
