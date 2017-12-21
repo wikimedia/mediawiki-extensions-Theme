@@ -1,8 +1,6 @@
 /*
 ** Dark theme for MonoBook
 ** Originally from ZeldaWiki.org and modified by Skizzerz <skizzerz@shoutwiki.com> for ShoutWiki
-**
-** @date 1 November 2014
 */
 div#content {
 	background: #1c3855;
@@ -318,8 +316,7 @@ table.wikitable {
 }
 
 /* Recreating-deleted-page/reupload file warning and log entries */
-div#mw-upload-deleted-warn,
-div#mw-recreate-deleted-warn {
+div.mw-warning-with-logexcerpt {
 	padding: 3px;
 	margin-bottom: 3px;
 	border: 2px solid #2F6FAB;
