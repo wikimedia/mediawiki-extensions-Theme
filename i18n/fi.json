@@ -4,5 +4,6 @@
 			"01miki10"
 		]
 	},
-	"theme-desc": "Laajennus teemojen lataamiseen ulkoasuille"
+	"theme-prefs-label": "Teema:",
+	"theme-desc": "Hallitsee wikin ulkoasujen CSS-muunnelmien asennusta"
 }
