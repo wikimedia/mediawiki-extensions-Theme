@@ -10,6 +10,9 @@
 	"url": "https://www.mediawiki.org/wiki/Extension:Theme",
 	"descriptionmsg": "theme-desc",
 	"type": "other",
+	"config": {
+		"DefaultTheme": "default"
+	},
 	"MessagesDirs": {
 		"Theme": [
 			"i18n"
