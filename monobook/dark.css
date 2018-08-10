@@ -341,11 +341,6 @@ span.searchmatch {
 	background: transparent;
 }
 
-/* AJAX pagewatch / unwatch */
-div#mw-js-message {
-	background: transparent;
-}
-
 /* Images */
 div.thumb {
 	border-color: transparent;

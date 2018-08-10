@@ -631,13 +631,6 @@ fieldset#mw-searchoptions div.divider {
 	cursor: default;
 }
 
-div#mw-js-message { /* @todo - unused? */
-	margin: 1em 5%;
-	padding: 0.5em 2.5%;
-	border: solid 1px #E7EA12;
-	background-color: #1D578B;
-}
-
 /* File namespace */
 #filetoc {
 	background-color: #1D578B !important;
