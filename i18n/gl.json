@@ -2,9 +2,12 @@
 	"@metadata": {
 		"authors": [
 			"Toliño",
-			"Elisardojm"
+			"Elisardojm",
+			"Banjo"
 		]
 	},
 	"theme-prefs-label": "Tema:",
+	"theme-livepreview-note": "Nota: está só previsualizando o tema $1. Para facer os cambios permanentes, presiona o botón de \"gardar\" de abaixo.",
+	"theme-unsupported-skin": "A pel que está a usar actualmente non soporta temas. Por favor use outra pel se desexa usar un tema non predefinido.",
 	"theme-desc": "Controla a instalación de variantes CSS das aparencias da wiki"
 }
