@@ -100,7 +100,6 @@ class ThemeHooks {
 			// show only an informative message instead
 			$defaultPreferences['theme'] = [
 				'type' => 'info',
-				'raw' => true,
 				'label-message' => 'theme-prefs-label',
 				'default' => $ctx->msg( 'theme-unsupported-skin' )->text(),
 				'section' => 'rendering/skin',
