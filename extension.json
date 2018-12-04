@@ -1,7 +1,7 @@
 {
 	"name": "Theme",
 	"namemsg": "theme-extensionname",
-	"version": "2.1.1",
+	"version": "2.1.2",
 	"author": [
 		"Ryan Schmidt",
 		"Jack Phoenix",
@@ -93,7 +93,8 @@
 			"ThemeHooks::addJSonPreferences"
 		],
 		"GetPreferences": "ThemeHooks::onGetPreferences",
-		"OutputPageBodyAttributes": "ThemeHooks::onOutputPageBodyAttributes"
+		"OutputPageBodyAttributes": "ThemeHooks::onOutputPageBodyAttributes",
+		"ResourceLoaderGetConfigVars": "ThemeHooks::onResourceLoaderGetConfigVars"
 	},
 	"manifest_version": 1
 }

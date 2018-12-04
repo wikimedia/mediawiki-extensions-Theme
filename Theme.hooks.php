@@ -84,7 +84,16 @@ class ThemeHooks {
 		// Without this they show up as "0", "1", etc. in the UI
 		$themeArray = [];
 		foreach ( $themes as $theme ) {
-			$themeArray[$theme] = $theme;
+			$themeDisplayNameMsg = $ctx->msg( 'theme-name-' . $skin . '-' . $theme );
+			if ( $themeDisplayNameMsg->isDisabled() ) {
+				// No i18n available for this -> use the key as-is
+				$themeDisplayName = $theme;
+			} else {
+				// Use i18n; it's much nicer to display formatted theme names if and when
+				// a theme name contains spaces, uppercase characters, etc.
+				$themeDisplayName = $themeDisplayNameMsg->escaped();
+			}
+			$themeArray[$themeDisplayName] = $theme;
 		}
 
 		if ( count( $themes ) > 1 ) {
@@ -101,7 +110,7 @@ class ThemeHooks {
 			$defaultPreferences['theme'] = [
 				'type' => 'info',
 				'label-message' => 'theme-prefs-label',
-				'default' => $ctx->msg( 'theme-unsupported-skin' )->text(),
+				'default' => $ctx->msg( 'theme-unsupported-skin' )->escaped(),
 				'section' => 'rendering/skin',
 			];
 		}
@@ -143,6 +152,17 @@ class ThemeHooks {
 		}
 
 		return true;
+	}
+
+	/**
+	 * Expose the value of $wgDefaultTheme as a JavaScript globals so that site/user
+	 * JS can use mw.config.get( 'wgDefaultTheme' ) to read its value.
+	 *
+	 * @param array $vars Pre-existing JavaScript global variables
+	 */
+	public static function onResourceLoaderGetConfigVars( &$vars ) {
+		global $wgDefaultTheme;
+		$vars['wgDefaultTheme'] = $wgDefaultTheme;
 	}
 
 }
