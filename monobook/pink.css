@@ -17,6 +17,13 @@ body {
 	background-color: #FFC0CB !important;
 }
 
+/**
+ * Suppress the default background image.
+ */
+div#globalWrapper {
+	background-image: none;
+}
+
 a {
 	color: #0066FF;
 }

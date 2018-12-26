@@ -13,6 +13,13 @@ body {
 	color: #d2d2d2;
 }
 
+/**
+ * Suppress the default background image.
+ */
+div#globalWrapper {
+	background-image: none;
+}
+
 table {
 	background-color: #1c3855;
 }

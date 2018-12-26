@@ -23,6 +23,13 @@ body {
 	color: #FFF;
 }
 
+/**
+ * Suppress the default background image.
+ */
+div#globalWrapper {
+	background-image: none;
+}
+
 /* general styles */
 table {
 	font-size: 100%;
