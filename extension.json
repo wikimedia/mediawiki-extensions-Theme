@@ -1,7 +1,7 @@
 {
 	"name": "Theme",
 	"namemsg": "theme-extensionname",
-	"version": "2.1.3",
+	"version": "2.1.4",
 	"author": [
 		"Ryan Schmidt",
 		"Jack Phoenix",
@@ -37,6 +37,9 @@
 				"monobook/dark.css": {
 					"media": "screen"
 				},
+				"monobook/dark.ooui.css": {
+					"media": "screen"
+				},
 				"modules/ext.echo.dark.css": {
 					"media": "screen"
 				}
@@ -51,6 +54,9 @@
 		},
 		"themeloader.skins.monobook.stellarbook": {
 			"styles": {
+				"monobook/dark.ooui.css": {
+					"media": "screen"
+				},
 				"monobook/stellarbook.css": {
 					"media": "screen"
 				}

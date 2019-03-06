@@ -1,0 +1,13 @@
+/**
+ * Shared OOUI CSS fixes for dark MonoBook themes (Dark & Stellarbook)
+ *
+ * Need to set this so that the "Group" menu on Special:ListUsers and probably
+ * many other things remain usable
+ * @see /skins/Vector/skinStyles/ooui.less (this is literally copied from there and adapted a bit)
+ */
+.oo-ui-defaultOverlay,
+.oo-ui-windowManager-modal > .oo-ui-dialog,
+.ve-ui-overlay-global,
+.oo-ui-dropdownWidget-handle {
+	color: #000;
+}
