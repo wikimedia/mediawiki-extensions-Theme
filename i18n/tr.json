@@ -1,8 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Kincki"
+			"Kincki",
+			"BaRaN6161 TURK"
 		]
 	},
-	"theme-desc": "Önyüz için tema yükleme uzantısı"
+	"theme-prefs-label": "Tema:",
+	"theme-livepreview-note": "Yalnızca $1 temasını önizlediğinizi unutmayın. Değişiklikleri kalıcı hale getirmek için, aşağıdaki \"kaydet\" düğmesine basın.",
+	"theme-unsupported-skin": "Kullanmakta olduğunuz görünüm temaları desteklemiyor. Varsayılan olmayan bir tema kullanmak istiyorsanız lütfen başka bir görünüm kullanın.",
+	"theme-desc": "Wiki görünümün CSS varyantlarının kurulumunu kontrol eder"
 }
