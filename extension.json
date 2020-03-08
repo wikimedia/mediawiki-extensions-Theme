@@ -23,8 +23,8 @@
 		"vector": [ "dark", "deepsea" ]
 	},
 	"AutoloadClasses": {
-		"Theme": "Theme.class.php",
-		"ThemeHooks": "Theme.hooks.php"
+		"Theme": "includes/Theme.php",
+		"ThemeHooks": "includes/ThemeHooks.php"
 	},
 	"ResourceModules": {
 		"ext.theme.livepreview": {
