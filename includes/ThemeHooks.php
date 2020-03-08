@@ -2,6 +2,11 @@
 
 class ThemeHooks {
 
+	/**
+	 * @param OutputPage &$out
+	 * @param Skin &$sk
+	 * @return bool
+	 */
 	public static function onBeforePageDisplay( &$out, &$sk ) {
 		global $wgRequest, $wgDefaultTheme, $wgValidSkinNames;
 
@@ -49,8 +54,8 @@ class ThemeHooks {
 	 * Add the JS needed to preview themes in real time onto the output
 	 * on Special:Preferences and its global version, Special:GlobalPreferences.
 	 *
-	 * @param OutputPage $out
-	 * @param Skin $sk
+	 * @param OutputPage &$out
+	 * @param Skin &$sk
 	 * @return bool
 	 */
 	public static function addJSonPreferences( &$out, &$sk ) {
@@ -69,7 +74,7 @@ class ThemeHooks {
 	 * Add the theme selector to user preferences.
 	 *
 	 * @param User $user
-	 * @param array $defaultPreferences
+	 * @param array &$defaultPreferences
 	 * @return bool
 	 */
 	public static function onGetPreferences( $user, &$defaultPreferences ) {
@@ -125,7 +130,8 @@ class ThemeHooks {
 	 *
 	 * @param OutputPage $out
 	 * @param Skin $sk
-	 * @param array $bodyAttrs Existing attributes of the <body> tag as an array
+	 * @param array &$bodyAttrs Existing attributes of the <body> tag as an array
+	 * @return bool
 	 */
 	public static function onOutputPageBodyAttributes( $out, $sk, &$bodyAttrs ) {
 		global $wgDefaultTheme;
@@ -158,7 +164,7 @@ class ThemeHooks {
 	 * Expose the value of $wgDefaultTheme as a JavaScript globals so that site/user
 	 * JS can use mw.config.get( 'wgDefaultTheme' ) to read its value.
 	 *
-	 * @param array $vars Pre-existing JavaScript global variables
+	 * @param array &$vars Pre-existing JavaScript global variables
 	 */
 	public static function onResourceLoaderGetConfigVars( &$vars ) {
 		global $wgDefaultTheme;
