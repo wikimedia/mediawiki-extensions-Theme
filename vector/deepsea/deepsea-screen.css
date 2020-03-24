@@ -6,16 +6,16 @@ body {
 /* main colors */
 #p-search,
 #p-personal ul li,
-div.vectorTabs ul li,
-div#mw-head div.vectorMenu h3,
-div#mw-panel div.portal div.body ul li {
+.vectorTabs ul li,
+#mw-head .vectorMenu h3,
+#mw-panel .portal .body ul li {
 	background: #f8f9fa;
 }
 
 /* hover colors */
 #p-personal ul li:hover,
-div.vectorTabs li:hover,
-div#mw-panel div.portal div.body ul li:hover {
+.vectorTabs li:hover,
+#mw-panel .portal .body ul li:hover {
 	background: #fff;
 }
 
@@ -97,40 +97,40 @@ h6,
 	position: absolute;
 }
 
-div#mw-head div.vectorMenu h3 {
+#mw-head .vectorMenu h3 {
 	background-image: none;
 }
 
-#right-navigation div.emptyPortlet + div.emptyPortlet + div {
+#right-navigation .emptyPortlet + .emptyPortlet + div {
 	border-radius: 1em 0 0 0;
 }
 
-div.vectorMenu {
+.vectorMenu {
 	margin-right: -.5em;
 }
 
-div.vectorMenu h3 span {
+.vectorMenu h3 span {
 	line-height: .5;
 	padding: 1.375em 1em 0 1em;
 }
 
-div.vectorMenu h3 a {
+.vectorMenu h3 a {
 	top: -.25em;
 	left: 3em;
 }
 
-div.vectorMenu div.menu {
+.vectorMenu div.menu {
 	background-color: #fff;
 	border: 1px solid #a2a9b1;
 	border-radius: 2px;
 	box-shadow: 0 0.15em 0 0 rgba(0,0,0,0.15);
 }
 
-div.vectorMenu li a {
+.vectorMenu li a {
 	text-decoration: none;
 }
 
-div.vectorMenu li:hover {
+.vectorMenu li:hover {
 	background: #f9f9f9;
 }
 
@@ -141,25 +141,25 @@ div.vectorMenu li:hover {
 	padding: 0.48em 1em;
 }
 
-div#simpleSearch,
+#simpleSearch,
 #p-search form,
 #p-search input {
 	margin: 0;
 }
 
 /* tabs */
-div.vectorTabs {
+.vectorTabs {
 	padding: 0;
 }
 
-div.vectorTabs,
-div.vectorTabs ul,
-div.vectorTabs ul li,
-div.vectorTabs span {
+.vectorTabs,
+.vectorTabs ul,
+.vectorTabs ul li,
+.vectorTabs span {
 	background-image: none;
 }
 
-div.vectorTabs li a {
+.vectorTabs li a {
 	text-decoration: none;
 	height: 1em;
 	padding: 1em;
@@ -176,51 +176,51 @@ div.vectorTabs li a {
 }
 
 /* portals */
-div#mw-panel {
+#mw-panel {
 	width: 14%;
 }
 
-div#mw-panel div.portal {
+#mw-panel .portal {
 	background: none;
 	margin: 0 0 .5em 0;
 }
 
 
-div#mw-panel #p-logo + div.portal h3,
-div#mw-panel div.portal h3 {
+#mw-panel #p-logo + .portal h3,
+#mw-panel .portal h3 {
 	background: #fff;
 	color: #444;
 	padding-left: 1.75em;
 	display: block;
 }
 
-div#mw-panel div.portal div.body,
-div#mw-panel #p-logo + div.portal div.body {
+#mw-panel .portal .body,
+#mw-panel #p-logo + .portal .body {
 	margin: 0;
 }
 
-div#mw-panel div.portal div.body {
+#mw-panel .portal .body {
 	background: none;
 }
 
-div#mw-panel div.portal div.body ul {
+#mw-panel .portal .body ul {
 	padding: 0;
 }
 
-div#mw-panel div.portal div.body ul li {
+#mw-panel .portal .body ul li {
 	font-size: 0.75em;
 	padding: .35em 1.25em;
 }
 
-div#mw-panel div.portal div.body ul li:last-child {
+#mw-panel .portal .body ul li:last-child {
 	border-radius: 0 0 1em 0;
 }
 
-div#mw-panel div.portal div.body ul li a {
+#mw-panel .portal .body ul li a {
 	display: block;
 	cursor: pointer;
 }
 
-div#mw-panel div.portal div.body ul li a:hover {
+#mw-panel .portal .body ul li a:hover {
 	text-decoration: none;
 }

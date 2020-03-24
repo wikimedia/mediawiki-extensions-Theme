@@ -7,7 +7,7 @@
 ** @copyright © 2007-2011 Jack Phoenix <jack@shoutwiki.com>
 ** @date 14 September 2011
 */
-div#content {
+.mw-body {
 	background: #FFC0CB;
 	color: black;
 }
@@ -20,7 +20,7 @@ body {
 /**
  * Suppress the default background image.
  */
-div#globalWrapper {
+#globalWrapper {
 	background-image: none;
 }
 
@@ -111,7 +111,7 @@ div.thumb {
 /*
 ** footer
 */
-div#footer {
+#footer {
 	background-color: #FFC0CB;
 	border-bottom: 1px solid #FFC0CB;
 	border-top: 1px solid #FFC0CB;

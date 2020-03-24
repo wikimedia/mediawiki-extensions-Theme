@@ -11,7 +11,7 @@ body {
 }
 
 /* Content */
-div#content {
+.mw-body {
 	border: 1px solid #426787;
 	border-right-width: 0;
 	/* The following rule overrides ShoutWikiAds' vector-skyscraper-ad.css */
@@ -27,7 +27,7 @@ div#content {
 }
 
 /* Head */
-div#mw-page-base {
+#mw-page-base {
 	background-color: #17456E;
 	/* @embed */
 	background-image: url(page-fade.png);
@@ -108,7 +108,7 @@ td.diff-deletedline .diffchange {
 }
 
 /* Navigation containers */
-div#left-navigation {
+#left-navigation {
 	left: 10em;
 }
 
@@ -171,8 +171,8 @@ div.vectorMenu li.selected a:visited {
 }
 
 /* OVERRIDDEN BY COMPLIANT BROWSERS */
-div#mw-head div.vectorMenu h3,
-div#mw-head div.vectorMenu h5 {
+#mw-head div.vectorMenu h3,
+#mw-head div.vectorMenu h5 {
 	/* @embed */
 	background-image: url('tab-break.png');
 }
@@ -192,13 +192,13 @@ div.vectorMenu h3 span {
 }
 
 /* Search */
-div#simpleSearch {
+#simpleSearch {
 	border: solid 1px #426787;
 	background-color: #17456e;
 	background-image: none;
 }
 
-div#simpleSearch input#searchInput {
+#simpleSearch input#searchInput {
 	color: #e0e0e0;
 }
 
@@ -207,13 +207,13 @@ div#simpleSearch input#searchInput {
  * It's beyond stupid that these rules cannot be combined into one...browsers,
  * why must you be so random?!
  */
-div#simpleSearch #searchInput.placeholder {
+#simpleSearch #searchInput.placeholder {
 	color: #e0e0e0;
 }
-div#simpleSearch :-ms-input-placeholder#searchInput {
+#simpleSearch :-ms-input-placeholder#searchInput {
 	color: #e0e0e0;
 }
-div#simpleSearch :-moz-placeholder#searchInput {
+#simpleSearch :-moz-placeholder#searchInput {
 	color: #e0e0e0;
 }
 
@@ -236,45 +236,45 @@ button#searchButton img {
 }
 
 /* Panel */
-div#mw-panel {
+#mw-panel {
 	padding: 0;
 }
 
 /* ashley 21 June 2015: this doesn't look good anymore, so removing it
-div#mw-panel div.portal div.body {
+#mw-panel div.portal div.body {
 	background-image: url('dark/portal-break.png');
 }
 */
 
-div#mw-panel div.portal div.body ul li a {
+#mw-panel div.portal div.body ul li a {
 	color: #F4F26B;
 }
-div#mw-panel div.portal div.body ul li a:visited {
+#mw-panel div.portal div.body ul li a:visited {
 	color: #F4F26B;
 }
 
 /* Sidebar */
-div#mw-panel div.portal h3 {
+#mw-panel div.portal h3 {
 	color: #F4F26B;
 }
 
-div#mw-panel.collapsible-nav .portal h3 a,
-div#mw-panel.collapsible-nav .portal h5 a {
+#mw-panel.collapsible-nav .portal h3 a,
+#mw-panel.collapsible-nav .portal h5 a {
 	color: #E7EA12 !important;
 }
 
-div#mw-panel.collapsible-nav .portal {
+#mw-panel.collapsible-nav .portal {
 	background: none;
 	border-bottom: 1px solid #284360;
 }
 
 /* Make non-link texts in the sidebar, such as the NewsBox extension's contents, readable */
-div#mw-panel div.portal {
+#mw-panel div.portal {
 	color: #FFF;
 }
 
 /* Footer */
-div#footer ul li {
+#footer ul li {
 	color: #b6b6b6;
 }
 
