@@ -1,7 +1,7 @@
 {
 	"name": "Theme",
 	"namemsg": "theme-extensionname",
-	"version": "2.1.4",
+	"version": "2.2",
 	"author": [
 		"Ryan Schmidt",
 		"Jack Phoenix",
@@ -22,7 +22,11 @@
 		"monobook": [ "dark", "pink", "stellarbook" ],
 		"vector": [ "dark", "deepsea" ]
 	},
+	"APIModules": {
+		"themelist": "ApiThemeList"
+	},
 	"AutoloadClasses": {
+		"ApiThemeList": "includes/ApiThemeList.php",
 		"Theme": "includes/Theme.php",
 		"ThemeHooks": "includes/ThemeHooks.php"
 	},
@@ -31,6 +35,9 @@
 			"scripts": "ext.theme.livepreview.js",
 			"dependencies": [ "mediawiki.user", "mediawiki.util" ],
 			"messages": [ "theme-livepreview-note" ]
+		},
+		"ext.theme.preferences": {
+			"styles": "ext.theme.preferences.css"
 		},
 		"themeloader.skins.monobook.dark": {
 			"styles": {

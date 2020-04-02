@@ -4,6 +4,8 @@
 			"Liuxinyu970226"
 		]
 	},
+	"apihelp-themelist-summary": "{{doc-apihelp-summary|themelist}}",
+	"apihelp-themelist-example-1": "{{doc-apihelp-example|themelist}}",
 	"theme-extensionname": "{{name}}",
 	"theme-prefs-label": "Label shown on Special:Preferences\n{{Identical|Theme}}",
 	"theme-livepreview-note": "Note shown on Special:Preferences, in the appearance tab, when previewing a theme. $1 is the name of a theme, e.g. <code>dark</code>, <code>stellarbook</code> etc.",

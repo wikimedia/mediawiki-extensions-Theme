@@ -6,9 +6,11 @@
 	],
 	"globals": {
 		"mediaWiki": false,
-		"jQuery": false
+		"jQuery": false,
+		"OO": false
 	},
 	"rules": {
-		"no-jquery/no-global-selector": "off"
+		"no-jquery/no-global-selector": "off",
+		"max-lines": "off"
 	}
 }
