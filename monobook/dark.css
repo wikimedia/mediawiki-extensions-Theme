@@ -2,7 +2,7 @@
 ** Dark theme for MonoBook
 ** Originally from ZeldaWiki.org and modified by Skizzerz <skizzerz@shoutwiki.com> for ShoutWiki
 */
-div#content {
+.mw-body {
 	background: #1c3855;
 	color: #d2d2d2;
 	border: 2px solid #6f7b87;
@@ -16,7 +16,7 @@ body {
 /**
  * Suppress the default background image.
  */
-div#globalWrapper {
+#globalWrapper {
 	background-image: none;
 }
 
@@ -173,7 +173,7 @@ html .thumbimage {
 /*
 ** footer
 */
-div#footer {
+#footer {
 	background-color: #1c3855;
 	border-top: 1px solid #e1eda6;
 	border-bottom: 1px solid #e1eda6;

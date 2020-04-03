@@ -4,7 +4,7 @@
 ** @date 14 January 2013
 ** @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
 */
-div#content {
+.mw-body {
 	background: #313439;
 	border: solid 1px #5b5865;
 	color: #FFF;
@@ -26,7 +26,7 @@ body {
 /**
  * Suppress the default background image.
  */
-div#globalWrapper {
+#globalWrapper {
 	background-image: none;
 }
 
@@ -307,7 +307,7 @@ span.diffchange {
 /*
 ** footer
 */
-div#footer {
+#footer {
 	background-color: #191a1e;
 	font-size: 75%;
 	margin: 4em 0 1em 0;
