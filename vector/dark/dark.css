@@ -241,20 +241,20 @@ button#searchButton img {
 }
 
 /* ashley 21 June 2015: this doesn't look good anymore, so removing it
-#mw-panel div.portal div.body {
+#mw-panel .portal .body {
 	background-image: url('dark/portal-break.png');
 }
 */
 
-#mw-panel div.portal div.body ul li a {
+#mw-panel .portal .body ul li a {
 	color: #F4F26B;
 }
-#mw-panel div.portal div.body ul li a:visited {
+#mw-panel .portal .body ul li a:visited {
 	color: #F4F26B;
 }
 
 /* Sidebar */
-#mw-panel div.portal h3 {
+#mw-panel .portal h3 {
 	color: #F4F26B;
 }
 
@@ -269,7 +269,7 @@ button#searchButton img {
 }
 
 /* Make non-link texts in the sidebar, such as the NewsBox extension's contents, readable */
-#mw-panel div.portal {
+#mw-panel .portal {
 	color: #FFF;
 }
 
