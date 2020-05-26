@@ -46,8 +46,6 @@ class ThemeHooks {
 
 		// Add the CSS file via ResourceLoader.
 		$out->addModuleStyles( $moduleName );
-
-		return true;
 	}
 
 	/**
@@ -56,7 +54,6 @@ class ThemeHooks {
 	 *
 	 * @param OutputPage &$out
 	 * @param Skin &$sk
-	 * @return bool
 	 */
 	public static function addJSonPreferences( &$out, &$sk ) {
 		if (
@@ -65,9 +62,9 @@ class ThemeHooks {
 		) {
 			// Only load this JS on Special:Preferences/Special:GlobalPreferences
 			$out->addModules( 'ext.theme.livepreview' );
+			// Stupid CSS hack
+			$out->addModuleStyles( 'ext.theme.preferences' );
 		}
-
-		return true;
 	}
 
 	/**
@@ -75,7 +72,6 @@ class ThemeHooks {
 	 *
 	 * @param User $user
 	 * @param array &$defaultPreferences
-	 * @return bool
 	 */
 	public static function onGetPreferences( $user, &$defaultPreferences ) {
 		global $wgDefaultTheme;
@@ -83,6 +79,9 @@ class ThemeHooks {
 		$ctx = RequestContext::getMain();
 		$useskin = $ctx->getRequest()->getVal( 'useskin', false );
 		$skin = $useskin ? $useskin : $user->getOption( 'skin' );
+		// Normalize the key; this'll return the default skin in case if the user
+		// requested a skin that is *not* installed but for which Theme has themes
+		$skin = Skin::normalizeKey( $skin );
 
 		$themes = Theme::getAvailableThemes( $skin );
 		// Braindead code needed to make the theme *names* show up
@@ -119,8 +118,6 @@ class ThemeHooks {
 				'section' => 'rendering/skin',
 			];
 		}
-
-		return true;
 	}
 
 	/**
@@ -131,7 +128,7 @@ class ThemeHooks {
 	 * @param OutputPage $out
 	 * @param Skin $sk
 	 * @param array &$bodyAttrs Existing attributes of the <body> tag as an array
-	 * @return bool
+	 * @return void|bool Void normally, bool true if $sk(in) has no requested theme
 	 */
 	public static function onOutputPageBodyAttributes( $out, $sk, &$bodyAttrs ) {
 		global $wgDefaultTheme;
@@ -156,8 +153,6 @@ class ThemeHooks {
 		if ( isset( $theme ) && $theme !== 'default' ) {
 			$bodyAttrs['class'] .= ' theme-' . $theme;
 		}
-
-		return true;
 	}
 
 	/**

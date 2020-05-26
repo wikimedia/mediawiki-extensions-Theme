@@ -1,0 +1,8 @@
+/*
+ * MASSIVE HACK! For whatever reason the default skin gets a stupid margin-top
+ * property, which misaligns the entry in the Special:Preferences listing.
+ * This line of CSS fixes that.
+ */
+label.oo-ui-radioOptionWidget:first-child {
+	margin-top: 0;
+}

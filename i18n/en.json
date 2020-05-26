@@ -2,6 +2,8 @@
 	"@metadata": {
 		"authors": []
 	},
+	"apihelp-themelist-summary": "Get the list of all skins and their themes",
+	"apihelp-themelist-example-1": "Get the list of all skins and their themes",
 	"theme-extensionname": "Theme",
 	"theme-prefs-label": "Theme:",
 	"theme-livepreview-note": "Note that you are only previewing the $1 theme. To make the changes permanent, press the \"save\" button below.",
