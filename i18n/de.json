@@ -4,6 +4,8 @@
 			"Metalhead64"
 		]
 	},
+	"apihelp-themelist-summary": "Abruf der Liste aller Skins und ihrer Themen",
+	"apihelp-themelist-example-1": "Abruf der Liste aller Skins und ihrer Themen",
 	"theme-extensionname": "Theme",
 	"theme-prefs-label": "Thema:",
 	"theme-livepreview-note": "Beachte, dass du das Thema $1 nur vorschaust. Um die Änderungen dauerhaft zu machen, drücke unten auf die Schaltfläche „Speichern“.",
