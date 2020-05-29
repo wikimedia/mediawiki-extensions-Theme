@@ -5,6 +5,8 @@
 			"Kincki"
 		]
 	},
+	"apihelp-themelist-summary": "Tüm görünümlerin ve temaların listesini alın",
+	"apihelp-themelist-example-1": "Tüm görünümlerin ve temaların listesini alın",
 	"theme-prefs-label": "Tema:",
 	"theme-livepreview-note": "Yalnızca $1 temasını önizlediğinizi unutmayın. Değişiklikleri kalıcı hale getirmek için, aşağıdaki \"kaydet\" düğmesine basın.",
 	"theme-unsupported-skin": "Kullanmakta olduğunuz görünüm temaları desteklemiyor. Varsayılan olmayan bir tema kullanmak istiyorsanız lütfen başka bir görünüm kullanın.",
