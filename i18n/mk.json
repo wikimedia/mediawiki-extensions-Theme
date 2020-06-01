@@ -4,6 +4,8 @@
 			"Bjankuloski06"
 		]
 	},
+	"apihelp-themelist-summary": "Дај список на сите рува и нивните изгледи",
+	"apihelp-themelist-example-1": "Дај список на сите рува и нивните изгледи",
 	"theme-extensionname": "Изглед",
 	"theme-prefs-label": "Тема:",
 	"theme-livepreview-note": "Имајте на ум дека ова е само преглед на темата $1. За промените да бидат трајни, стиснете на копчето „зачувај“ подолу.",
