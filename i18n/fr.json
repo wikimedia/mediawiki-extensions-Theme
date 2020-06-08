@@ -3,11 +3,13 @@
 		"authors": [
 			"Ash Crow",
 			"Gomoko",
+			"Pamputt",
 			"Thibaut120094",
 			"Urhixidur",
 			"Wladek92"
 		]
 	},
+	"apihelp-themelist-summary": "Obtenir la liste de tous les habillages avec leurs thèmes",
 	"apihelp-themelist-example-1": "Obtenir la liste de tous les habillages avec leurs thèmes",
 	"theme-prefs-label": "Thème :",
 	"theme-livepreview-note": "Noter que vous ne voyez qu’un aperçu du thème $1. Pour rendre les modifications permanentes, appuyer sur le bouton « enregistrer » ci-dessous.",
