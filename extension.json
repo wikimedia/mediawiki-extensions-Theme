@@ -10,6 +10,9 @@
 	"url": "https://www.mediawiki.org/wiki/Extension:Theme",
 	"descriptionmsg": "theme-desc",
 	"type": "other",
+	"requires": {
+		"MediaWiki": ">= 1.34.0"
+	},
 	"config": {
 		"DefaultTheme": "default"
 	},
