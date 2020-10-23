@@ -36,7 +36,8 @@ class ThemeHooks {
 		}
 
 		// Check that we have something to include later on; if not, bail out
-		if ( !$themeName || !Theme::skinHasTheme( $skin, $themeName ) ) {
+		$resourceLoader = $out->getResourceLoader();
+		if ( !$themeName || !Theme::skinHasTheme( $skin, $themeName, $resourceLoader ) ) {
 			return true;
 		}
 
@@ -146,7 +147,8 @@ class ThemeHooks {
 		$theme = $out->getRequest()->getVal( 'usetheme', $userTheme );
 		$theme = strtolower( htmlspecialchars( $theme ) ); // paranoia
 
-		if ( !Theme::skinHasTheme( $sk->getSkinName(), $theme ) ) {
+		$resourceLoader = $out->getResourceLoader();
+		if ( !Theme::skinHasTheme( $sk->getSkinName(), $theme, $resourceLoader ) ) {
 			return true;
 		}
 

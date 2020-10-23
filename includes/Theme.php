@@ -34,11 +34,10 @@ class Theme {
 	 *
 	 * @param string $skin Skin name, e.g. aurora, monobook, vector, etc.
 	 * @param string $theme Theme name, e.g. dark, pink, etc.
+	 * @param ResourceLoader &$resourceLoader Reference to ResourceLoader
 	 * @return bool
 	 */
-	public static function skinHasTheme( $skin, $theme ) {
-		global $wgResourceModules;
-
+	public static function skinHasTheme( $skin, $theme, &$resourceLoader ) {
 		$skin = strtolower( $skin );
 		$theme = strtolower( $theme );
 
@@ -53,7 +52,7 @@ class Theme {
 			$moduleName = 'skins.' . $skin . '.' . $theme;
 		}
 
-		if ( isset( $wgResourceModules[$moduleName] ) && $wgResourceModules[$moduleName] ) {
+		if ( $resourceLoader->isModuleRegistered( $moduleName ) && $resourceLoader->getModule( $moduleName ) ) {
 			return true;
 		}
 
