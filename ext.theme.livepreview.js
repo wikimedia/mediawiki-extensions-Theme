@@ -4,7 +4,6 @@
  * Code adapted from /resources/src/mediawiki.special.preferences.ooui/editfont.js
  * HT MatmaRex
  */
-/* global mw */
 ( function () {
 	// This first handler listens to change to the *skin*, and when the skin is changed,
 	// it attempts to pull the list of themes for that skin (if any) via the API
