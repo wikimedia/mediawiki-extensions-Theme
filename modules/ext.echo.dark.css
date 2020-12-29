@@ -1,7 +1,11 @@
-#pt-notifications-alert .mw-echo-notifications-badge:before {
+#pt-notifications-alert .mw-echo-notifications-badge:before,
+#pt-notifications-alert .oo-ui-icon-bell,
+#pt-notifications-alert .mw-ui-icon-bell::before {
 	background-image: url(../icons/bell.svg);
 }
 
-#pt-notifications-notice .mw-echo-notifications-badge:before {
+#pt-notifications-notice .mw-echo-notifications-badge:before,
+#pt-notifications-notice .oo-ui-icon-tray,
+#pt-notifications-notice .mw-ui-icon-tray::before {
 	background-image: url(../icons/tray.svg);
 }

@@ -14,13 +14,22 @@ body {
 .mw-body {
 	border: 1px solid #426787;
 	border-right-width: 0;
-	/* The following rule overrides ShoutWikiAds' vector-skyscraper-ad.css */
-	border-right-color: #426787 !important;
 	background-color: #17456e;
 	color: #d2d2d2;
 	padding: 1em;
 }
 
+/* The following rule overrides ShoutWikiAds' vector-skyscraper-ad.css
+ * to set the correct border color for the page content container.
+ * Thus this rule should use an identical selector as that file _or_
+ * better yet, a selector with a higher specificity than that, but that'd
+ * mean literally prefixing this rule with "body" to make it more specific.
+ */
+div#content {
+	border-right-color: #426787 !important;
+}
+
+/* Not quite sure what this is for... */
 #bodyContent h1, #bodyContent h2 {
 	margin-top: 0.6em !important;
 	margin-bottom: 0.6em !important;
@@ -28,9 +37,8 @@ body {
 
 /* Head */
 #mw-page-base {
-	background-color: #17456E;
-	/* @embed */
-	background-image: url(page-fade.png);
+	background-color: #17456e;
+	background-image: linear-gradient(#17456e 50%, #0b284f 100%);
 }
 
 /* Link colors */
@@ -51,16 +59,6 @@ pre, .mw-code {
 	border: 1px dashed #426787;
 	color: #D2D2D2;
 	font-size: 100% !important;
-}
-
-/* Page history */
-#bodyContent ul#pagehistory li {
-	border: 1px solid #17456E;
-}
-
-#bodyContent ul#pagehistory li.selected {
-	background-color: #1D578B;
-	border: 1px dashed #426787;
 }
 
 /*
@@ -107,17 +105,18 @@ td.diff-deletedline .diffchange {
 	background: #FF7070;
 }
 
-/* Navigation containers */
-#left-navigation {
-	left: 10em;
-}
-
 /* Namespaces and views */
-div.vectorTabs,
-div.vectorTabs ul {
+.vector-menu-tabs,
+.vector-menu-tabs li a {
 	/* @embed */
 	background-image: url('tab-break.png');
 }
+
+/* Gray text on a very dark background is hard to read... */
+#pt-anonuserpage {
+	color: #d2d2d2;
+}
+
 /* OVERRIDDEN BY COMPLIANT BROWSERS */
 div.vectorTabs ul li { /* @todo */
 	background-color: transparent;
@@ -129,23 +128,37 @@ div.vectorTabs li.icon a { /* @todo */
 	background-repeat: no-repeat;
 }
 
-div.vectorTabs li a, div.vectorTabs li a span {
+.vector-menu-tabs li {
+	background-image: none;
+}
+
+div.vectorTabs li a,
+div.vectorTabs li a span,
+.vector-menu-tabs li a,
+.vector-menu-tabs li a span {
 	color: #F4F26B;
 }
 
-div.vectorTabs li.selected {
+/* @todo CHECKME: is the 1st (older) rule still needed? */
+div.vectorTabs li.selected,
+.vector-menu-tabs .selected {
 	/* @embed */
 	background-image: url('tab-current-fade.png');
 }
 
 div.vectorTabs li.selected a,
-div.vectorTabs li.selected a:visited {
+div.vectorTabs li.selected a:visited,
+.vector-menu-tabs .selected a,
+.vector-menu-tabs .selected a:visited {
 	color: #d2d2d2;
 	text-decoration: none;
 	background-color: #17456E;
 }
+
 div.vectorTabs li.new a,
-div.vectorTabs li.new a:visited {
+div.vectorTabs li.new a:visited,
+.vector-menu-tabs .new a,
+.vector-menu-tabs .new a:visited {
 	color: #FF8581;
 }
 
@@ -154,6 +167,15 @@ div.vectorMenu ul {
 	background-color: #1d578b;
 	border: solid 1px #426787;
 }
+
+.vector-menu-dropdown .vector-menu-content-list {
+	background-color: #1d578b;
+}
+
+.vector-menu-dropdown li a {
+	color: #f4f26b;
+}
+
 /* OVERRIDDEN BY COMPLIANT BROWSERS */
 div.vectorMenu li a {
 	color: #F4F26B;
@@ -187,8 +209,13 @@ div.vectorMenu h5 a {
 */
 
 /* Make the text for the "More [actions]" menu more readable */
-div.vectorMenu h3 span {
-	color: inherit;
+.vector-menu-dropdown h3 {
+	color: #d2d2d2;
+}
+
+/* Arrow image for the "More [actions]" menu... */
+.vector-menu-dropdown h3::after {
+	filter: invert(100%);
 }
 
 /* Search */
@@ -199,6 +226,7 @@ div.vectorMenu h3 span {
 }
 
 #simpleSearch input#searchInput {
+	background-color: transparent;
 	color: #e0e0e0;
 }
 
@@ -207,7 +235,7 @@ div.vectorMenu h3 span {
  * It's beyond stupid that these rules cannot be combined into one...browsers,
  * why must you be so random?!
  */
-#simpleSearch #searchInput.placeholder {
+#simpleSearch input#searchInput::placeholder {
 	color: #e0e0e0;
 }
 #simpleSearch :-ms-input-placeholder#searchInput {
@@ -221,18 +249,10 @@ div.vectorMenu h3 span {
 	color: grey;
 }
 
-/**
- * Absolutely awful way to replace the magnifying glass icon without hacking
- * core MediaWiki software
- *
- * @see http://stackoverflow.com/questions/2182716/how-can-we-specify-src-attribute-of-img-tag-in-css/10247567#10247567
- */
-button#searchButton img {
+/* Replace the magnifying glass icon */
+input#searchButton {
 	/* @embed */
-	background: url(search-ltr.png);
-	height: 0px !important;
-	padding: 6px !important;
-	width: 0px !important;
+	background-image: url(search-ltr.png);
 }
 
 /* Panel */
@@ -387,6 +407,22 @@ ul {
 	background-color: #1d578b;
 }
 
+/* Doesn't seem to be used by MW core (anymore?) as of 1.35 but still used by some obscure extensions etc. */
+.toccolours {
+	border: 1px solid #1d578b;
+	background-color: #426787;
+}
+
+/* Numbers like 1.2, 2.5, etc. in the ToC */
+.tocnumber {
+	color: #f4f26b;
+}
+
+/* [show]/[hide] label in the ToC */
+.toctogglelabel {
+	color: #f4f26b;
+}
+
 /* Thumbnails */
 div.thumb {
 	border-style: solid;
@@ -446,11 +482,6 @@ h3, h4, h5 {
 	color: #F4F26B;
 }
 
-.toccolours {
-	border: 1px solid #1d578b;
-	background-color: #426787;
-}
-
 /* Watch/Unwatch icon styling */
 #ca-unwatch.icon,
 #ca-watch.icon { /* @todo */
@@ -458,6 +489,16 @@ h3, h4, h5 {
 }
 
 /* Page history styling */
+#bodyContent ul#pagehistory li {
+	border: 1px solid #17456e;
+}
+
+#bodyContent ul#pagehistory li.selected {
+	background-color: #1d578b;
+	border: 1px dashed #426787;
+	color: #d2d2d2;
+}
+
 /* the auto-generated edit comments */
 #bodyContent ul#pagehistory .history-user {
 	margin-left: 0.4em;
@@ -465,13 +506,6 @@ h3, h4, h5 {
 }
 #bodyContent ul#pagehistory span.minor {
 	font-weight: bold;
-}
-#bodyContent ul#pagehistory li {
-	border: 1px solid #17456e;
-}
-#bodyContent ul#pagehistory li.selected {
-	background-color: #1d578b;
-	border: 1px dashed #426787;
 }
 
 /* RSSReader Stuff */
@@ -544,6 +578,8 @@ table.prettytable caption {
 table.prettytable code,
 table.wikitable code {
 	background-color: transparent;
+	border: 0;
+	color: #d2d2d2;
 }
 
 /* Galleries */
@@ -666,6 +702,20 @@ table.mw_metadata td {
 	color: #E00000;
 }
 
+/* OOUI fixes */
+/* Makes the various help texts on Special:Preferences readable */
+.oo-ui-labelWidget.oo-ui-inline-help {
+	color: #d2d2d2;
+}
+
+/* Arrow image for the "Filter revisions" menu on page histories */
+.oo-ui-icon-expand,
+.mw-ui-icon-expand::before,
+.oo-ui-icon-collapse,
+.mw-ui-icon-collapse::before {
+	filter: invert(100%);
+}
+
 /* Login & signup page fixes */
 a#mw-createaccount-join {
 	box-shadow: none;
@@ -678,6 +728,13 @@ div.mw-number-text {
 
 div.mw-number-text h3 {
 	color: #FFF;
+}
+
+/* That stupid "benefits" thing, once again...gosh, I swear it's a problem with like every skin
+ * ever, not to mention custom themes like ours...why was it even added to MW core in the first place?!
+ */
+.mw-createacct-benefits-container h3 {
+	color: #d2d2d2 !important;
 }
 
 /* Custom styles made specifically for ZW */
@@ -793,6 +850,11 @@ div.fanbox-nav h2 {
 /* Special:LinksHome */
 div.links-home-date,
 div.link-item-desc {
+	color: #d2d2d2;
+}
+
+/* Special:LinkSubmit */
+.link-submit-title {
 	color: #d2d2d2;
 }
 
