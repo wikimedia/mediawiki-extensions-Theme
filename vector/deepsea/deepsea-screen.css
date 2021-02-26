@@ -41,7 +41,6 @@ h6,
 #mw-head-base {
 	height: 6em;
 	margin-top: -6em;
-	margin-left: 15%;
 }
 
 .mw-body {
@@ -76,20 +75,23 @@ h6,
 #p-personal #pt-notifications-alert,
 #p-personal #pt-notifications-notice {
 	margin: 0;
-
 }
 
 #pt-notifications-alert .mw-echo-notifications-badge,
 #pt-notifications-notice .mw-echo-notifications-badge {
 	top: 0;
-	height: 1.1em;
-	width: 1.25em;
+	margin-bottom: 1em;
+	padding-right: 9px;
 }
 
 #pt-notifications-alert .mw-echo-notifications-badge:before,
 #pt-notifications-notice .mw-echo-notifications-badge:before {
 	top: .125em;
 	left: .5em;
+}
+
+#pt-userpage a {
+	margin-top: 0.75em;
 }
 
 /* navigation */
@@ -166,6 +168,10 @@ h6,
 	display: inline-block;
 }
 
+.vector-menu-tabs a {
+	background-image: none;
+}
+
 #p-namespaces li:first-of-type,
 #p-views li:first-of-type {
 	border-radius: 1em 0 0 0;
@@ -175,16 +181,26 @@ h6,
 	border-radius: 0 1em 0 0;
 }
 
-/* portals */
-#mw-panel {
-	width: 14%;
+#p-namespaces {
+	margin-left: -0.7em;
 }
 
+/* "not logged in" text shown instead of user name for anons */
+#pt-anonuserpage {
+	height: 23px;
+	padding-top: 15px !important;
+}
+
+/* Make tabs "attach" to the article body element; needed for MW 1.35+ */
+.vector-menu-content {
+	height: 100%;
+}
+
+/* portals */
 #mw-panel .portal {
 	background: none;
 	margin: 0 0 .5em 0;
 }
-
 
 #mw-panel #p-logo + .portal h3,
 #mw-panel .portal h3 {
