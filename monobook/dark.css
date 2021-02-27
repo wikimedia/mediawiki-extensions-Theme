@@ -1,6 +1,9 @@
 /*
 ** Dark theme for MonoBook
 ** Originally from ZeldaWiki.org and modified by Skizzerz <skizzerz@shoutwiki.com> for ShoutWiki
+** @note Some CSS selectors are prefixed with "body " to override skins.monobook.mobile styles, which
+** apparently in MediaWiki 1.35(+) load _after_ this file and without that selector, those styles
+** would overwrite our styles defined here.
 */
 .mw-body {
 	background: #1c3855;
@@ -20,31 +23,31 @@ body {
 	background-image: none;
 }
 
-table {
+body table {
 	background-color: #1c3855;
 }
 
-a {
+body a {
 	color: #e9eda6;
 }
 
-a:visited {
+body a:visited {
 	color: #e6ed79;
 }
 
-a:active {
+body a:active {
 	color: #eaeda6;
 }
 
-a.stub {
+body a.stub {
 	color: #eaeda6;
 }
 
-a.new, #p-personal a.new {
+body a.new, body #p-personal a.new {
 	color: #fe6060;
 }
 
-a.new:visited, #p-personal a.new:visited {
+body a.new:visited, body #p-personal a.new:visited {
 	color: #fe6060;
 }
 
@@ -53,20 +56,27 @@ hr {
 	color: #6f7b87;
 }
 
-h1, h2, h3, h4, h5, h6 {
+/* "body" to make this more specific than MonoBook's default rules to ensure that the color is applied...sigh */
+body h1,
+body h2,
+body h3,
+body h4,
+body h5,
+body h6 {
 	border-bottom: 1px solid #485d73;
 	color: #d2d2d2;
 }
 
-legend {
+body legend {
 	background: #1c3855;
 }
 
-code {
+body code {
 	background-color: #2f6fab;
+	color: #e0e0e0;
 }
 
-pre {
+body pre {
 	background-color: #1f4973;
 	border: 1px dashed #3b587e;
 	color: #d2d2d2;
@@ -78,7 +88,8 @@ pre {
 	border: 1px solid #eaeda6;
 }
 
-.catlinks {
+/* as per the h1, h2, etc. rules above, need some specificity here as well (why?!) */
+body .catlinks {
 	border: 2px solid #3b587e;
 	background-color: #1f4973;
 }
@@ -86,6 +97,7 @@ pre {
 /*
 ** content styles
 */
+/* Table of Contents */
 #toc,
 .toc,
 .mw-warning {
@@ -103,9 +115,20 @@ html .thumbimage {
 	background-color: #1c3855;
 }
 
+/* Doesn't seem to be used by MW core (anymore?) as of 1.35 but still used by some obscure extensions etc. */
 .toccolours {
 	border: 2px solid #3b587e;
 	background-color: #1f4973;
+}
+
+/* Numbers like 1.2, 2.5, etc. in the ToC */
+body .tocnumber {
+	color: #f4f26b;
+}
+
+/* [show]/[hide] label in the ToC */
+body .toctogglelabel {
+	color: #f4f26b;
 }
 
 /* Interwiki styling */
@@ -126,7 +149,7 @@ html .thumbimage {
 	background: #6f7b87;
 }
 
-.pBody {
+body .pBody {
 	background-color: #1d3855;
 	border: 1px solid #59697a;
 	color: #d2d2d2;
@@ -179,48 +202,15 @@ html .thumbimage {
 	border-bottom: 1px solid #e1eda6;
 }
 
-/* js pref toc */
-#preftoc li {
-	background-color: #1f4973;
-	border: 1px solid #3b587e;
+/* Arrow image for the "Filter revisions" menu on page histories */
+.oo-ui-icon-expand,
+.mw-ui-icon-expand::before,
+.oo-ui-icon-collapse,
+.mw-ui-icon-collapse::before {
+	filter: invert(100%);
 }
 
-#preftoc li.selected {
-	background-color: #1f4973;
-	border: 1px solid #3b587e;
-}
-
-#preftoc > li.selected {
-	border-color: #3b587e;
-}
-
-#preftoc a,
-#preftoc a:active {
-	color: #e9eda6;
-}
-
-#preftoc li.selected a {
-	color: #d2d2d2;
-}
-
-#preferences {
-	border: 1px solid #3b587e;
-	background-color: #1f4973;
-}
-
-.prefsection fieldset {
-	border: 1px solid #3b587e;
-}
-
-.prefsection table, .prefsection legend {
-	background-color: #1f4973;
-	border-color: #1f4973;
-}
-
-div.prefsectiontip {
-	color: #d2d2d2;
-}
-
+/* Special:UserLogin/Special:CreateAccount */
 div#userloginForm form,
 div#userlogin form#userlogin2 {
 	background-color: #1f4973;
@@ -231,6 +221,15 @@ div#userloginForm table,
 div#userlogin form#userlogin2 table {
 	background-color: #1c3855;
 	border: 1px solid #3b587e;
+}
+
+.mw-ui-vform > div label,
+.mw-body-content div.mw-number-text {
+	color: #d2d2d2;
+}
+
+.mw-body-content div.mw-number-text h3 {
+	color: #fff;
 }
 
 /* @todo FIXME: review and remove unnecessary styles, this is verbatim copy of the old file */
@@ -317,9 +316,16 @@ tr.sv-space {
 tr.sv-space td { display: none; }
 
 /* also used on Special:Version */
-table.wikitable {
+body table.wikitable {
 	background-color: transparent !important;
-	color: #d2d2d2;
+	/* color scheme borrowed from the Special:Version table color definition (above) */
+	background-color: #1f4973;
+	color: #cbd2d2;
+}
+
+body table.wikitable th {
+	background-color: #1f4973;
+	color: #cbd2d2;
 }
 
 /* Recreating-deleted-page/reupload file warning and log entries */
@@ -356,6 +362,15 @@ div.thumb div {
 	background-color: transparent;
 }
 
+/* Added/removed bytes in Special:RecentChanges, page histories, etc. */
+.mw-plusminus-pos {
+	color: #00d000;
+}
+
+.mw-plusminus-neg, .previewnote {
+	color: #e00000;
+}
+
 /* Captcha on Special:UserLogin/signup (ConfirmEdit extension) */
 div#userlogin .captcha, div#userloginForm .captcha {
 	background-color: transparent;
@@ -366,6 +381,7 @@ div#userlogin .captcha, div#userloginForm .captcha {
 	background-color: #1f4973;
 	border: 1px solid #3b587e;
 }
+
 #bodyContent table#sv-ext th, table#sv-software th, table.filehistory th {
 	background-color: #1F4973;
 	color: #CBD2D2;
@@ -374,14 +390,25 @@ div#userlogin .captcha, div#userloginForm .captcha {
 #bodyContent table#sv-ext td, table#sv-software td, table.filehistory td {
 	border: 1px solid #3b587e;
 }
+
 #bodyContent ul#pagehistory li {
 	background: #1f4871;
 	border-color: #3b587e;
 }
 #bodyContent ul#pagehistory li.selected {
-	background: #0a2139;
+	/*background: #0a2139;*/
 	border: 1px solid #3b587e;
+	/* need this so that the bot/minor edit letters don't show up as black: */
+	color: #fff;
 }
+/* technically the color I'm using here should probably be something else than white,
+ * _but_ the white gives it a subtle yet elegant contrast, just enough so that the selected
+ * history entries stand out enough from the non-selected ones
+ */
+#bodyContent ul#pagehistory li.selected span {
+	color: #fff;
+}
+
 #bodyContent table#allmessagestable {
 	border: 1px solid #3b587e;
 }
@@ -393,6 +420,7 @@ div#userlogin .captcha, div#userloginForm .captcha {
 	background: #1f4871;
 	border: 1px solid #3b587e;
 }
+
 #bodyContent div.noarticletext {
 	color: #d2d2d2;
 	background: #1f4871;

@@ -1,8 +1,11 @@
 /*
 ** MediaWiki 'StellarBook' style sheet for CSS2-capable browsers.
 **
-** @date 14 January 2013
+** @date 27 February 2021
 ** @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
+** @note Some CSS selectors are prefixed with "body " to override skins.monobook.mobile styles, which
+** apparently in MediaWiki 1.35(+) load _after_ this file and without that selector, those styles
+** would overwrite our styles defined here.
 */
 .mw-body {
 	background: #313439;
@@ -36,38 +39,45 @@ table {
 	background: #404043;
 	color: #FFF;
 }
-a {
+body a {
 	text-decoration: none;
 	color: #a5a5ec;
 	background: none;
 }
-a:visited {
+body a:visited {
 	color: #ae8c7e;
 }
-a:active {
+body a:active {
 	color: #faa700;
 }
-a:hover {
+body a:hover {
 	text-decoration: underline;
 }
-a.stub {
+body a.stub {
 	color: #b65b6d;
 }
-a.new, #p-personal a.new {
+body a.new,
+body #p-personal a.new {
 	color: #fabd23;
 }
-a.new:visited, #p-personal a.new:visited {
+body a.new:visited,
+body #p-personal a.new:visited {
 	color: #a28b56;
 }
 
 /* Structural Elements */
-h1, h2, h3, h4, h5, h6 {
+body h1,
+body h2,
+body h3,
+body h4,
+body h5,
+body h6 {
 	color: #818895;
 }
-h5 {
+body h5 {
 	font-size: 100%;
 }
-h6 {
+body h6 {
 	font-size: 80%;
 }
 
@@ -128,21 +138,39 @@ pre, .mw-code {
 }
 
 /* Categories */
-.catlinks {
+body .catlinks {
 	background-color: #404043;
 }
 
 /* Table of Contents */
-#toc,
-.toc,
-.mw-warning,
-.toccolours {
+body #toc,
+body .toc,
+body .mw-warning,
+body .toccolours {
 	background-color: #404043;
 }
 
+/* Numbers like 1.2, 2.5, etc. in the ToC */
+body .tocnumber {
+	color: #a5a5ec;
+}
+
+/* [show]/[hide] label in the ToC */
+body .toctogglelabel {
+	color: #a5a5ec;
+}
+
 /* Page history styling */
-#pagehistory li.selected {
+body #pagehistory li.selected {
 	background-color: #404043;
+}
+/* text color for the currently selected row */
+body #pagehistory li.selected span:not(.mw-plusminus-pos):not(.mw-plusminus-neg) {
+	color: #fff;
+}
+/* minor/bot edit indicator letters in page histories */
+body #pagehistory li abbr {
+	color: #fff;
 }
 
 /*
@@ -180,6 +208,7 @@ span.diffchange {
 .link-https {
 	/* @embed */
 	background-image: url(stellarbook/lock_icon.png);
+	padding-right: 18px;
 }
 #bodyContent a.external[href ^="mailto:"],
 .link-mailto {
@@ -233,7 +262,7 @@ span.diffchange {
 /*
 ** general portlet styles (elements in the quickbar)
 */
-.portlet h3 {
+body .portlet h3 {
 	background: transparent;
 	padding: 0 1em 0 .5em;
 	display: inline;
@@ -243,12 +272,12 @@ span.diffchange {
 	font-weight: bold;
 	white-space: nowrap;
 }
-.portlet h4 {
+body .portlet h4 {
 	font-size: 95%;
 	font-weight: normal;
 	white-space: nowrap;
 }
-.portlet h6 {
+body .portlet h6 {
 	background: #ffae2e;
 	border: 1px solid #2f6fab;
 	border-style: solid solid none solid;
@@ -260,7 +289,7 @@ span.diffchange {
 	font-weight: normal;
 	white-space: nowrap;
 }
-.pBody {
+body .pBody {
 	background-color: #313439;
 	border: none;
 	color: #FFF;
@@ -276,31 +305,30 @@ span.diffchange {
 /*
 ** the personal toolbar
 */
-#p-personal li a {
+body #p-personal li a {
 	color: #133146;
 }
 
 /*
 ** the page-related actions- page/talk, edit etc
 */
-#p-cactions li {
+body #p-cactions li {
 	background: #313439;
 	border-color: #000;
-	padding-bottom: .1em; /* @todo CHECKME */
 }
 
-#p-cactions li a {
+body #p-cactions li a {
 	background-color: #313439;
 	color: #a0a7c4;
 	padding-left: .8em;
 }
 
-#p-cactions li.selected {
+body #p-cactions li.selected {
 	padding: 0 0 .2em 0;
 }
 
-#p-cactions li.selected a,
-#p-cactions li a:hover {
+body #p-cactions li.selected a,
+body #p-cactions li a:hover {
 	background-color: transparent;
 }
 
@@ -314,24 +342,19 @@ span.diffchange {
 	padding: .4em 0 1.2em 0;
 }
 
-/* js pref toc */
-#preftoc {
-	float: left;
-	margin: 1em;
-	width: 13em;
-}
-#preftoc li.selected {
-	background-color: #404043;
-}
-#preftoc a,
-#preftoc a:active {
-	color: #a5a5ec;
-}
-
 /* Gallery stuff -- no idea if this is needed -- @todo FIXME/CHECKME */
 .gallerybox {
 	margin: 2px;
 	width: 150px;
+}
+
+/* Added/removed bytes in Special:RecentChanges, page histories, etc. */
+.mw-plusminus-pos {
+	color: #00d000;
+}
+
+.mw-plusminus-neg, .previewnote {
+	color: #e00000;
 }
 
 /* Note on preview page */
@@ -353,6 +376,14 @@ ul#filetoc {
 	background-color: #404043;
 }
 
+/* Arrow image for the "Filter revisions" menu on page histories */
+.oo-ui-icon-expand,
+.mw-ui-icon-expand::before,
+.oo-ui-icon-collapse,
+.mw-ui-icon-collapse::before {
+	filter: invert(100%);
+}
+
 /* Login & signup form fixes */
 div#userloginForm {
 	background-color: transparent;
@@ -361,10 +392,10 @@ div#userloginForm {
 	box-shadow: none;
 }
 .mw-ui-vform > div label,
-div.mw-number-text {
-	color: #FFF;
+.mw-body-content div.mw-number-text {
+	color: #fff;
 }
-div.mw-number-text h3 {
+.mw-body-content div.mw-number-text h3 {
 	color: #818895;
 }
 

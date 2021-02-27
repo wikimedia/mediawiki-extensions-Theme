@@ -4,12 +4,15 @@
 ** Developed for ShoutWiki <http://www.shoutwiki.com>
 ** @license GPL (http://www.gnu.org/copyleft/gpl.html)
 ** @author Jack Phoenix <jack@shoutwiki.com>
-** @copyright © 2007-2011 Jack Phoenix <jack@shoutwiki.com>
-** @date 14 September 2011
+** @copyright © 2007-2021 Jack Phoenix <jack@shoutwiki.com>
+** @date 28 February 2021
+** @note Some CSS selectors are prefixed with "body " to override skins.monobook.mobile styles, which
+** apparently in MediaWiki 1.35(+) load _after_ this file and without that selector, those styles
+** would overwrite our styles defined here.
 */
 .mw-body {
 	background: #FFC0CB;
-	color: black;
+	color: #000;
 }
 
 body {
@@ -24,35 +27,36 @@ body {
 	background-image: none;
 }
 
-a {
-	color: #0066FF;
+body a {
+	color: #0066ff;
 }
 
-a:visited {
-	color: #0066FF;
+body a:visited {
+	color: #0066ff;
 }
 
-a:active {
+body a:active {
 	color: #faa700;
 }
 
-a.new, #p-personal a.new {
+body a.new,
+body #p-personal a.new {
 	color: #ba0000;
 }
 
-p {
+body p {
 	color: #000;
 }
 
-h1 {
-	border-bottom: 1px solid #FFC0CB;
+body h1 {
+	border-bottom: 1px solid #ffc0cb;
 }
 
 /* user notification thing */
 .usermessage {
 	background-color: #ffce7b;
 	border: 1px solid #ffa500;
-	color: black;
+	color: #000;
 }
 
 /*
@@ -71,25 +75,26 @@ div.thumb {
 }
 
 /* Interwiki styling */
-#bodyContent a.extiw,
-#bodyContent a.extiw:active {
-	color: #00CCFF;
+body #bodyContent a.extiw,
+body #bodyContent a.extiw:active {
+	color: #00CCff;
 }
-#bodyContent a.external {
-	color: #0066FF;
+body #bodyContent a.external {
+	color: #0066ff;
 }
 /* Added from original Romantic Pink CSS file */
-#bodyContent a.extiw:visited {
-	color: #0066FF;
+body #bodyContent a.extiw:visited {
+	color: #0066ff;
 }
-#bodyContent a.external:visited {
-	color: #0066FF;
+body #bodyContent a.external:visited {
+	color: #0066ff;
 }
-#bodyContent a.stub, #bodyContent a.stub:visited {
-	color: #FFC0CB;
+body #bodyContent a.stub,
+body #bodyContent a.stub:visited {
+	color: #ffc0cb;
 }
 
-.pBody {
+body .pBody {
 	background-color: #FFC0CB;
 	color: #FFC0CB;
 }
@@ -99,11 +104,11 @@ div.thumb {
 }
 
 /* @todo FIXME/CHECKME: this looks suspicious */
-#p-cactions li.selected {
-	background: white;
+body #p-cactions li.selected {
+	background: #fff;
 }
 
-#p-cactions li.selected a {
+body #p-cactions li.selected a {
 	background-color: transparent;
 	padding: 0 1em .2em !important;/* @todo FIXME/CHECKME: this looks suspicious */
 }
@@ -111,11 +116,11 @@ div.thumb {
 /*
 ** footer
 */
-#footer {
-	background-color: #FFC0CB;
-	border-bottom: 1px solid #FFC0CB;
-	border-top: 1px solid #FFC0CB;
-	color: #000000;
+body #footer {
+	background-color: #ffc0cb;
+	border-bottom: 1px solid #ffc0cb;
+	border-top: 1px solid #ffc0cb;
+	color: #000;
 	min-height: 39px;
 	z-index: 2 !important;
 }
