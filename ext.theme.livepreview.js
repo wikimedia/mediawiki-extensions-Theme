@@ -43,6 +43,9 @@
 			return items;
 		}
 
+		/**
+		 * @param {String} value Skin name, e.g. "monobook", "vector", etc.
+		 */
 		function updateLabel( value ) {
 			var chosenValue = value,
 				themeWidget,
@@ -115,7 +118,10 @@
 
 		widget = OO.ui.infuse( $target );
 
-		function updateLabel( value ) {
+		/**
+		 * @param {String} value Theme name, e.g. "dark", "stellarbook", etc.
+		 */
+		function updateThemeLabel( value ) {
 			var chosenValue = value,
 				skin = mw.config.get( 'skin' ),
 				userSkin = mw.user.options.get( 'skin' ),
@@ -133,16 +139,21 @@
 
 			// Per Samantha, show a note indicating that the change hasn't been
 			// saved yet and has to be explicitly saved by the user
-			// @todo FIXME: I don't think this is working with OOUI.
 			if ( $( '#theme-preview-note' ).length > 0 ) {
 				// Remove this element if it already exists
 				$( '#theme-preview-note' ).remove();
 			}
-			$( this ).parent().parent().after(
-				'<tr id="theme-preview-note"><td class="htmlform-tip" colspan="2">' +
-				mw.message( 'theme-livepreview-note', chosenValue ).escaped() +
-				'</td></tr>'
-			);
+			// If a user has chosen e.g. Pink MonoBook theme, do _not_ show the note when pink is chosen
+			// (which it'll be by default if it's their theme of choice, d'oh!)
+			// Instead only show this for other themes (like default, dark and stellarbook)
+			if ( userTheme !== null && userTheme !== 'default' && chosenValue !== userTheme ) {
+				// @todo FIXME: Should use OOUI's LabelWidget or somesuch for slightly better styling?
+				$target.after(
+					'<tr id="theme-preview-note"><td class="htmlform-tip" colspan="2">' +
+					mw.message( 'theme-livepreview-note', chosenValue ).escaped() +
+					'</td></tr>'
+				);
+			}
 
 			// Clear out everything by removing the last appended <style> from <head>
 			$( 'head style' ).last().remove();
@@ -159,7 +170,10 @@
 
 				// match *is* null when choosing "default" _as well as_ when choosing the
 				// non-default theme you were already using!
-				if ( match !== null ) {
+				// Only do this magic when chosenValue is not the theme you are already using.
+				// @see T275903
+				// @todo FIXME: potential perf issue -- the AJAX query below gets executed unnecessarily
+				if ( match !== null && chosenValue !== userTheme ) {
 					$( 'head link[rel="stylesheet"]' ).attr( 'href', originalStyleHref.replace( '%7C' + moduleName, '' ) );
 				} else if ( chosenValue === userTheme ) {
 					// Try cache anyway
@@ -216,7 +230,7 @@
 			} );
 		}
 
-		widget.on( 'change', updateLabel );
-		updateLabel( widget.getValue() );
+		widget.on( 'change', updateThemeLabel );
+		updateThemeLabel( widget.getValue() );
 	} );
 }() );
