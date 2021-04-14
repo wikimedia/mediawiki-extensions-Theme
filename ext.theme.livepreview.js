@@ -44,7 +44,7 @@
 		}
 
 		/**
-		 * @param {String} value Skin name, e.g. "monobook", "vector", etc.
+		 * @param {string} value Skin name, e.g. "monobook", "vector", etc.
 		 */
 		function updateLabel( value ) {
 			var chosenValue = value,
@@ -119,7 +119,7 @@
 		widget = OO.ui.infuse( $target );
 
 		/**
-		 * @param {String} value Theme name, e.g. "dark", "stellarbook", etc.
+		 * @param {string} value Theme name, e.g. "dark", "stellarbook", etc.
 		 */
 		function updateThemeLabel( value ) {
 			var chosenValue = value,
