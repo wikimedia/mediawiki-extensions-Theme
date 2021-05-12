@@ -18,13 +18,14 @@ class ThemeHooks {
 		}
 
 		$theme = $wgRequest->getVal( 'usetheme', $userTheme );
-		$useskin = $wgRequest->getVal( 'useskin', false );
-		$skin = $useskin ? $useskin : $sk->getSkinName();
+		$useskin = $wgRequest->getVal( 'useskin', null );
+		$skin = $useskin ?: $sk->getSkinName();
 
 		if ( !array_key_exists( strtolower( $skin ), $wgValidSkinNames ) ) {
 			// so we don't load themes for skins when we can't actually load the skin
 			$skin = $sk->getSkinName();
 		}
+		// @phan-suppress-next-line PhanTypeMismatchArgumentNullableInternal
 		$skin = strtolower( $skin );
 
 		if ( $theme ) {
@@ -78,8 +79,8 @@ class ThemeHooks {
 		global $wgDefaultTheme;
 
 		$ctx = RequestContext::getMain();
-		$useskin = $ctx->getRequest()->getVal( 'useskin', false );
-		$skin = $useskin ? $useskin : $user->getOption( 'skin' );
+		$useskin = $ctx->getRequest()->getVal( 'useskin', null );
+		$skin = $useskin ?: $user->getOption( 'skin' );
 		// Normalize the key; this'll return the default skin in case if the user
 		// requested a skin that is *not* installed but for which Theme has themes
 		$skin = Skin::normalizeKey( $skin );
@@ -115,7 +116,7 @@ class ThemeHooks {
 			$defaultPreferences['theme'] = [
 				'type' => 'info',
 				'label-message' => 'theme-prefs-label',
-				'default' => $ctx->msg( 'theme-unsupported-skin' )->escaped(),
+				'default' => $ctx->msg( 'theme-unsupported-skin' )->text(),
 				'section' => 'rendering/skin',
 			];
 		}
