@@ -153,7 +153,7 @@ class ThemeHooks {
 			return true;
 		}
 
-		if ( isset( $theme ) && $theme !== 'default' ) {
+		if ( $theme !== 'default' ) {
 			$bodyAttrs['class'] .= ' theme-' . $theme;
 		}
 	}
