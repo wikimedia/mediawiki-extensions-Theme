@@ -2,9 +2,10 @@
 	"@metadata": {
 		"authors": [
 			"Dgstranz",
-			"Macofe"
+			"Macofe",
+			"Jakeukalane"
 		]
 	},
 	"theme-prefs-label": "Tema:",
-	"theme-desc": "Controla la instalación de variantes CSS de las apariencias del wiki"
+	"theme-desc": "Controla la instalación de variantes CSS de las apariencias de la wiki"
 }
