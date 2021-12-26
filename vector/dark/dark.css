@@ -312,10 +312,12 @@ a,
 	color: #f4f26b;
 	background: none;
 }
-a:visited {
+a:visited,
+.vector-menu-portal .vector-menu-content li a:visited {
 	color: #e7ea12;
 }
-a:active {
+a:active,
+.vector-menu-portal .vector-menu-content li a:active {
 	color: #F4F26B;
 }
 a:hover {
