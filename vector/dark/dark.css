@@ -305,7 +305,9 @@ input#searchButton {
 }
 
 /* Links */
-a {
+a,
+/* The following rule is not used on MW 1.35 but is needed for 1.37+ so that the sidebar links won't end up blue */
+.vector-menu-portal .vector-menu-content li a {
 	text-decoration: none;
 	color: #f4f26b;
 	background: none;
