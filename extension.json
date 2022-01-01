@@ -1,7 +1,7 @@
 {
 	"name": "Theme",
 	"namemsg": "theme-extensionname",
-	"version": "2.2.2",
+	"version": "2.2.3",
 	"author": [
 		"Ryan Schmidt",
 		"Jack Phoenix",
@@ -23,7 +23,7 @@
 	},
 	"ThemeModules": {
 		"monobook": [ "dark", "pink", "stellarbook" ],
-		"vector": [ "dark", "deepsea" ]
+		"vector": [ "dark", "dark-grey", "deepsea" ]
 	},
 	"APIModules": {
 		"themelist": "ApiThemeList"
@@ -81,6 +81,13 @@
 					"media": "screen"
 				},
 				"modules/ext.echo.dark.css": {
+					"media": "screen"
+				}
+			}
+		},
+		"themeloader.skins.vector.dark-grey": {
+			"styles": {
+				"vector/dark-grey/dark-grey.css": {
 					"media": "screen"
 				}
 			}

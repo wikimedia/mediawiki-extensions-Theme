@@ -1,0 +1,1348 @@
+/*
+ * Dark grey & orange theme with centered layout.
+ *
+ * Originally based on the regular 'dark' theme.
+ *
+ * Some CSS that seemed unnecessary was shaved off from the original code of the
+ * regular 'dark' theme. In case of issues, it might be a good idea to look at the
+ * original code and see if there's anything that shouldn't have been removed.
+ *
+ * Some notes about the CSS used in this file:
+ *
+ * - In many places we add gratuitous class selectors such as .oo-ui-widget to
+ *   increase the specificity of the selector.
+ *
+ * - The :is() pseudo-class is sometimes used to avoid repetition, sometimes
+ *   intentionally not used because it would make a line become too long.
+ *
+ * - We try not to exceed 100 characters per line throughout the file.
+ */
+
+/*
+ * =========================
+ * = Centering the content =
+ * =========================
+ */
+
+html body {
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 1280px;
+}
+
+#p-personal {
+	right: 0;
+}
+
+#p-search {
+	margin-right: 0;
+}
+
+.suggestions {
+	/* We can't get around !important here due to inline CSS. */
+	right: 0 !important;
+}
+
+/* For Extension:UniversalLanguageSelector */
+.imeselector {
+	position: fixed;
+}
+
+/*
+ * =======================
+ * = Color configuration =
+ * =======================
+ */
+:root {
+	--bg-main:   rgb(35, 35, 35);
+	--bg-main2:  rgb(42, 42, 42);
+	--bg-main3:  rgb(48, 48, 48);
+	--bg-dark:   rgb(27, 27, 27);
+	--bg-darker: rgb(20, 20, 20);
+
+	--bdr-white: rgb(160, 160, 160);
+	--bdr-color: rgb(120, 80, 0);
+	--bdr-hl:    rgb(180, 80, 0);
+
+	--fg:       rgb(210, 210, 210);
+	--fg-light: rgb(240, 240, 240);
+	--fg-dark:  rgb(150, 150, 150);
+
+	--link:     rgb(230, 130, 15);
+	--link-vis: rgb(185, 85, 0);
+	--link-new: rgb(220, 70, 70);
+
+	--btn-bg:  rgb(45, 45, 45);
+	--btn-bdr: rgb(160, 160, 160);
+	--btn-fg:  rgb(210, 210, 210);
+	--btn-bg-hl:  rgb(40, 40, 40);
+	--btn-bdr-hl: rgb(120, 80, 0);
+	--btn-fg-hl:  rgb(210, 210, 210);
+
+	/* Not for :active but the OOUI active class */
+	--btn-active-bg:  rgb(210, 80, 0);
+	--btn-active-bdr: rgb(210, 80, 0);
+	--btn-active-fg:  rgb(240, 240, 240);
+
+	--btn-prim-bg:  rgb(210, 80, 0);
+	--btn-prim-bdr: rgb(210, 80, 0);
+	--btn-prim-fg:  rgb(240, 240, 240);
+	--btn-prim-bg-hl:  rgb(180, 60, 0);
+	--btn-prim-bdr-hl: rgb(180, 60, 0);
+	--btn-prim-fg-hl:  rgb(240, 240, 240);
+
+	--btn-destr-bg:  rgb(50, 50, 50);
+	--btn-destr-bdr: rgb(210, 60, 60);
+	--btn-destr-fg:  rgb(210, 60, 60);
+	--btn-destr-bg-hl: rgb(40, 40, 40);
+	--btn-destr-bdr-hl: rgb(120, 80, 0);
+	--btn-destr-fg-hl:  rgb(210, 60, 60);
+
+	--btn-disabled-bg:  rgb(60, 60, 60);
+	--btn-disabled-bdr: rgb(150, 150, 150);
+	--btn-disabled-fg:  rgb(150, 150, 150);
+
+	--checkbox-bg-unchecked:  var(--bg-dark);
+	--checkbox-bdr-unchecked: var(--bdr-white);
+	--checkbox-bg-hover:  var(--bg-dark);
+	--checkbox-bdr-hover: var(--btn-prim-bg);
+	--checkbox-bg-checked:  var(--btn-prim-bg);
+	--checkbox-bdr-checked: var(--btn-prim-bg);
+	--checkbox-bg-checked-hover:  var(--btn-prim-bg-hl);
+	--checkbox-bdr-checked-hover: var(--btn-prim-bg-hl);
+
+	--radio-bg: var(--bg-dark);
+	--radio-bdr-unchecked: var(--bdr-white);
+	--radio-bdr-checked:   var(--btn-prim-bg-hl);
+	--radio-bdr-hover:     var(--btn-prim-bg);
+
+	--diff-bdr-add: rgb(180, 255, 180);
+	--diff-bdr-del: rgb(255, 180, 180);
+	--diff-bdr-ntr: rgb(190, 190, 190);
+	--diff-text-add-bg: rgb(140, 255, 140);
+	--diff-text-add-fg: rgb(0, 0, 0);
+	--diff-text-del-bg: rgb(255, 140, 140);
+	--diff-text-del-fg: rgb(0, 0, 0);
+
+	--diff-count-pos: rgb(0, 200, 0);
+	--diff-count-neg: rgb(240, 70, 70);
+}
+
+/*
+ * ==========================
+ * = Standard HTML elements =
+ * ==========================
+ */
+html body {
+	background: var(--bg-dark);
+}
+
+:focus {
+	outline: 0;
+}
+
+/*
+ * Headers
+ */
+h1, h2, h3, h4, h5, h6 {
+	color: var(--fg);
+	border-bottom: 1px solid var(--bdr-color);
+}
+
+h3, h4, h5, h6 {
+	border-bottom: none;
+}
+
+/*
+ * Tables 
+ */
+table {
+	background: var(--bg-main);
+	color: var(--fg);
+}
+
+input:not([type]) {
+	background: var(--bg-dark);
+	border: 1px solid var(--bdr-color);
+	color: var(--fg);
+}
+
+/*
+ * Lists
+ */
+ul {
+	list-style-type: disc;
+	list-style-image: none;
+}
+
+/*
+ * Textarea
+ */
+textarea {
+	background: var(--bg-dark);
+	border: 1px solid var(--bdr-color);
+	color: var(--fg);
+}
+
+/*
+ * Pre & Code
+ */
+pre, code, tt, kbd, samp, .mw-code {
+	background: var(--bg-dark);
+	color: var(--fg);
+}
+
+pre, code, .mw-code {
+	border: 1px dashed var(--bdr-color);
+}
+
+/*
+ * Horizontal rule
+ */
+hr {
+	background: var(--bdr-color);
+	color: var(--bdr-color);
+}
+
+/*
+ * Links
+ */
+a,
+a.stub {
+	color: var(--link);
+}
+
+a:visited,
+a.stub:visited {
+	color: var(--link-vis);
+}
+
+a:hover,
+a:active,
+a:focus,
+a.stub:hover,
+a.stub:active,
+a.stub:focus {
+	color: var(--link-vis);
+	text-decoration: underline;
+}
+
+a.new,
+a.new:hover,
+a.new:active,
+a.new:focus,
+a.new:visited {
+	color: var(--link-new);
+}
+
+.mw-parser-output a.external,
+.mw-parser-output a.external:visited {
+	color: var(--link);
+	background: none;
+	padding: 0;
+}
+
+.mw-parser-output a.external:visited {
+	color: var(--link-vis);
+}
+
+/*
+ * Forms
+ */
+fieldset {
+	border: 1px solid var(--bdr-color);
+}
+
+/*
+ * ======================
+ * = Custom UI elements =
+ * ======================
+ */
+
+/* We add a gratuitous .oo-ui-widget in some places to increase the weight of the selectors. */
+
+/*
+ * Panels
+ */
+.oo-ui-panelLayout-framed {
+	border: 1px solid var(--bdr-white);
+}
+
+/*
+ * Tab select widget
+ */
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-tabSelectWidget-framed {
+	background-color: var(--bg-main2);
+}
+
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-tabSelectWidget-framed
+.oo-ui-tabOptionWidget:is(:hover, .oo-ui-optionWidget-selected) {
+	background-color: var(--bg-main3);
+}
+
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-tabSelectWidget-framed
+.oo-ui-tabOptionWidget {
+	color: var(--fg);
+}
+
+/*
+ * Text input
+ */
+
+/* Note that we have to use some weird combinations of hover on the parent
+   and focus on the child, to correctly override the default styles. */
+
+/* The search input has to be special-cased as it doesn't use either of the
+   mw-ui or oo-ui classes. */
+
+.mw-ui-input:not(:disabled),
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-textInputWidget .oo-ui-inputWidget-input {
+	background: var(--bg-dark);
+	border: 1px solid var(--bdr-white);
+	color: var(--fg);
+}
+
+.mw-ui-input:not(:disabled):is(:hover, :active, :focus),
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-textInputWidget:is(*, :hover)
+.oo-ui-inputWidget-input:is(:hover, :active, :focus) {
+	border: 1px solid var(--bdr-color);
+	box-shadow: inset 0 0 0 1px var(--bdr-hl);
+}
+
+.mw-ui-input:not(:disabled)::placeholder,
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-textInputWidget
+.oo-ui-inputWidget-input::placeholder {
+	color: var(--fg-dark);
+}
+
+.mw-ui-input:disabled,
+.oo-ui-widget.oo-ui-widget-disabled.oo-ui-textInputWidget
+.oo-ui-inputWidget-input {
+	background: var(--bg-darker);
+	border: 1px solid var(--bdr-white);
+	color: var(--fg-dark);
+}
+
+/*
+ * Buttons
+ */
+
+/* Normal buttons with frame */
+.mw-ui-button:not(:disabled),
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-buttonElement-framed
+.oo-ui-buttonElement-button {
+	background: var(--btn-bg);
+	border: 1px solid var(--btn-bdr);
+	color: var(--btn-fg);
+	box-shadow: none;
+}
+
+.mw-ui-button:not(:disabled):is(:hover, :active, :focus),
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-buttonElement-framed
+.oo-ui-buttonElement-button:is(:hover, :active, :focus) {
+	background: var(--btn-bg-hl);
+	border-color: var(--btn-bdr-hl);
+	color: var(--btn-fg-hl);
+	box-shadow: none;
+}
+
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-buttonElement-framed.oo-ui-buttonElement-active
+.oo-ui-buttonElement-button {
+	background: var(--btn-active-bg);
+	border-color: var(--btn-active-bdr);
+	color: var(--btn-active-fg);
+	box-shadow: none;
+}
+
+/* "Primary" and "progressive" buttons with frame */
+.mw-ui-button:is(.mw-ui-primary,.mw-ui-progressive):not(:disabled),
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-buttonElement-framed.oo-ui-flaggedElement-primary
+.oo-ui-buttonElement-button,
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-buttonElement-framed.oo-ui-flaggedElement-progressive
+.oo-ui-buttonElement-button {
+	background: var(--btn-prim-bg);
+	border: 1px solid var(--btn-prim-bdr);
+	color: var(--btn-prim-fg);
+	box-shadow: none;
+}
+
+.mw-ui-button:is(.mw-ui-primary,.mw-ui-primary):not(:disabled):is(:hover, :active, :focus),
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-buttonElement-framed.oo-ui-flaggedElement-primary
+.oo-ui-buttonElement-button:is(:hover, :active, :focus),
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-buttonElement-framed.oo-ui-flaggedElement-progressive
+.oo-ui-buttonElement-button:is(:hover, :active, :focus) {
+	background: var(--btn-prim-bg-hl);
+	border: 1px solid var(--btn-prim-bdr-hl);
+	color: var(--btn-prim-fg-hl);
+	box-shadow: none;
+}
+
+/* "Destructive" buttons with frame */
+.mw-ui-button.mw-ui-destructive:not(:disabled),
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-buttonElement-framed.oo-ui-flaggedElement-destructive
+.oo-ui-buttonElement-button {
+	background: var(--btn-destr-bg);
+	border: 1px solid var(--btn-destr-bdr);
+	color: var(--btn-destr-fg);
+	box-shadow: none;
+}
+
+.mw-ui-button.mw-ui-destructive:not(:disabled):is(:hover, :active, :focus),
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-buttonElement-framed.oo-ui-flaggedElement-destructive
+.oo-ui-buttonElement-button:is(:hover, :active, :focus) {
+	background: var(--btn-destr-bg-hl);
+	border: 1px solid var(--btn-destr-bdr-hl);
+	color: var(--btn-destr-fg-hl);
+	box-shadow: none;
+}
+
+/* Disabled buttons with frame */
+.mw-ui-button:disabled,
+.oo-ui-widget.oo-ui-widget-disabled.oo-ui-buttonElement-framed .oo-ui-buttonElement-button {
+	background: var(--btn-disabled-bg);
+	border: 1px solid var(--btn-disabled-bdr);
+	color: var(--btn-disabled-fg);
+	box-shadow: none;
+}
+
+/* Normal buttons without frame */
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-buttonElement-frameless .oo-ui-buttonElement-button {
+	background: transparent;
+	border: 0;
+	color: var(--btn-fg);
+	box-shadow: none;
+}
+
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-buttonElement-frameless
+.oo-ui-buttonElement-button:is(:hover, :active, :focus) {
+	background: transparent;
+	border: 0;
+	color: var(--btn-fg-hl);
+	box-shadow: none;
+	text-decoration: underline;
+}
+
+/* "Primary" and "progressive" buttons without frame */
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-buttonElement-frameless.oo-ui-flaggedElement-primary
+.oo-ui-buttonElement-button,
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-buttonElement-frameless.oo-ui-flaggedElement-progressive
+.oo-ui-buttonElement-button {
+	background: transparent;
+	border: 0;
+	color: var(--link);
+	box-shadow: none;
+}
+
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-buttonElement-frameless.oo-ui-flaggedElement-primary
+.oo-ui-buttonElement-button:is(:hover, :active, :focus),
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-buttonElement-frameless.oo-ui-flaggedElement-progressive
+.oo-ui-buttonElement-button:is(:hover, :active, :focus) {
+	background: transparent;
+	border: 0;
+	color: var(--link-vis);
+	box-shadow: none;
+	text-decoration: underline;
+}
+
+/* "Destructive" buttons without frame */
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-buttonElement-frameless.oo-ui-flaggedElement-destructive
+.oo-ui-buttonElement-button {
+	background: transparent;
+	border: 0;
+	color: var(--btn-destr-fg);
+	box-shadow: none;
+}
+
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-buttonElement-frameless.oo-ui-flaggedElement-destructive
+.oo-ui-buttonElement-button:is(:hover, :active, :focus) {
+	background: transparent;
+	border: 0;
+	color: var(--btn-destr-fg-hl);
+	box-shadow: none;
+	text-decoration: underline;
+}
+
+/* Disabled buttons without frame */
+.oo-ui-widget.oo-ui-widget-disabled.oo-ui-buttonElement-frameless
+.oo-ui-buttonElement-button {
+	background: transparent;
+	border: 0;
+	color: var(--btn-disabled-fg);
+	box-shadow: none;
+}
+
+/*
+ * Dropdown Menus
+ */
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-dropdownInputWidget:is(*, :hover) {
+	background: transparent;
+}
+
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-dropdownWidget
+.oo-ui-dropdownWidget-handle {
+	background: var(--bg-dark);
+	border: 1px solid var(--bdr-white);
+	color: var(--fg);
+}
+
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-dropdownWidget
+.oo-ui-dropdownWidget-handle:is(:hover, :active, :focus) {
+	background: var(--bg-dark);
+	border: 1px solid var(--bdr-color);
+	color: var(--fg);
+	box-shadow: inset 0 0 0 1px var(--bdr-hl);
+}
+
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-dropdownWidget.oo-ui-dropdownWidget-open
+.oo-ui-dropdownWidget-handle {
+	background: var(--bg-dark);
+	border: 1px solid var(--bdr-color);
+	color: var(--fg);
+}
+
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-dropdownWidget.oo-ui-dropdownWidget-open
+.oo-ui-dropdownWidget-handle:is(:hover, :active, :focus) {
+	background: var(--bg-dark);
+	border: 1px solid var(--bdr-color);
+	color: var(--fg);
+	box-shadow: inset 0 0 0 1px var(--bdr-hl);
+}
+
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-menuSelectWidget {
+	background: var(--bg-dark);
+	border: 1px solid var(--bdr-color);
+}
+
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-menuSelectWidget
+.oo-ui-menuOptionWidget.oo-ui-optionWidget {
+	background: var(--bg-dark);
+	color: var(--fg);
+}
+
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-menuSelectWidget
+.oo-ui-menuOptionWidget.oo-ui-optionWidget-selected,
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-menuSelectWidget
+.oo-ui-menuOptionWidget.oo-ui-optionWidget-highlighted {
+	background: var(--bg-darker);
+	color: var(--fg);
+}
+
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-menuSelectWidget
+.oo-ui-menuOptionWidget.oo-ui-optionWidget-selected.oo-ui-optionWidget-highlighted,
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-menuSelectWidget
+.oo-ui-menuOptionWidget.oo-ui-optionWidget-pressed.oo-ui-optionWidget-highlighted {
+	background: var(--bg-darker);
+	color: var(--fg-light);
+}
+
+/*
+ * Checkboxes
+ */
+
+/* Make sure the catch-all filter: invert(100%) further down doesn't affect these. */
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-checkboxInputWidget[type="checkbox"] + span {
+	filter: none;
+	background-color: var(--checkbox-bg-unchecked);
+	border-color: var(--checkbox-bdr-unchecked);
+}
+
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-checkboxInputWidget[type="checkbox"]:checked + span {
+	filter: none;
+	background-color: var(--checkbox-bg-checked);
+	border-color: var(--checkbox-bdr-checked);
+}
+
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-checkboxInputWidget[type="checkbox"]:hover + span {
+	filter: none;
+	background-color: var(--checkbox-bg-hover);
+	border-color: var(--checkbox-bdr-hover);
+}
+
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-checkboxInputWidget[type="checkbox"]:checked:hover + span {
+	filter: none;
+	background-color: var(--checkbox-bg-checked-hover);
+	border-color: var(--checkbox-bdr-checked-hover);
+}
+
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-checkboxInputWidget[type="checkbox"]:focus + span {
+	box-shadow: none;
+}
+
+/*
+ * Radio buttons
+ */
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-radioInputWidget[type="radio"] + span {
+	background-color: var(--radio-bg);
+	border-color: var(--radio-bdr-unchecked);
+}
+
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-radioInputWidget[type="radio"]:checked + span {
+	border-color: var(--radio-bdr-checked);
+}
+
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-radioInputWidget[type="radio"]:hover + span {
+	border-color: var(--radio-bdr-hover);
+}
+
+/*
+ * Date input & Calendar
+ */
+.oo-ui-widget-enabled.mw-widget-dateInputWidget
+.mw-widget-dateInputWidget-handle {
+	background: var(--bg-dark);
+	border: 1px solid var(--bdr-white);
+	color: var(--fg);
+	transition: border-color 250ms;
+}
+
+.oo-ui-widget-enabled.mw-widget-dateInputWidget-empty
+.mw-widget-dateInputWidget-handle {
+	color: var(--fg-dark);
+}
+
+.oo-ui-widget-enabled.mw-widget-dateInputWidget
+.mw-widget-dateInputWidget-handle:is(:hover, :active, :focus) {
+	background: var(--bg-dark);
+	color: var(--fg);
+	box-shadow: inset 0 0 0 1px var(--bdr-hl);
+	transition: border-color 250ms;
+}
+
+.oo-ui-widget.oo-ui-widget-enabled.mw-widget-dateInputWidget
+.mw-widget-dateInputWidget-handle:is(:hover, :active, :focus) {
+	border: 1px solid var(--bdr-color);
+}
+
+.oo-ui-widget-enabled.mw-widget-dateInputWidget-empty
+.mw-widget-dateInputWidget-handle:is(:hover, :active, :focus) {
+	color: var(--fg-dark);
+}
+
+.oo-ui-widget-enabled.mw-widget-calendarWidget {
+	border: 1px solid var(--bdr-color);
+	/* This isn't color related, but it really looks much better with this */
+	padding: 3px;
+}
+
+.oo-ui-widget-enabled.mw-widget-dateInputWidget-calendar {
+	background: var(--bg-dark);
+}
+
+.mw-widget-calendarWidget-item.mw-widget-calendarWidget-day,
+.mw-widget-calendarWidget-item.mw-widget-calendarWidget-month,
+.mw-widget-calendarWidget-item.mw-widget-calendarWidget-year {
+	color: var(--fg);
+}
+
+.mw-widget-calendarWidget-item.mw-widget-calendarWidget-day.mw-widget-calendarWidget-day-additional {
+	color: var(--fg-dark);
+}
+
+.mw-widget-calendarWidget-item.mw-widget-calendarWidget-day:hover,
+.mw-widget-calendarWidget-item.mw-widget-calendarWidget-month:hover,
+.mw-widget-calendarWidget-item.mw-widget-calendarWidget-year:hover {
+	background: var(--btn-prim-bg);
+}
+
+.mw-widget-calendarWidget-item-selected.mw-widget-calendarWidget-day,
+.mw-widget-calendarWidget-item-selected.mw-widget-calendarWidget-month,
+.mw-widget-calendarWidget-item-selected.mw-widget-calendarWidget-year {
+	background: var(--btn-prim-bg-hl);
+}
+
+.mw-widget-calendarWidget-item.mw-widget-calendarWidget-day.mw-widget-calendarWidget-day-today {
+	box-shadow: 0 0 0 1px var(--bdr-hl);
+}
+
+/*
+ * Multiselect widget (see Special:RecentChanges / Special:Watchlist)
+ */
+
+/* Overall background, needs to be set because some descendants are transparent */
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-tagMultiselectWidget.oo-ui-tagMultiselectWidget-outlined {
+	background: var(--bg-main3);
+}
+
+/* Top part containing the selected tags */
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-tagMultiselectWidget.oo-ui-tagMultiselectWidget-outlined
+.oo-ui-tagMultiselectWidget-handle {
+	background: var(--bg-main3);
+	border: 1px solid var(--bdr-white);
+}
+
+/* Labels in the top part, like a title */
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-tagMultiselectWidget.oo-ui-tagMultiselectWidget-outlined
+.oo-ui-tagMultiselectWidget-handle label {
+	color: var(--fg);
+}
+
+/* The added tag items */
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-tagMultiselectWidget.oo-ui-tagMultiselectWidget-outlined
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-tagItemWidget {
+	background: var(--btn-bg);
+	border: 1px solid var(--btn-bdr);
+	color: var(--btn-fg);
+}
+
+/* The added tag items, focused */
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-tagMultiselectWidget.oo-ui-tagMultiselectWidget-outlined
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-tagItemWidget:focus {
+	box-shadow: none;
+}
+
+/* Currently selected tag item */
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-tagMultiselectWidget.oo-ui-tagMultiselectWidget-outlined
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-tagItemWidget.mw-rcfilters-ui-tagItemWidget-selected {
+	background: var(--btn-active-bg);
+	border: 1px solid var(--btn-active-bdr);
+	color: var(--btn-active-fg);
+}
+
+/* The dropdown handle */
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-tagMultiselectWidget.oo-ui-tagMultiselectWidget-outlined
+.oo-ui-inputWidget-input {
+	background: var(--bg-main2);
+}
+
+/* The buttons on the bottom right */
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-tagMultiselectWidget.oo-ui-tagMultiselectWidget-outlined
+.mw-rcfilters-ui-filterTagMultiselectWidget-views-select-widget {
+	border: 1px solid var(--bdr-white);
+}
+
+/*
+ * Filter selection table (see Special:RecentChanges / Special:Watchlist)
+ */
+
+/* Top header */
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-menuSelectWidget
+.mw-rcfilters-ui-table.mw-rcfilters-ui-filterMenuHeaderWidget-header {
+	background: var(--bg-main3);
+	border-bottom: 1px solid var(--bdr-color);
+}
+
+/* Top header title */
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-menuSelectWidget
+.mw-rcfilters-ui-table .mw-rcfilters-ui-filterMenuHeaderWidget-title {
+	color: var(--fg);
+}
+
+/* Section header */
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-menuSelectWidget
+.mw-rcfilters-ui-filterMenuSectionOptionWidget {
+	background: var(--bg-main3);
+}
+
+/* Section header labels */
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-menuSelectWidget
+.mw-rcfilters-ui-filterMenuSectionOptionWidget
+.oo-ui-labelElement-label {
+	color: var(--fg);
+}
+
+/* Filters table, option */
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-menuSelectWidget
+.oo-ui-widget.oo-ui-widget-enabled.mw-rcfilters-ui-filterMenuOptionWidget {
+	background: var(--bg-main2);
+	border-bottom: 1px solid var(--bg-dark);
+}
+
+/* Filters table, option labels */
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-menuSelectWidget
+.oo-ui-widget.oo-ui-widget-enabled.mw-rcfilters-ui-filterMenuOptionWidget
+.oo-ui-labelElement-label {
+	color: var(--fg);
+}
+
+/* Filters table, option, highlighted */
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-menuSelectWidget
+.oo-ui-widget.mw-rcfilters-ui-filterMenuOptionWidget.oo-ui-optionWidget-highlighted {
+	background: var(--bg-main3);
+}
+
+/* Filters table, option labels, highlighted */
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-menuSelectWidget
+.oo-ui-widget.mw-rcfilters-ui-filterMenuOptionWidget.oo-ui-optionWidget-highlighted
+.oo-ui-labelElement-label {
+	color: var(--fg);
+}
+
+/* Filters table, option, muted */
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-menuSelectWidget
+.oo-ui-widget.mw-rcfilters-ui-filterMenuOptionWidget.oo-ui-flaggedElement-muted {
+	background: var(--bg-main);
+}
+
+/* Filters table, option labels, muted */
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-menuSelectWidget
+.oo-ui-widget.mw-rcfilters-ui-filterMenuOptionWidget.oo-ui-flaggedElement-muted
+.oo-ui-labelElement-label {
+	color: var(--fg-dark);
+}
+
+/* Footer */
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-menuSelectWidget
+.mw-rcfilters-ui-menuSelectWidget-footer {
+	background: var(--bg-dark);
+	border-top: 1px solid var(--bdr-white);
+}
+
+/* Footer, labels */
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-menuSelectWidget
+.mw-rcfilters-ui-menuSelectWidget-footer
+.oo-ui-labelElement-label {
+	color: var(--fg);
+}
+
+/*
+ * Anchored pop-ups
+ */
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-popupWidget-anchored
+.oo-ui-popupWidget-popup {
+	background: var(--bg-dark);
+	border: 1px solid var(--bdr-white);
+}
+
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-popupWidget-anchored
+.oo-ui-popupWidget-popup label {
+	color: var(--fg);
+}
+
+/* Fill color for the bottom anchor */
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-popupWidget-anchored-bottom
+.oo-ui-popupWidget-anchor::after {
+	border-top-color: var(--bg-dark);
+}
+
+/* Fill color for the top anchor */
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-popupWidget-anchored-top
+.oo-ui-popupWidget-anchor::after {
+	border-bottom-color: var(--bg-dark);
+}
+
+/* Border color for the bottom anchor */
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-popupWidget-anchored-bottom
+.oo-ui-popupWidget-anchor::before {
+	border-top-color: var(--bdr-white);
+}
+
+/* Border color for the top anchor */
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-popupWidget-anchored-top
+.oo-ui-popupWidget-anchor::before {
+	border-bottom-color: var(--bdr-white);
+}
+
+/*
+ * Notification pop-up
+ */
+.skin-vector .mw-notification {
+	background: var(--bg-dark);
+	color: var(--fg);
+}
+
+/*
+ * Miscellaneous
+ */
+.oo-ui-labelWidget.oo-ui-inline-help {
+	color: var(--fg);
+}
+
+/* Kind of a catch-all to make icons dark */
+.oo-ui-iconElement-icon,
+.oo-ui-indicatorElement-indicator {
+	filter: invert(100%);
+}
+
+/*
+ * ==================================
+ * = Parts of the main MediaWiki UI =
+ * ==================================
+ */
+#mw-page-base {
+	background: transparent;
+}
+
+/*
+ * Head / Tabs
+ */
+
+/* The "Not logged in" text where the username would be */
+#mw-head #p-personal #pt-anonuserpage {
+	color: var(--fg);
+	background-image: none;
+}
+
+#mw-head .vector-menu-tabs {
+	background-image: none;
+	border: 0;
+	padding: 0;
+}
+
+#mw-head .vector-menu-tabs li {
+	background: transparent;
+}
+
+#mw-head .vector-menu-tabs li.selected {
+	background: linear-gradient(var(--bg-dark), 30%, var(--bg-main));
+}
+
+#mw-head .vector-menu-tabs li a,
+#mw-head .vector-menu-tabs li a:visited {
+	background-image: none;
+	border-left: 1px solid var(--bdr-color);
+	border-right: 1px solid var(--bdr-color);
+	margin-right: -1px;
+	color: var(--link);
+}
+
+#mw-head .vector-menu-tabs li.selected a,
+#mw-head .vector-menu-tabs li.selected a:visited {
+	color: var(--fg);
+}
+
+#mw-head .vector-menu-tabs li.new a,
+#mw-head .vector-menu-tabs li.new a:visited {
+	color: var(--link-new);
+}
+
+/*
+ * The "More [actions]" drop-down pseudo-tab
+ */
+
+#mw-head .vector-menu-dropdown h3 {
+	color: var(--link);
+	background-image: none;
+	border-right: 1px solid var(--bdr-color);
+}
+
+/* Disable the ugly dotted outline when focused */
+#mw-head .vector-menu-dropdown-noicon input.vector-menu-checkbox:focus + h3 {
+	outline: 0;
+}
+
+#mw-head .vector-menu-dropdown .vector-menu-content {
+	background: var(--bg-dark);
+	border: 1px solid var(--bdr-color);
+}
+
+#mw-head .vector-menu-dropdown .vector-menu-content li a {
+	color: var(--link);
+	margin: 10px;
+}
+
+/* Arrow icon */
+#mw-head .vector-menu-dropdown h3::after {
+	filter: invert(100%);
+}
+
+/*
+ * Search input field
+ */
+#simpleSearch #searchInput {
+	background: var(--bg-main);
+	border: 1px solid var(--bdr-white);
+	color: var(--fg);
+}
+
+#simpleSearch #searchInput:focus,
+#simpleSearch:hover #searchInput,
+#simpleSearch:hover #searchInput:focus {
+	border: 1px solid var(--bdr-color);
+	box-shadow: inset 0 0 0 1px var(--bdr-hl);
+}
+
+#searchInput::placeholder {
+	color: var(--fg-dark);
+}
+
+#simpleSearch #searchButton {
+	filter: invert(100%);
+}
+
+/*
+ * Search suggestions
+ */
+
+/* We need to override inline CSS, so duplicate the class to increase matching weight */
+.suggestions-results.suggestions-results {
+	background: var(--bg-dark);
+	border: 1px solid var(--bdr-color);
+}
+
+.suggestions .suggestions-results .mw-searchSuggest-link .suggestions-result {
+	color: var(--fg);
+}
+
+.suggestions .suggestions-results a.mw-searchSuggest-link:is(.suggestions-result-current, .suggestions-result:is(:hover, :active, :focus)) {
+	background: var(--bg-darker);
+}
+
+.suggestions a.mw-searchSuggest-link .suggestions-special {
+	background: var(--bg-dark);
+	border: 1px solid var(--bdr-color);
+}
+
+.suggestions a.mw-searchSuggest-link
+.suggestions-special:is(.suggestions-result-current, :hover, :active, :focus) {
+	background: var(--bg-darker);
+}
+
+.suggestions a.mw-searchSuggest-link .suggestions-special .special-label {
+	color: var(--fg-dark);
+}
+
+.suggestions a.mw-searchSuggest-link .suggestions-special .special-query {
+	color: var(--fg);
+}
+
+/*
+ * Left-side panel
+ */
+#mw-panel .vector-menu-portal .vector-menu-heading {
+	color: var(--fg);
+	background: none;
+	border-bottom: 1pt dotted var(--bdr-color);
+}
+
+#mw-panel .vector-menu-portal .vector-menu-content .vector-menu-content-list li a {
+	color: var(--link);
+}
+
+#mw-panel .vector-menu-portal .vector-menu-content .vector-menu-content-list li a:visited {
+	color: var(--link-vis);
+}
+
+#mw-panel .vector-menu-portal .vector-menu-content .vector-menu-content-list li a:is(:hover, :active, :focus) {
+	color: var(--link-vis);
+	text-decoration: underline;
+}
+
+/*
+ * Main content
+ */
+.mw-body {
+	border: 1px solid var(--bdr-color);
+	background: var(--bg-main);
+	color: var(--fg);
+	padding: 1em;
+}
+
+/*
+ * Footer
+ */
+#footer ul li {
+	color: var(--fg-dark);
+}
+
+/*
+ * ==============================
+ * = Regular wiki page contents =
+ * ==============================
+ */
+
+/*
+ * Table of Contents
+ */
+#toc,
+.toc,
+.toccolours {
+	border: 1px solid var(--bdr-color);
+	background: var(--bg-dark);
+}
+
+.tocnumber {
+	color: var(--link);
+}
+
+.toctogglelabel {
+	color: var(--link);
+}
+
+/*
+ * Wikitable
+ */
+table.wikitable {
+	margin: 1em 1em 1em 0;
+	background: var(--bg-dark);
+	border: 1px solid var(--bdr-color);
+	border-collapse: collapse;
+	color: var(--fg);
+}
+
+table.wikitable :is(th, td) {
+	background: var(--bg-dark);
+	border: 1px solid var(--bdr-color);
+	padding: 0.2em;
+}
+
+table.wikitable th {
+	background: var(--bg-darker);
+	text-align: center;
+}
+
+table.wikitable tr :is(th, td) {
+	border: 1px solid var(--bdr-color);
+}
+
+table.wikitable tr th {
+	background: var(--bg-dark);
+}
+
+table.wikitable caption {
+	margin-left: inherit;
+	margin-right: inherit;
+	font-weight: bold;
+}
+
+table.wikitable code {
+	background: transparent;
+	border: 0;
+	color: var(--fg);
+}
+
+/*
+ * Datatable
+ */
+.mw-datatable-is-ascending a,
+.mw-datatable-is-descending a {
+	background: transparent;
+	padding-left: 0;
+}
+
+.mw-datatable-is-ascending a::before {
+	content: '\2b9d \00a0';
+}
+
+.mw-datatable-is-descending a::before {
+	content: '\2b9f \00a0';
+}
+
+.mw-datatable th {
+	background: var(--bg-darker);
+	border: 1px solid var(--bdr-color);
+}
+
+.mw-datatable td {
+	background: var(--bg-dark);
+	border: 1px solid var(--bdr-color);
+}
+
+.mw-datatable tr:hover td {
+	background: var(--bg-darker);
+}
+
+/*
+ * Thumbnails
+ */
+.thumb .thumbinner {
+	background: var(--bg-dark);
+	border: 1px solid var(--bdr-color);
+}
+
+.thumb .thumbinner .thumbimage {
+	background: var(--bg-dark);
+	border: 1px solid var(--bdr-color);
+}
+
+/*
+ * User message
+ */
+.usermessage {
+	background: var(--bg-dark);
+	border: 1px solid var(--bdr-color);
+	color: var(--fg);
+}
+
+/*
+ * Galleries
+ */
+li.gallerybox div.thumb {
+	background: var(--bg-dark);
+	border: 1px solid var(--bdr-color);
+}
+
+/*
+ * Categories
+ */
+.catlinks {
+	border: 1px solid var(--bdr-color);
+	background: var(--bg-dark);
+}
+
+/*
+ * ========================
+ * = Special page content =
+ * ========================
+ */
+#contentSub, #contentSub2 {
+	color: var(--fg-dark);
+}
+
+/*
+ * Create account
+ */
+.mw-createacct-benefits-container {
+	display: none;
+}
+
+/*
+ * Login
+ */
+
+/* Don't be fooled by the button's id; it's in the login page */
+#mw-createaccount-join {
+	background: var(--btn-bg);
+	border: 1px solid var(--btn-bdr);
+	color: var(--btn-fg);
+}
+
+#mw-createaccount-join:is(:hover, :active, :focus) {
+	background: var(--btn-bg-hl);
+	border: 1px solid var(--btn-bdr-hl);
+	color: var(--btn-fg-hl);
+	box-shadow: none;
+}
+
+/*
+ * Search results
+ */
+.mw-search-profile-tabs {
+	background: var(--bg-dark);
+	border: 1px solid var(--bdr-white);
+}
+
+.search-types .current a {
+	color: var(--fg);
+}
+
+.mw-search-result-data {
+	color: var(--fg-dark);
+}
+
+/*
+ * Editing
+ */
+.editOptions {
+	background: var(--bg-main2);
+	border: 1px solid var(--bdr-color);
+	color: var(--fg);
+}
+
+/*
+ * File page
+ */
+#filetoc {
+	background: var(--bg-dark);
+	border: 1px solid var(--bdr-color);
+}
+
+table.mw_metadata :is(th, td) {
+	border: 1px solid var(--bdr-white);
+}
+
+table.mw_metadata th {
+	background: var(--bg-dark);
+}
+
+table.mw_metadata td {
+	background: transparent;
+}
+
+.filehistory a img,
+#file img:hover {
+	background: transparent;
+}
+
+/*
+ * History, Changes, Watchlist, Contributions
+ */
+#mw-indicator-mw-helplink a {
+	background-image: none;
+	padding-left: 0;
+}
+
+.mw-rcfilters-ui-watchlistTopSectionWidget
+.mw-rcfilters-ui-watchlistTopSectionWidget-separator {
+	border-top: 2px solid var(--bdr-color);
+}
+
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-dropdownWidget.mw-rcfilters-ui-rclToOrFromWidget
+.oo-ui-dropdownWidget-handle:is(*, :hover, :active, :focus) {
+	background: transparent;
+	border: 0;
+}
+
+#pagehistory li.selected {
+	background: var(--bg-main);
+	color: var(--fg);
+}
+
+.mw-plusminus-pos {
+	color: var(--diff-count-pos);
+}
+
+.mw-plusminus-neg {
+	color: var(--diff-count-neg);
+}
+
+.autocomment,
+.autocomment a,
+.autocomment a:visited {
+	color: var(--fg-dark);
+}
+
+/* Duplicate class selector to add weight */
+.mw-rcfilters-ui-changesListWrapperWidget
+.mw-changeslist-legend.mw-changeslist-legend {
+	background: var(--bg-dark);
+	border: 1px solid var(--bdr-white);
+}
+
+/*
+ * Revision differences
+ */
+table.diff,
+td.diff-otitle,
+td.diff-ntitle {
+	background: transparent;
+}
+
+td.diff-addedline {
+	background: var(--bg-dark);
+	border-color: var(--diff-bdr-add);
+}
+
+td.diff-deletedline {
+	background: var(--bg-dark);
+	border-color: var(--diff-bdr-del);
+}
+
+td.diff-context {
+	background: transparent;
+	border-color: var(--diff-bdr-ntr);
+	color: var(--fg);
+}
+
+td.diff-addedline .diffchange,
+td.diff-deletedline .diffchange {
+	border-radius: 0.33em;
+	padding: 0.25em;
+}
+
+td.diff-addedline .diffchange {
+	background: var(--diff-text-add-bg);
+	color: var(--diff-text-add-fg);
+}
+
+td.diff-deletedline .diffchange {
+	background: var(--diff-text-del-bg);
+	color: var(--diff-text-del-fg);
+}
+
+/*
+ * Preferences
+ */
+.mw-prefs-buttons {
+	background: var(--bg-main);
+}
