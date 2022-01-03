@@ -1171,6 +1171,13 @@ li.gallerybox div.thumb {
 }
 
 /*
+ * Blockquote
+ */
+.vector-body blockquote {
+	border-left: 4px solid var(--bg-main2);
+}
+
+/*
  * ========================
  * = Special page content =
  * ========================
