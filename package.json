@@ -1,4 +1,5 @@
 {
+	"name": "Theme",
 	"private": true,
 	"scripts": {
 		"test": "grunt test"
