@@ -470,4 +470,50 @@ table.mw-datatable th, table.mw-datatable tr:hover td, table.mw-datatable td {
  */
 div.editOptions {
 	background-color: transparent;
+	/* Make text readable, black text on a very dark background is _not_ OK */
+	color: #e2e2e2;
+}
+
+/* OOUI help texts, used on Special:Preferences at least */
+.oo-ui-labelWidget.oo-ui-inline-help {
+	color: #e2e2e2;
+}
+
+/* The "save" button & "restore" link container element on Special:Preferences */
+.mw-prefs-buttons {
+	background-color: #1c3855;
+}
+
+/** SocialProfile user profile pages */
+/* Info containers: user's personal info, statistics, etc. */
+.profile-info-container b,
+.profile-info-container div {
+	color: #d2d2d2;
+}
+
+/* User Board on profile pages */
+.user-board-message-from {
+	/* Make the header containing the sender's user name transparent,
+	 * given that the default color is an eyesore on darker themes like this...
+	 */
+	background-color: transparent;
+	/* ...and instead have a border separating the user name and message */
+	border: 1px #e2e2e2 solid;
+}
+
+/** Comments */
+/* "Add your comment" text above the comment textbox */
+.c-form-title {
+	filter: invert(100%);
+}
+
+/** LinkFilter */
+/*
+ * 1) Label colors on Special:LinkSubmit
+ * 2) User-submitted links' dates & descriptions on Special:LinksHome
+ */
+.link-submit-title,
+.links-home-date,
+.link-item-desc {
+	filter: invert(100%);
 }
