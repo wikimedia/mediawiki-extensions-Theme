@@ -17,11 +17,10 @@ class ThemeHooks {
 			$userTheme = $user->getOption( 'theme' );
 		}
 
-		$theme = $wgRequest->getVal( 'usetheme', $userTheme );
-		$useskin = $wgRequest->getVal( 'useskin', null );
-		$skin = $useskin ?: $sk->getSkinName();
+		$theme = $wgRequest->getRawVal( 'usetheme', $userTheme );
+		$skin = $wgRequest->getRawVal( 'useskin' );
 
-		if ( !array_key_exists( strtolower( $skin ), $wgValidSkinNames ) ) {
+		if ( $skin === null || !array_key_exists( strtolower( $skin ), $wgValidSkinNames ) ) {
 			// so we don't load themes for skins when we can't actually load the skin
 			$skin = $sk->getSkinName();
 		}
@@ -79,8 +78,8 @@ class ThemeHooks {
 		global $wgDefaultTheme;
 
 		$ctx = RequestContext::getMain();
-		$useskin = $ctx->getRequest()->getVal( 'useskin', null );
-		$skin = $useskin ?: $user->getOption( 'skin' );
+		$skin = $ctx->getRequest()->getRawVal( 'useskin' ) ??
+			$user->getOption( 'skin' );
 		// Normalize the key; this'll return the default skin in case if the user
 		// requested a skin that is *not* installed but for which Theme has themes
 		$skin = Skin::normalizeKey( $skin );
@@ -145,7 +144,7 @@ class ThemeHooks {
 		if ( $user->getOption( 'theme' ) ) {
 			$userTheme = $user->getOption( 'theme' );
 		}
-		$theme = $out->getRequest()->getVal( 'usetheme', $userTheme );
+		$theme = $out->getRequest()->getRawVal( 'usetheme', $userTheme );
 		$theme = strtolower( htmlspecialchars( $theme ) ); // paranoia
 
 		$resourceLoader = $out->getResourceLoader();
