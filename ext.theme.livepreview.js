@@ -146,9 +146,11 @@
 				// @todo FIXME: Should use OOUI's LabelWidget or somesuch for slightly better
 				// styling?
 				$target.after(
-					'<tr id="theme-preview-note"><td class="htmlform-tip" colspan="2">' +
-					mw.message( 'theme-livepreview-note', chosenValue ).escaped() +
-					'</td></tr>'
+					$( '<tr>' ).attr( 'id', 'theme-preview-note' ).append(
+						$( '<td>' ).addClass( 'htmlform-tip' ).attr( 'colspan', 2 ).text(
+							mw.msg( 'theme-livepreview-note', chosenValue )
+						)
+					)
 				);
 			}
 
