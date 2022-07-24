@@ -1,5 +1,7 @@
 <?php
 
+use MediaWiki\MediaWikiServices;
+
 class ThemeHooks {
 
 	/**
@@ -10,12 +12,10 @@ class ThemeHooks {
 	public static function onBeforePageDisplay( &$out, &$sk ) {
 		global $wgRequest, $wgDefaultTheme, $wgValidSkinNames;
 
-		$userTheme = false;
 		// User's personal theme override, if any
 		$user = $out->getUser();
-		if ( $user->getOption( 'theme' ) ) {
-			$userTheme = $user->getOption( 'theme' );
-		}
+		$userOptionsLookup = MediaWikiServices::getInstance()->getUserOptionsLookup();
+		$userTheme = $userOptionsLookup->getOption( $user, 'theme' ) ?? false;
 
 		$theme = $wgRequest->getRawVal( 'usetheme', $userTheme );
 		$skin = $wgRequest->getRawVal( 'useskin' );
@@ -78,8 +78,9 @@ class ThemeHooks {
 		global $wgDefaultTheme;
 
 		$ctx = RequestContext::getMain();
+		$userOptionsLookup = MediaWikiServices::getInstance()->getUserOptionsLookup();
 		$skin = $ctx->getRequest()->getRawVal( 'useskin' ) ??
-			$user->getOption( 'skin' );
+			$userOptionsLookup->getOption( $user, 'skin' );
 		// Normalize the key; this'll return the default skin in case if the user
 		// requested a skin that is *not* installed but for which Theme has themes
 		$skin = Skin::normalizeKey( $skin );
@@ -105,7 +106,7 @@ class ThemeHooks {
 			$defaultPreferences['theme'] = [
 				'type' => 'select',
 				'options' => $themeArray,
-				'default' => $user->getOption( 'theme', $wgDefaultTheme ),
+				'default' => $userOptionsLookup->getOption( $user, 'theme', $wgDefaultTheme ),
 				'label-message' => 'theme-prefs-label',
 				'section' => 'rendering/skin',
 			];
@@ -138,12 +139,11 @@ class ThemeHooks {
 		// 1) value of $wgDefaultTheme (set in site configuration)
 		// 2) user's personal preference/override
 		// 3) per-page usetheme URL parameter
-		$userTheme = $wgDefaultTheme;
 		// User's personal theme override, if any
+		$userOptionsLookup = MediaWikiServices::getInstance()->getUserOptionsLookup();
 		$user = $out->getUser();
-		if ( $user->getOption( 'theme' ) ) {
-			$userTheme = $user->getOption( 'theme' );
-		}
+		$userTheme = $userOptionsLookup->getOption( $user, 'theme', $wgDefaultTheme );
+
 		$theme = $out->getRequest()->getRawVal( 'usetheme', $userTheme );
 		$theme = strtolower( htmlspecialchars( $theme ) ); // paranoia
 
