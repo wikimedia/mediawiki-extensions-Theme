@@ -1,21 +1,46 @@
 <?php
 
-use MediaWiki\MediaWikiServices;
+use MediaWiki\Hook\BeforePageDisplayHook;
+use MediaWiki\Hook\OutputPageBodyAttributesHook;
+use MediaWiki\Preferences\Hook\GetPreferencesHook;
+use MediaWiki\ResourceLoader\Hook\ResourceLoaderGetConfigVarsHook;
+use MediaWiki\User\UserOptionsLookup;
 
-class ThemeHooks {
+class ThemeHooks implements
+	BeforePageDisplayHook,
+	GetPreferencesHook,
+	OutputPageBodyAttributesHook,
+	ResourceLoaderGetConfigVarsHook
+{
+
+	/** @var UserOptionsLookup */
+	private $userOptionsLookup;
 
 	/**
-	 * @param OutputPage &$out
-	 * @param Skin &$sk
-	 * @return bool
+	 * @param UserOptionsLookup $userOptionsLookup
 	 */
-	public static function onBeforePageDisplay( &$out, &$sk ) {
-		$userOptionsLookup = MediaWikiServices::getInstance()->getUserOptionsLookup();
+	public function __construct(
+		UserOptionsLookup $userOptionsLookup
+	) {
+		$this->userOptionsLookup = $userOptionsLookup;
+	}
+
+	/**
+	 * Add the JS needed to preview themes in real time onto the output
+	 * on Special:Preferences and its global version, Special:GlobalPreferences.
+	 *
+	 * @param OutputPage $out
+	 * @param Skin $sk
+	 * @return void This hook must not abort, it must return no value
+	 */
+	public function onBeforePageDisplay( $out, $sk ): void {
+		$this->addJSonPreferences( $out, $sk );
+
 		$request = $out->getRequest();
 		$config = $out->getConfig();
 
 		// User's personal theme override, if any
-		$theme = $userOptionsLookup->getOption( $out->getUser(), 'theme' );
+		$theme = $this->userOptionsLookup->getOption( $out->getUser(), 'theme' );
 		$theme = $request->getRawVal( 'usetheme', $theme );
 		$skin = $request->getRawVal( 'useskin' );
 
@@ -41,7 +66,7 @@ class ThemeHooks {
 		// Check that we have something to include later on; if not, bail out
 		$resourceLoader = $out->getResourceLoader();
 		if ( !$themeName || !Theme::skinHasTheme( $skin, $themeName, $resourceLoader ) ) {
-			return true;
+			return;
 		}
 
 		$prefix = ( $skin !== 'monaco' ? 'themeloader.' : '' );
@@ -56,10 +81,11 @@ class ThemeHooks {
 	 * Add the JS needed to preview themes in real time onto the output
 	 * on Special:Preferences and its global version, Special:GlobalPreferences.
 	 *
-	 * @param OutputPage &$out
-	 * @param Skin &$sk
+	 * @param OutputPage $out
+	 * @param Skin $sk
+	 * @return void This hook must not abort, it must return no value
 	 */
-	public static function addJSonPreferences( &$out, &$sk ) {
+	private function addJSonPreferences( $out, $sk ): void {
 		if (
 			$out->getTitle()->isSpecial( 'Preferences' ) ||
 			$out->getTitle()->isSpecial( 'GlobalPreferences' )
@@ -76,12 +102,12 @@ class ThemeHooks {
 	 *
 	 * @param User $user
 	 * @param array &$defaultPreferences
+	 * @return bool|void True or no return value to continue or false to abort
 	 */
-	public static function onGetPreferences( $user, &$defaultPreferences ) {
+	public function onGetPreferences( $user, &$defaultPreferences ) {
 		$ctx = RequestContext::getMain();
-		$userOptionsLookup = MediaWikiServices::getInstance()->getUserOptionsLookup();
 		$skin = $ctx->getRequest()->getRawVal( 'useskin' ) ??
-			$userOptionsLookup->getOption( $user, 'skin' );
+			$this->userOptionsLookup->getOption( $user, 'skin' );
 		// Normalize the key; this'll return the default skin in case if the user
 		// requested a skin that is *not* installed but for which Theme has themes
 		$skin = Skin::normalizeKey( $skin );
@@ -104,7 +130,7 @@ class ThemeHooks {
 		}
 
 		$defaultTheme = $ctx->getConfig()->get( 'DefaultTheme' );
-		$defaultTheme = $userOptionsLookup->getOption( $user, 'theme', $defaultTheme );
+		$defaultTheme = $this->userOptionsLookup->getOption( $user, 'theme', $defaultTheme );
 		if ( count( $themes ) > 1 ) {
 			$defaultPreferences['theme'] = [
 				'type' => 'select',
@@ -133,24 +159,22 @@ class ThemeHooks {
 	 * @param OutputPage $out
 	 * @param Skin $sk
 	 * @param array &$bodyAttrs Existing attributes of the <body> tag as an array
-	 * @return void|bool Void normally, bool true if $sk(in) has no requested theme
+	 * @return void This hook must not abort, it must return no value
 	 */
-	public static function onOutputPageBodyAttributes( $out, $sk, &$bodyAttrs ) {
-		$userOptionsLookup = MediaWikiServices::getInstance()->getUserOptionsLookup();
-
+	public function onOutputPageBodyAttributes( $out, $sk, &$bodyAttrs ): void {
 		// Check the following things in this order:
 		// 1) value of $wgDefaultTheme (set in site configuration)
 		// 2) user's personal preference/override
 		// 3) per-page usetheme URL parameter
 		$theme = $out->getConfig()->get( 'DefaultTheme' );
-		$theme = $userOptionsLookup->getOption( $out->getUser(), 'theme', $theme );
+		$theme = $this->userOptionsLookup->getOption( $out->getUser(), 'theme', $theme );
 		$theme = $out->getRequest()->getRawVal( 'usetheme', $theme );
 
 		$theme = strtolower( htmlspecialchars( $theme ) ); // paranoia
 
 		$resourceLoader = $out->getResourceLoader();
 		if ( !Theme::skinHasTheme( $sk->getSkinName(), $theme, $resourceLoader ) ) {
-			return true;
+			return;
 		}
 
 		if ( $theme !== 'default' ) {
@@ -165,8 +189,9 @@ class ThemeHooks {
 	 * @param array &$vars Pre-existing JavaScript global variables
 	 * @param string $skin
 	 * @param Config $config
+	 * @return void This hook must not abort, it must return no value
 	 */
-	public static function onResourceLoaderGetConfigVars( &$vars, $skin, Config $config ) {
+	public function onResourceLoaderGetConfigVars( array &$vars, $skin, Config $config ): void {
 		$vars['wgDefaultTheme'] = $config->get( 'DefaultTheme' );
 	}
 

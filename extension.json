@@ -111,13 +111,18 @@
 		"remoteExtPath": "Theme"
 	},
 	"Hooks": {
-		"BeforePageDisplay": [
-			"ThemeHooks::onBeforePageDisplay",
-			"ThemeHooks::addJSonPreferences"
-		],
-		"GetPreferences": "ThemeHooks::onGetPreferences",
-		"OutputPageBodyAttributes": "ThemeHooks::onOutputPageBodyAttributes",
-		"ResourceLoaderGetConfigVars": "ThemeHooks::onResourceLoaderGetConfigVars"
+		"BeforePageDisplay": "ThemeHooks",
+		"GetPreferences": "ThemeHooks",
+		"OutputPageBodyAttributes": "ThemeHooks",
+		"ResourceLoaderGetConfigVars": "ThemeHooks"
+	},
+	"HookHandlers": {
+		"ThemeHooks": {
+			"class": "ThemeHooks",
+			"services": [
+				"UserOptionsLookup"
+			]
+		}
 	},
 	"manifest_version": 1
 }
