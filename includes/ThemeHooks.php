@@ -10,18 +10,18 @@ class ThemeHooks {
 	 * @return bool
 	 */
 	public static function onBeforePageDisplay( &$out, &$sk ) {
-		global $wgDefaultTheme, $wgValidSkinNames;
+		$userOptionsLookup = MediaWikiServices::getInstance()->getUserOptionsLookup();
+		$request = $out->getRequest();
+		$config = $out->getConfig();
 
 		// User's personal theme override, if any
-		$user = $out->getUser();
-		$userOptionsLookup = MediaWikiServices::getInstance()->getUserOptionsLookup();
-		$userTheme = $userOptionsLookup->getOption( $user, 'theme' ) ?? false;
-
-		$request = $out->getRequest();
-		$theme = $request->getRawVal( 'usetheme', $userTheme );
+		$theme = $userOptionsLookup->getOption( $out->getUser(), 'theme' );
+		$theme = $request->getRawVal( 'usetheme', $theme );
 		$skin = $request->getRawVal( 'useskin' );
 
-		if ( $skin === null || !array_key_exists( strtolower( $skin ), $wgValidSkinNames ) ) {
+		if ( $skin === null ||
+			!array_key_exists( strtolower( $skin ), $config->get( 'ValidSkinNames' ) )
+		) {
 			// so we don't load themes for skins when we can't actually load the skin
 			$skin = $sk->getSkinName();
 		}
@@ -30,8 +30,10 @@ class ThemeHooks {
 
 		if ( $theme ) {
 			$themeName = $theme;
-		} elseif ( isset( $wgDefaultTheme ) && $wgDefaultTheme != 'default' ) {
-			$themeName = $wgDefaultTheme;
+		} elseif ( $config->has( 'DefaultTheme' ) &&
+			$config->get( 'DefaultTheme' ) !== 'default'
+		) {
+			$themeName = $config->get( 'DefaultTheme' );
 		} else {
 			$themeName = false;
 		}
@@ -76,8 +78,6 @@ class ThemeHooks {
 	 * @param array &$defaultPreferences
 	 */
 	public static function onGetPreferences( $user, &$defaultPreferences ) {
-		global $wgDefaultTheme;
-
 		$ctx = RequestContext::getMain();
 		$userOptionsLookup = MediaWikiServices::getInstance()->getUserOptionsLookup();
 		$skin = $ctx->getRequest()->getRawVal( 'useskin' ) ??
@@ -103,11 +103,13 @@ class ThemeHooks {
 			$themeArray[$themeDisplayName] = $theme;
 		}
 
+		$defaultTheme = $ctx->getConfig()->get( 'DefaultTheme' );
+		$defaultTheme = $userOptionsLookup->getOption( $user, 'theme', $defaultTheme );
 		if ( count( $themes ) > 1 ) {
 			$defaultPreferences['theme'] = [
 				'type' => 'select',
 				'options' => $themeArray,
-				'default' => $userOptionsLookup->getOption( $user, 'theme', $wgDefaultTheme ),
+				'default' => $defaultTheme,
 				'label-message' => 'theme-prefs-label',
 				'section' => 'rendering/skin',
 			];
@@ -134,18 +136,16 @@ class ThemeHooks {
 	 * @return void|bool Void normally, bool true if $sk(in) has no requested theme
 	 */
 	public static function onOutputPageBodyAttributes( $out, $sk, &$bodyAttrs ) {
-		global $wgDefaultTheme;
+		$userOptionsLookup = MediaWikiServices::getInstance()->getUserOptionsLookup();
 
 		// Check the following things in this order:
 		// 1) value of $wgDefaultTheme (set in site configuration)
 		// 2) user's personal preference/override
 		// 3) per-page usetheme URL parameter
-		// User's personal theme override, if any
-		$userOptionsLookup = MediaWikiServices::getInstance()->getUserOptionsLookup();
-		$user = $out->getUser();
-		$userTheme = $userOptionsLookup->getOption( $user, 'theme', $wgDefaultTheme );
+		$theme = $out->getConfig()->get( 'DefaultTheme' );
+		$theme = $userOptionsLookup->getOption( $out->getUser(), 'theme', $theme );
+		$theme = $out->getRequest()->getRawVal( 'usetheme', $theme );
 
-		$theme = $out->getRequest()->getRawVal( 'usetheme', $userTheme );
 		$theme = strtolower( htmlspecialchars( $theme ) ); // paranoia
 
 		$resourceLoader = $out->getResourceLoader();
@@ -163,10 +163,11 @@ class ThemeHooks {
 	 * JS can use mw.config.get( 'wgDefaultTheme' ) to read its value.
 	 *
 	 * @param array &$vars Pre-existing JavaScript global variables
+	 * @param string $skin
+	 * @param Config $config
 	 */
-	public static function onResourceLoaderGetConfigVars( &$vars ) {
-		global $wgDefaultTheme;
-		$vars['wgDefaultTheme'] = $wgDefaultTheme;
+	public static function onResourceLoaderGetConfigVars( &$vars, $skin, Config $config ) {
+		$vars['wgDefaultTheme'] = $config->get( 'DefaultTheme' );
 	}
 
 }
