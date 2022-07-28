@@ -106,7 +106,7 @@
 		 * for more info.
 		 */
 		var widget,
-			cache = {},
+			cache = Object.create( null ),
 			$target = $root.find( '#mw-input-wptheme' );
 
 		if (
@@ -125,10 +125,10 @@
 			var chosenValue = value,
 				skin = mw.config.get( 'skin' ),
 				userTheme = mw.user.options.get( 'theme' ),
-				match, moduleName, originalStyleHref, prefix, re;
-
-			// @todo FIXME: When core-ifying this code again, remove this stupid special case hack
-			prefix = ( skin !== 'monaco' ? 'themeloader.' : '' );
+				// @todo FIXME: When core-ifying this code again, remove this stupid special case hack
+				prefix = skin !== 'monaco' ? 'themeloader.' : '',
+				cacheKey = skin + '-' + chosenValue,
+				match, moduleName, originalStyleHref, re;
 
 			// Per Samantha, show a note indicating that the change hasn't been
 			// saved yet and has to be explicitly saved by the user
@@ -169,8 +169,8 @@
 					$( 'head link[rel="stylesheet"]' ).attr( 'href', originalStyleHref.replace( '%7C' + moduleName, '' ) );
 				} else if ( chosenValue === userTheme ) {
 					// Try cache anyway
-					if ( cache[ skin + '-' + chosenValue ] !== undefined ) {
-						mw.util.addCSS( cache[ skin + '-' + chosenValue ] );
+					if ( cacheKey in cache ) {
+						mw.loader.addStyleTag( cache[ cacheKey ] );
 						return;
 					}
 
@@ -184,13 +184,17 @@
 					// will think it's already been loaded, which is sorta true.
 					// This, however, works as you'd think.
 					$.ajax( {
-						url: mw.config.get( 'wgScriptPath' ) + '/load.php?debug=false&modules=' +
-							prefix + 'skins.' + skin + '.' + chosenValue + '&only=styles&skin=' + skin
+						url: mw.util.wikiScript( 'load' ) + '?' + $.param( {
+							debug: false,
+							modules: prefix + 'skins.' + skin + '.' + chosenValue,
+							only: 'styles',
+							skin: skin
+						} )
 					} ).done( function ( css ) {
-						if ( cache[ skin + '-' + chosenValue ] === undefined ) {
-							cache[ skin + '-' + chosenValue ] = css;
+						if ( !( cacheKey in cache ) ) {
+							cache[ cacheKey ] = css;
 						}
-						mw.util.addCSS( css );
+						mw.loader.addStyleTag( css );
 					} );
 				}
 			}
@@ -201,9 +205,9 @@
 			}
 
 			// Try cache first
-			if ( cache[ skin + '-' + chosenValue ] !== undefined ) {
+			if ( cacheKey in cache ) {
 				// Yes, we got a cache hit! Inject the cached CSS, then.
-				mw.util.addCSS( cache[ skin + '-' + chosenValue ] );
+				mw.loader.addStyleTag( cache[ cacheKey ] );
 				// Return because there's nothing to be done here, we already have
 				// the proper CSS (and calling ResourceLoader again below
 				// would just load some Tipsy CSS or w/e and we don't want to pollute
@@ -216,8 +220,8 @@
 			mw.loader.using(
 				prefix + 'skins.' + skin + '.' + chosenValue
 			).then( function () {
-				if ( cache[ skin + '-' + chosenValue ] === undefined ) {
-					cache[ skin + '-' + chosenValue ] = $( 'head style' ).last().text();
+				if ( !( cacheKey in cache ) ) {
+					cache[ cacheKey ] = $( 'head style' ).last().text();
 				}
 			} );
 		}
