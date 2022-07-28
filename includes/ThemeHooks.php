@@ -10,15 +10,16 @@ class ThemeHooks {
 	 * @return bool
 	 */
 	public static function onBeforePageDisplay( &$out, &$sk ) {
-		global $wgRequest, $wgDefaultTheme, $wgValidSkinNames;
+		global $wgDefaultTheme, $wgValidSkinNames;
 
 		// User's personal theme override, if any
 		$user = $out->getUser();
 		$userOptionsLookup = MediaWikiServices::getInstance()->getUserOptionsLookup();
 		$userTheme = $userOptionsLookup->getOption( $user, 'theme' ) ?? false;
 
-		$theme = $wgRequest->getRawVal( 'usetheme', $userTheme );
-		$skin = $wgRequest->getRawVal( 'useskin' );
+		$request = $out->getRequest();
+		$theme = $request->getRawVal( 'usetheme', $userTheme );
+		$skin = $request->getRawVal( 'useskin' );
 
 		if ( $skin === null || !array_key_exists( strtolower( $skin ), $wgValidSkinNames ) ) {
 			// so we don't load themes for skins when we can't actually load the skin
