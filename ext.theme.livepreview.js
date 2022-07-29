@@ -139,10 +139,9 @@
 
 			// Per Samantha, show a note indicating that the change hasn't been
 			// saved yet and has to be explicitly saved by the user
-			if ( $( '#theme-preview-note' ).length > 0 ) {
-				// Remove this element if it already exists
-				$( '#theme-preview-note' ).remove();
-			}
+			// Remove this element if it already exists
+			$( '#theme-preview-note' ).remove();
+
 			// If a user has chosen e.g. Pink MonoBook theme, do _not_ show the note when pink is chosen
 			// (which it'll be by default if it's their theme of choice, d'oh!)
 			// Instead only show this for other themes (like default, dark and stellarbook)
