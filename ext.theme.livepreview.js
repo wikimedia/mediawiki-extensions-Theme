@@ -124,18 +124,11 @@
 		function updateThemeLabel( value ) {
 			var chosenValue = value,
 				skin = mw.config.get( 'skin' ),
-				userSkin = mw.user.options.get( 'skin' ),
 				userTheme = mw.user.options.get( 'theme' ),
-				useSkin = mw.util.getParamValue( 'skin' ),
 				match, moduleName, originalStyleHref, prefix, re;
 
 			// @todo FIXME: When core-ifying this code again, remove this stupid special case hack
 			prefix = ( skin !== 'monaco' ? 'themeloader.' : '' );
-
-			if ( useSkin !== null && useSkin !== userSkin ) {
-				// prefer the URL param over prefs option
-				skin = useSkin;
-			}
 
 			// Per Samantha, show a note indicating that the change hasn't been
 			// saved yet and has to be explicitly saved by the user
