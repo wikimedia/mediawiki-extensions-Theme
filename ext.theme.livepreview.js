@@ -110,7 +110,8 @@
 		 */
 		var widget,
 			cache = Object.create( null ),
-			$target = $root.find( '#mw-input-wptheme' );
+			$target = $root.find( '#mw-input-wptheme' ),
+			$previewNote = null;
 
 		if (
 			!$target.length ||
@@ -137,7 +138,10 @@
 			// Per Samantha, show a note indicating that the change hasn't been
 			// saved yet and has to be explicitly saved by the user
 			// Remove this element if it already exists
-			$( '#theme-preview-note' ).remove();
+			if ( $previewNote ) {
+				$previewNote.remove();
+				$previewNote = null;
+			}
 
 			// If a user has chosen e.g. Pink MonoBook theme, do _not_ show the note when pink is
 			// chosen (which it'll be by default if it's their theme of choice, d'oh!)
@@ -145,13 +149,12 @@
 			if ( userTheme !== null && userTheme !== 'default' && chosenValue !== userTheme ) {
 				// @todo FIXME: Should use OOUI's LabelWidget or somesuch for slightly better
 				// styling?
-				$target.after(
-					$( '<tr>' ).attr( 'id', 'theme-preview-note' ).append(
-						$( '<td>' ).addClass( 'htmlform-tip' ).attr( 'colspan', 2 ).text(
-							mw.msg( 'theme-livepreview-note', chosenValue )
-						)
+				$previewNote = $( '<tr>' ).append(
+					$( '<td>' ).addClass( 'htmlform-tip' ).attr( 'colspan', 2 ).text(
+						mw.msg( 'theme-livepreview-note', chosenValue )
 					)
 				);
+				$target.after( $previewNote );
 			}
 
 			// Clear out everything by removing the last appended <style> from <head>
