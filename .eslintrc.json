@@ -5,12 +5,7 @@
 		"wikimedia/jquery",
 		"wikimedia/mediawiki"
 	],
-	"globals": {
-		"mediaWiki": false,
-		"jQuery": false
-	},
 	"rules": {
-		"no-jquery/no-global-selector": "off",
-		"max-lines": "off"
+		"no-jquery/no-global-selector": "off"
 	}
 }

@@ -53,8 +53,9 @@
 
 			// Only query the API once (per request) and cache the result
 			if ( !queryDone && chosenValue !== lastValue ) {
-				// @todo FIXME: Why is this query performed when the user chooses the "Appearance" tab?
-				// I want it to run only when the user actually touches the skin preference option...
+				// @todo FIXME: Why is this query performed when the user chooses the "Appearance"
+				// tab? I want it to run only when the user actually touches the skin preference
+				// option...
 				( new mw.Api() ).get( {
 					/* Once https://gerrit.wikimedia.org/r/465451/ is merged and thus core exposes
 					the list of skins and their themes, this will do:
@@ -74,7 +75,9 @@
 				try {
 					themeWidget = OO.ui.infuse( $root.find( '#mw-input-wptheme' ) );
 					themeWidget.dropdownWidget.menu.clearItems();
-					themeWidget.dropdownWidget.menu.addItems( convertForOO( apiThemeQueryCache[ value ] ) );
+					themeWidget.dropdownWidget.menu.addItems(
+						convertForOO( apiThemeQueryCache[ value ] )
+					);
 				} catch ( err ) {
 					return;
 				}
@@ -125,7 +128,8 @@
 			var chosenValue = value,
 				skin = mw.config.get( 'skin' ),
 				userTheme = mw.user.options.get( 'theme' ),
-				// @todo FIXME: When core-ifying this code again, remove this stupid special case hack
+				// @todo FIXME: When core-ifying this code again, remove this stupid special case
+				// hack
 				prefix = skin !== 'monaco' ? 'themeloader.' : '',
 				cacheKey = skin + '-' + chosenValue,
 				match, moduleName, originalStyleHref, re;
@@ -135,11 +139,12 @@
 			// Remove this element if it already exists
 			$( '#theme-preview-note' ).remove();
 
-			// If a user has chosen e.g. Pink MonoBook theme, do _not_ show the note when pink is chosen
-			// (which it'll be by default if it's their theme of choice, d'oh!)
+			// If a user has chosen e.g. Pink MonoBook theme, do _not_ show the note when pink is
+			// chosen (which it'll be by default if it's their theme of choice, d'oh!)
 			// Instead only show this for other themes (like default, dark and stellarbook)
 			if ( userTheme !== null && userTheme !== 'default' && chosenValue !== userTheme ) {
-				// @todo FIXME: Should use OOUI's LabelWidget or somesuch for slightly better styling?
+				// @todo FIXME: Should use OOUI's LabelWidget or somesuch for slightly better
+				// styling?
 				$target.after(
 					'<tr id="theme-preview-note"><td class="htmlform-tip" colspan="2">' +
 					mw.message( 'theme-livepreview-note', chosenValue ).escaped() +
@@ -164,7 +169,8 @@
 				// non-default theme you were already using!
 				// Only do this magic when chosenValue is not the theme you are already using.
 				// @see T275903
-				// @todo FIXME: potential perf issue -- the AJAX query below gets executed unnecessarily
+				// @todo FIXME: potential perf issue -- the AJAX query below gets executed
+				// unnecessarily
 				if ( match !== null && chosenValue !== userTheme ) {
 					$( 'head link[rel="stylesheet"]' ).attr( 'href', originalStyleHref.replace( '%7C' + moduleName, '' ) );
 				} else if ( chosenValue === userTheme ) {
