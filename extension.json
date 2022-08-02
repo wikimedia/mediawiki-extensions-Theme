@@ -27,17 +27,15 @@
 	},
 	"APIModules": {
 		"themelist": {
-			"class": "ApiThemeList",
+			"class": "MediaWiki\\Extension\\Theme\\ApiThemeList",
 			"services": [
 				"SkinFactory",
 				"LanguageNameUtils"
 			]
 		}
 	},
-	"AutoloadClasses": {
-		"ApiThemeList": "includes/ApiThemeList.php",
-		"Theme": "includes/Theme.php",
-		"ThemeHooks": "includes/ThemeHooks.php"
+	"AutoloadNamespaces": {
+		"MediaWiki\\Extension\\Theme\\": "includes/"
 	},
 	"ResourceModules": {
 		"ext.theme.livepreview": {
@@ -124,7 +122,7 @@
 	},
 	"HookHandlers": {
 		"ThemeHooks": {
-			"class": "ThemeHooks",
+			"class": "MediaWiki\\Extension\\Theme\\Hooks",
 			"services": [
 				"UserOptionsLookup"
 			]

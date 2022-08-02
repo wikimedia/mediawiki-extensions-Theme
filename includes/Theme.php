@@ -1,4 +1,10 @@
 <?php
+
+namespace MediaWiki\Extension\Theme;
+
+use ExtensionRegistry;
+use ResourceLoader;
+
 /**
  * Utility/helper class.
  *

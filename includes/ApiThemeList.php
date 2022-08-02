@@ -1,6 +1,12 @@
 <?php
 
+namespace MediaWiki\Extension\Theme;
+
+use ApiBase;
+use ApiMain;
+use ApiResult;
 use MediaWiki\Languages\LanguageNameUtils;
+use SkinFactory;
 
 /**
  * API module for listing skins' themes.

@@ -1,12 +1,19 @@
 <?php
 
+namespace MediaWiki\Extension\Theme;
+
+use Config;
 use MediaWiki\Hook\BeforePageDisplayHook;
 use MediaWiki\Hook\OutputPageBodyAttributesHook;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
 use MediaWiki\ResourceLoader\Hook\ResourceLoaderGetConfigVarsHook;
 use MediaWiki\User\UserOptionsLookup;
+use OutputPage;
+use RequestContext;
+use Skin;
+use User;
 
-class ThemeHooks implements
+class Hooks implements
 	BeforePageDisplayHook,
 	GetPreferencesHook,
 	OutputPageBodyAttributesHook,
