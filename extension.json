@@ -26,7 +26,12 @@
 		"vector": [ "dark", "dark-grey", "deepsea" ]
 	},
 	"APIModules": {
-		"themelist": "ApiThemeList"
+		"themelist": {
+			"class": "ApiThemeList",
+			"services": [
+				"SkinFactory"
+			]
+		}
 	},
 	"AutoloadClasses": {
 		"ApiThemeList": "includes/ApiThemeList.php",

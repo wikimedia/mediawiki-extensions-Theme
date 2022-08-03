@@ -1,7 +1,5 @@
 <?php
 
-use MediaWiki\MediaWikiServices;
-
 /**
  * API module for listing skins' themes.
  * Lazy shim until https://gerrit.wikimedia.org/r/465451/ is merged into core,
@@ -12,6 +10,23 @@ use MediaWiki\MediaWikiServices;
  * @ingroup API
  */
 class ApiThemeList extends ApiBase {
+
+	/** @var SkinFactory */
+	private $skinFactory;
+
+	/**
+	 * @param ApiMain $main
+	 * @param string $action
+	 * @param SkinFactory $skinFactory
+	 */
+	public function __construct(
+		ApiMain $main,
+		$action,
+		SkinFactory $skinFactory
+	) {
+		parent::__construct( $main, $action );
+		$this->skinFactory = $skinFactory;
+	}
 
 	/**
 	 * Main entry point.
@@ -29,7 +44,7 @@ class ApiThemeList extends ApiBase {
 		$config = $this->getConfig();
 		$defaultTheme = $config->get( 'DefaultTheme' );
 		$defaultSkin = $config->get( 'DefaultSkin' );
-		$skinNames = MediaWikiServices::getInstance()->getSkinFactory()->getSkinNames();
+		$skinNames = $this->skinFactory->getSkinNames();
 		foreach ( $skinNames as $skin => $displayName ) {
 			$themes = Theme::getAvailableThemes( $skin );
 			// When this stuff is in core, use:
