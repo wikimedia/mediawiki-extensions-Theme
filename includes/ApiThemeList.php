@@ -1,5 +1,7 @@
 <?php
 
+use MediaWiki\Languages\LanguageNameUtils;
+
 /**
  * API module for listing skins' themes.
  * Lazy shim until https://gerrit.wikimedia.org/r/465451/ is merged into core,
@@ -14,18 +16,24 @@ class ApiThemeList extends ApiBase {
 	/** @var SkinFactory */
 	private $skinFactory;
 
+	/** @var LanguageNameUtils */
+	private $languageNameUtils;
+
 	/**
 	 * @param ApiMain $main
 	 * @param string $action
 	 * @param SkinFactory $skinFactory
+	 * @param LanguageNameUtils $languageNameUtils
 	 */
 	public function __construct(
 		ApiMain $main,
 		$action,
-		SkinFactory $skinFactory
+		SkinFactory $skinFactory,
+		LanguageNameUtils $languageNameUtils
 	) {
 		parent::__construct( $main, $action );
 		$this->skinFactory = $skinFactory;
+		$this->languageNameUtils = $languageNameUtils;
 	}
 
 	/**
@@ -56,7 +64,7 @@ class ApiThemeList extends ApiBase {
 				// on my 1.34alpha devbox; that is not a problem with the code in
 				// https://gerrit.wikimedia.org/r/465451/
 				$code = @$this->getParameter( 'inlanguagecode' );
-				if ( $code && Language::isValidCode( $code ) ) {
+				if ( $code && $this->languageNameUtils->isValidCode( $code ) ) {
 					$msg->inLanguage( $code );
 				} else {
 					$msg->inContentLanguage();

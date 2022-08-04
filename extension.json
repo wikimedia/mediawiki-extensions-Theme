@@ -29,7 +29,8 @@
 		"themelist": {
 			"class": "ApiThemeList",
 			"services": [
-				"SkinFactory"
+				"SkinFactory",
+				"LanguageNameUtils"
 			]
 		}
 	},
