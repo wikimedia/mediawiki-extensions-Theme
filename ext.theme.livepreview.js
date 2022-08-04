@@ -35,7 +35,7 @@
 			for ( i = 0, len = data.length; i < len; i++ ) {
 				theme = data[ i ] || {};
 				items.push( new OO.ui.MenuOptionWidget( {
-					label: theme[ '*' ],
+					label: theme.name,
 					data: theme.code
 				} ) );
 			}
@@ -57,6 +57,7 @@
 				// tab? I want it to run only when the user actually touches the skin preference
 				// option...
 				( new mw.Api() ).get( {
+					formatversion: 2,
 					/* Once https://gerrit.wikimedia.org/r/465451/ is merged and thus core exposes
 					the list of skins and their themes, this will do:
 					action: 'query',
