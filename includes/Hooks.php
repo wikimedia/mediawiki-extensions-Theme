@@ -177,7 +177,8 @@ class Hooks implements
 		$theme = $this->userOptionsLookup->getOption( $out->getUser(), 'theme', $theme );
 		$theme = $out->getRequest()->getRawVal( 'usetheme', $theme );
 
-		$theme = strtolower( htmlspecialchars( $theme ) ); // paranoia
+		// Paranoia
+		$theme = strtolower( htmlspecialchars( $theme ) );
 
 		$resourceLoader = $out->getResourceLoader();
 		if ( !Theme::skinHasTheme( $sk->getSkinName(), $theme, $resourceLoader ) ) {

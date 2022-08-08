@@ -21,7 +21,8 @@ class Theme {
 	 *               the skin has no custom themes available
 	 */
 	public static function getAvailableThemes( $ourSkin ) {
-		$ourSkin = strtolower( $ourSkin ); // Paranoia
+		// Paranoia
+		$ourSkin = strtolower( $ourSkin );
 
 		$themes = ExtensionRegistry::getInstance()->getAttribute( 'ThemeModules' );
 

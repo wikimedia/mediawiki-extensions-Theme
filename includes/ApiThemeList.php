@@ -69,6 +69,7 @@ class ApiThemeList extends ApiBase {
 				// Notice: Undefined index: inlanguagecode in ../includes/api/ApiBase.php on line 879
 				// on my 1.34alpha devbox; that is not a problem with the code in
 				// https://gerrit.wikimedia.org/r/465451/
+				// @phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged
 				$code = @$this->getParameter( 'inlanguagecode' );
 				if ( $code && $this->languageNameUtils->isValidCode( $code ) ) {
 					$msg->inLanguage( $code );
