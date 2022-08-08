@@ -10,6 +10,7 @@ use MediaWiki\ResourceLoader\Hook\ResourceLoaderGetConfigVarsHook;
 use MediaWiki\User\UserOptionsLookup;
 use OutputPage;
 use RequestContext;
+use Sanitizer;
 use Skin;
 use User;
 
@@ -178,7 +179,7 @@ class Hooks implements
 		$theme = $out->getRequest()->getRawVal( 'usetheme', $theme );
 
 		// Paranoia
-		$theme = strtolower( htmlspecialchars( $theme ) );
+		$theme = strtolower( $theme );
 
 		$resourceLoader = $out->getResourceLoader();
 		if ( !Theme::skinHasTheme( $sk->getSkinName(), $theme, $resourceLoader ) ) {
@@ -186,7 +187,7 @@ class Hooks implements
 		}
 
 		if ( $theme !== 'default' ) {
-			$bodyAttrs['class'] .= ' theme-' . $theme;
+			$bodyAttrs['class'] .= ' theme-' . Sanitizer::escapeClass( $theme );
 		}
 	}
 
