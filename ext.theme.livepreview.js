@@ -56,17 +56,20 @@
 	// This first handler listens to change to the *skin*, and when the skin is changed,
 	// it attempts to pull the list of themes for that skin (if any) via the API
 	mw.hook( 'htmlform.enhance' ).add( function ( $root ) {
-		var widget,
-			$target = $root.find( '#mw-input-wpskin' );
+		var skinWidget, themeWidget,
+			$skin = $root.find( '#mw-input-wpskin' ),
+			$theme = $root.find( '#mw-input-wptheme' );
 
 		if (
-			!$target.length ||
-			$target.closest( '.mw-htmlform-autoinfuse-lazy' ).length
+			!$skin.length ||
+			!$theme.length ||
+			$skin.closest( '.mw-htmlform-autoinfuse-lazy' ).length
 		) {
 			return;
 		}
 
-		widget = OO.ui.infuse( $target );
+		skinWidget = OO.ui.infuse( $skin );
+		themeWidget = OO.ui.infuse( $theme );
 
 		/*
 		 * Get list of menu items from a server response.
@@ -96,27 +99,16 @@
 		function updateLabel( value ) {
 			getThemes().done( function ( themes ) {
 				if ( themes[ value ] ) {
-					// if ( themes[ value ].length === 1 ) {
-					// If the array length is 1, it means the array has only one item, which is
-					// "default", i.e. the skin does not have any non-default themes.
-					// @todo Remove #mw-input-wptheme from DOM or whatever is the OOUI equivalent
-					// for that action, replace it with a note stating the skin doesn't have themes
-					// } else {
-					// This skin has themes -> now update the theme drop-down menu as appropriate
-					try {
-						var themeWidget = OO.ui.infuse( $root.find( '#mw-input-wptheme' ) );
-						themeWidget.dropdownWidget.menu.clearItems();
-						themeWidget.dropdownWidget.menu.addItems(
-							convertForOO( themes[ value ] )
-						);
-					} catch ( err ) {
-						return;
-					}
+					// Update the theme drop-down menu with the themes for this skin
+					themeWidget.dropdownWidget.menu.clearItems();
+					themeWidget.dropdownWidget.menu.addItems(
+						convertForOO( themes[ value ] )
+					);
 				}
 			} );
 		}
 
-		widget.on( 'change', updateLabel );
+		skinWidget.on( 'change', updateLabel );
 	} );
 
 	// Main theme live preview code starts here
