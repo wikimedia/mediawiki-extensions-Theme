@@ -29,11 +29,33 @@
 		return cache[ theme ];
 	}
 
+	var deferred = null;
+
+	/**
+	 * @return {jQuery.Promise}
+	 */
+	function getThemes() {
+		if ( !deferred ) {
+			deferred = ( new mw.Api() ).get( {
+				formatversion: 2,
+				/* Once https://gerrit.wikimedia.org/r/465451/ is merged and thus core exposes
+				the list of skins and their themes, this will do:
+				action: 'query',
+				meta: 'siteinfo',
+				siprop: 'themes'
+				*/
+				action: 'themelist'
+			} ).then( function ( data ) {
+				return data.query.themes;
+			} );
+		}
+		return deferred;
+	}
+
 	// This first handler listens to change to the *skin*, and when the skin is changed,
 	// it attempts to pull the list of themes for that skin (if any) via the API
 	mw.hook( 'htmlform.enhance' ).add( function ( $root ) {
-		var widget, lastValue,
-			queryDone = false,
+		var widget,
 			$target = $root.find( '#mw-input-wpskin' );
 
 		if (
@@ -71,53 +93,29 @@
 		 * @param {string} value Skin name, e.g. "monobook", "vector", etc.
 		 */
 		function updateLabel( value ) {
-			var chosenValue = value,
-				themeWidget,
-				apiThemeQueryCache = {};
-
-			// Only query the API once (per request) and cache the result
-			if ( !queryDone && chosenValue !== lastValue ) {
-				// @todo FIXME: Why is this query performed when the user chooses the "Appearance"
-				// tab? I want it to run only when the user actually touches the skin preference
-				// option...
-				( new mw.Api() ).get( {
-					formatversion: 2,
-					/* Once https://gerrit.wikimedia.org/r/465451/ is merged and thus core exposes
-					the list of skins and their themes, this will do:
-					action: 'query',
-					meta: 'siteinfo',
-					siprop: 'themes'
-					*/
-					action: 'themelist'
-				} ).done( function ( data ) {
-					apiThemeQueryCache = data.query.themes;
-				} );
-				queryDone = true;
-			}
-
-			if ( queryDone && apiThemeQueryCache[ value ] ) {
-				// This skin has themes -> now update the theme drop-down menu as appropriate
-				try {
-					themeWidget = OO.ui.infuse( $root.find( '#mw-input-wptheme' ) );
-					themeWidget.dropdownWidget.menu.clearItems();
-					themeWidget.dropdownWidget.menu.addItems(
-						convertForOO( apiThemeQueryCache[ value ] )
-					);
-				} catch ( err ) {
-					return;
+			getThemes().done( function ( themes ) {
+				if ( themes[ value ] ) {
+					// if ( themes[ value ].length === 1 ) {
+					// If the array length is 1, it means the array has only one item, which is
+					// "default", i.e. the skin does not have any non-default themes.
+					// @todo Remove #mw-input-wptheme from DOM or whatever is the OOUI equivalent
+					// for that action, replace it with a note stating the skin doesn't have themes
+					// } else {
+					// This skin has themes -> now update the theme drop-down menu as appropriate
+					try {
+						var themeWidget = OO.ui.infuse( $root.find( '#mw-input-wptheme' ) );
+						themeWidget.dropdownWidget.menu.clearItems();
+						themeWidget.dropdownWidget.menu.addItems(
+							convertForOO( themes[ value ] )
+						);
+					} catch ( err ) {
+						return;
+					}
 				}
-			// } else if ( queryDone && apiThemeQueryCache[ value ].length === 1 ) {
-				// If the array length is 1, it means the array has only one item, which is
-				// "default", i.e. the skin does not have any non-default themes.
-				// @todo Remove #mw-input-wptheme from DOM or whatever is the OOUI equivalent
-				// for that action, replace it with a note stating the skin doesn't have themes
-			}
-
-			lastValue = value;
+			} );
 		}
 
 		widget.on( 'change', updateLabel );
-		updateLabel( widget.getValue() );
 	} );
 
 	// Main theme live preview code starts here
