@@ -238,6 +238,5 @@
 		}
 
 		widget.on( 'change', updateThemeLabel );
-		updateThemeLabel( widget.getValue() );
 	} );
 }() );
