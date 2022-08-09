@@ -29,8 +29,7 @@
 		"themelist": {
 			"class": "MediaWiki\\Extension\\Theme\\ApiThemeList",
 			"services": [
-				"SkinFactory",
-				"LanguageNameUtils"
+				"SkinFactory"
 			]
 		}
 	},
