@@ -5,6 +5,30 @@
  * HT MatmaRex
  */
 ( function () {
+	var cache = Object.create( null );
+
+	/**
+	 * @param {string} theme Theme name
+	 * @return {jQuery.Promise}
+	 */
+	function loadTheme( theme ) {
+		if ( !( theme in cache ) ) {
+			var skin = mw.config.get( 'skin' ),
+				// @todo FIXME: When core-ifying this code again,
+				// remove this stupid special case hack
+				prefix = skin !== 'monaco' ? 'themeloader.' : '',
+				moduleName = prefix + 'skins.' + skin + '.' + theme;
+			cache[ theme ] = $.ajax( {
+				url: mw.util.wikiScript( 'load' ) + '?' + $.param( {
+					modules: moduleName,
+					only: 'styles',
+					skin: skin
+				} )
+			} );
+		}
+		return cache[ theme ];
+	}
+
 	// This first handler listens to change to the *skin*, and when the skin is changed,
 	// it attempts to pull the list of themes for that skin (if any) via the API
 	mw.hook( 'htmlform.enhance' ).add( function ( $root ) {
@@ -114,7 +138,6 @@
 			// @todo FIXME: The overwrite by the URL parameter `usetheme` is not detected.
 			themeLoaded = mw.user.options.get( 'theme' ),
 			addedStyle = null,
-			cache = Object.create( null ),
 			$target = $root.find( '#mw-input-wptheme' ),
 			$previewNote = null;
 
@@ -131,11 +154,7 @@
 		 * @param {string} chosenValue Theme name, e.g. "dark", "stellarbook", etc.
 		 */
 		function updateThemeLabel( chosenValue ) {
-			var skin = mw.config.get( 'skin' ),
-				userTheme = mw.user.options.get( 'theme' ),
-				// @todo FIXME: When core-ifying this code again, remove this stupid special case
-				// hack
-				prefix = skin !== 'monaco' ? 'themeloader.' : '';
+			var userTheme = mw.user.options.get( 'theme' );
 
 			lastChosenValue = chosenValue;
 			// Per Samantha, show a note indicating that the change hasn't been
@@ -174,7 +193,11 @@
 				themeLoaded !== chosenValue
 			) {
 				// moduleName is the name of the module we want to *remove* from the <link>
-				var moduleName = prefix + 'skins.' + skin + '.' + themeLoaded;
+				var skin = mw.config.get( 'skin' ),
+					// @todo FIXME: When core-ifying this code again,
+					// remove this stupid special case hack
+					prefix = skin !== 'monaco' ? 'themeloader.' : '',
+					moduleName = prefix + 'skins.' + skin + '.' + themeLoaded;
 
 				// The module is already loaded via ResourceLoader together with other styles.
 				// Only do this magic when chosenValue is not the theme you are already using.
@@ -194,24 +217,8 @@
 				return;
 			}
 
-			// Try cache first
-			if ( chosenValue in cache ) {
-				// Yes, we got a cache hit! Inject the cached CSS, then.
-				addedStyle = mw.loader.addStyleTag( cache[ chosenValue ] );
-				return;
-			}
-
-			// No cache hit -> load the module via AJAX for the 1st time and
-			// store it in cache
-			$.ajax( {
-				url: mw.util.wikiScript( 'load' ) + '?' + $.param( {
-					modules: prefix + 'skins.' + skin + '.' + chosenValue,
-					only: 'styles',
-					skin: skin
-				} )
-			} ).done( function ( css ) {
-				// Store a copy of the styles in the cache.
-				cache[ chosenValue ] = css;
+			// Load the module via AJAX with a promise cache
+			loadTheme( chosenValue ).done( function ( css ) {
 				// Apply the style if not already another style is added and
 				// the chosen theme is still the last chosen theme.
 				if ( !addedStyle && chosenValue === lastChosenValue ) {
