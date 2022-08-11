@@ -99,7 +99,7 @@
 	// Main theme live preview code starts here
 	mw.hook( 'htmlform.enhance' ).add( function ( $root ) {
 		/*
-		 * We need to cache the CSS returned by ResourceLoader because RL refuses
+		 * We need to load the CSS without ResourceLoader because RL refuses
 		 * to load the same module twice, but we essentially need that functionality
 		 * because we .remove() the loaded CSS if and when the user previews a
 		 * different theme. This way the user can preview e.g.
@@ -109,7 +109,11 @@
 		 * See https://lists.wikimedia.org/pipermail/wikitech-l/2017-June/088363.html
 		 * for more info.
 		 */
-		var widget,
+		var widget, lastChosenValue,
+			// Theme initially loaded by ResourceLoader
+			// @todo FIXME: The overwrite by the URL parameter `usetheme` is not detected.
+			themeLoaded = mw.user.options.get( 'theme' ),
+			addedStyle = null,
 			cache = Object.create( null ),
 			$target = $root.find( '#mw-input-wptheme' ),
 			$previewNote = null;
@@ -124,17 +128,16 @@
 		widget = OO.ui.infuse( $target );
 
 		/**
-		 * @param {string} value Theme name, e.g. "dark", "stellarbook", etc.
+		 * @param {string} chosenValue Theme name, e.g. "dark", "stellarbook", etc.
 		 */
-		function updateThemeLabel( value ) {
-			var chosenValue = value,
-				skin = mw.config.get( 'skin' ),
+		function updateThemeLabel( chosenValue ) {
+			var skin = mw.config.get( 'skin' ),
 				userTheme = mw.user.options.get( 'theme' ),
 				// @todo FIXME: When core-ifying this code again, remove this stupid special case
 				// hack
-				prefix = skin !== 'monaco' ? 'themeloader.' : '',
-				match, moduleName, originalStyleHref, re;
+				prefix = skin !== 'monaco' ? 'themeloader.' : '';
 
+			lastChosenValue = chosenValue;
 			// Per Samantha, show a note indicating that the change hasn't been
 			// saved yet and has to be explicitly saved by the user
 			// Remove this element if it already exists
@@ -157,56 +160,32 @@
 				$target.after( $previewNote );
 			}
 
-			// Clear out everything by removing the last appended <style> from <head>
-			$( 'head style' ).last().remove();
+			// Remove already added theme <style> element from <head>
+			if ( addedStyle ) {
+				addedStyle.remove();
+				addedStyle = null;
+			}
 
 			// User is currently using a non-default theme and wants to preview a theme?
 			// We need to rebuild the ResourceLoader-generated <link> element in the page
 			// <head> to prevent the CSS stacking issue (HT SamanthaNguyen)
-			if ( userTheme !== null && userTheme !== 'default' ) {
+			if ( themeLoaded !== null &&
+				themeLoaded !== 'default' &&
+				themeLoaded !== chosenValue
+			) {
 				// moduleName is the name of the module we want to *remove* from the <link>
-				moduleName = prefix + 'skins.' + skin + '.' + userTheme;
-				originalStyleHref = $( 'head link[rel="stylesheet"]' ).attr( 'href' );
-				re = new RegExp( moduleName, 'g' );
-				match = originalStyleHref.match( re );
+				var moduleName = prefix + 'skins.' + skin + '.' + themeLoaded;
 
-				// match *is* null when choosing "default" _as well as_ when choosing the
-				// non-default theme you were already using!
+				// The module is already loaded via ResourceLoader together with other styles.
 				// Only do this magic when chosenValue is not the theme you are already using.
 				// @see T275903
-				// @todo FIXME: potential perf issue -- the AJAX query below gets executed
-				// unnecessarily
-				if ( match !== null && chosenValue !== userTheme ) {
-					$( 'head link[rel="stylesheet"]' ).attr( 'href', originalStyleHref.replace( '%7C' + moduleName, '' ) );
-				} else if ( chosenValue === userTheme ) {
-					// Try cache anyway
-					if ( chosenValue in cache ) {
-						mw.loader.addStyleTag( cache[ chosenValue ] );
-						return;
-					}
-
-					// If we didn't get a cache hit, load the requested module from
-					// the server.
-					// This has to be so damn complicated because if you're viewing
-					// Special:Preferences with dark as your personal theme (and
-					// Vector as your skin), then the themeloader.skins.vector.dark
-					// module is already loaded, *but* we remove it above (the if
-					// match is not null loop), so we can't load it again -- as RL
-					// will think it's already been loaded, which is sorta true.
-					// This, however, works as you'd think.
-					$.ajax( {
-						url: mw.util.wikiScript( 'load' ) + '?' + $.param( {
-							debug: false,
-							modules: prefix + 'skins.' + skin + '.' + chosenValue,
-							only: 'styles',
-							skin: skin
-						} )
-					} ).done( function ( css ) {
-						if ( !( chosenValue in cache ) ) {
-							cache[ chosenValue ] = css;
-						}
-						mw.loader.addStyleTag( css );
+				// @todo FIXME: potential perf issue
+				if ( mw.loader.getState( moduleName ) === 'ready' ) {
+					// Remove the module from the ResourceLoader URLs.
+					$( 'head link[rel="stylesheet"]' ).attr( 'href', function ( i, href ) {
+						return href.replace( encodeURIComponent( '|' + moduleName ), '' );
 					} );
+					themeLoaded = null;
 				}
 			}
 
@@ -218,21 +197,25 @@
 			// Try cache first
 			if ( chosenValue in cache ) {
 				// Yes, we got a cache hit! Inject the cached CSS, then.
-				mw.loader.addStyleTag( cache[ chosenValue ] );
-				// Return because there's nothing to be done here, we already have
-				// the proper CSS (and calling ResourceLoader again below
-				// would just load some Tipsy CSS or w/e and we don't want to pollute
-				// our cache with such junk)
+				addedStyle = mw.loader.addStyleTag( cache[ chosenValue ] );
 				return;
 			}
 
-			// No cache hit -> call RL to load the module for the 1st time and
+			// No cache hit -> load the module via AJAX for the 1st time and
 			// store it in cache
-			mw.loader.using(
-				prefix + 'skins.' + skin + '.' + chosenValue
-			).then( function () {
-				if ( !( chosenValue in cache ) ) {
-					cache[ chosenValue ] = $( 'head style' ).last().text();
+			$.ajax( {
+				url: mw.util.wikiScript( 'load' ) + '?' + $.param( {
+					modules: prefix + 'skins.' + skin + '.' + chosenValue,
+					only: 'styles',
+					skin: skin
+				} )
+			} ).done( function ( css ) {
+				// Store a copy of the styles in the cache.
+				cache[ chosenValue ] = css;
+				// Apply the style if not already another style is added and
+				// the chosen theme is still the last chosen theme.
+				if ( !addedStyle && chosenValue === lastChosenValue ) {
+					addedStyle = mw.loader.addStyleTag( css );
 				}
 			} );
 		}
