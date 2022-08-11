@@ -179,12 +179,6 @@
 				$target.after( $previewNote );
 			}
 
-			// Remove already added theme <style> element from <head>
-			if ( addedStyle ) {
-				addedStyle.remove();
-				addedStyle = null;
-			}
-
 			// User is currently using a non-default theme and wants to preview a theme?
 			// We need to rebuild the ResourceLoader-generated <link> element in the page
 			// <head> to prevent the CSS stacking issue (HT SamanthaNguyen)
@@ -223,15 +217,25 @@
 			}
 
 			if ( chosenValue === 'default' ) {
+				// Remove already added theme <style> element from <head>
+				if ( addedStyle ) {
+					addedStyle.remove();
+					addedStyle = null;
+				}
 				// No need to load anything if we chose 'default'
 				return;
 			}
 
 			// Load the module via AJAX with a promise cache
 			loadTheme( chosenValue ).done( function ( css ) {
-				// Apply the style if not already another style is added and
-				// the chosen theme is still the last chosen theme.
-				if ( !addedStyle && chosenValue === lastChosenValue ) {
+				// Check if the chosen theme is still the last chosen theme.
+				// This fails if the drop down menu gets changed while the theme is loading.
+				if ( chosenValue === lastChosenValue ) {
+					// Remove already added theme <style> element from <head>
+					if ( addedStyle ) {
+						addedStyle.remove();
+					}
+					// Apply the style.
 					addedStyle = mw.loader.addStyleTag( css );
 				}
 			} );
