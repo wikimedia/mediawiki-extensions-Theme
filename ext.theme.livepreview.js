@@ -205,9 +205,19 @@
 				// @todo FIXME: potential perf issue
 				if ( mw.loader.getState( moduleName ) === 'ready' ) {
 					// Remove the module from the ResourceLoader URLs.
-					$( 'head link[rel="stylesheet"]' ).attr( 'href', function ( i, href ) {
-						return href.replace( encodeURIComponent( '|' + moduleName ), '' );
-					} );
+					document.head.querySelectorAll( 'link[rel="stylesheet"]' )
+						.forEach( function ( link ) {
+							var modules = mw.util.getParamValue( 'modules', link.href );
+							if ( modules === moduleName ) {
+								// The <link> element contains just this theme module.
+								// This happens on debug mode.
+								// Remove this <link> element.
+								link.remove();
+							} else if ( modules && modules.indexOf( moduleName ) >= 0 ) {
+								// Remove the theme module from the URL.
+								link.href = link.href.replace( encodeURIComponent( '|' + moduleName ), '' );
+							}
+						} );
 					themeLoaded = null;
 				}
 			}
