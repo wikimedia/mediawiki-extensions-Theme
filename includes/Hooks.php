@@ -54,9 +54,27 @@ class Hooks implements
 		$skin = $sk->getSkinName();
 		$prefix = $skin !== 'monaco' ? 'themeloader.' : '';
 		$moduleName = $prefix . "skins.$skin.$theme";
+		$script = $out->getResourceLoader()->getLoadScript( 'local' );
 
-		// Add the CSS file via ResourceLoader.
-		$out->addModuleStyles( $moduleName );
+		if (
+			$out->getTitle()->isSpecial( 'Preferences' ) ||
+			$out->getTitle()->isSpecial( 'GlobalPreferences' )
+		) {
+			// Add the CSS file with a <link> element.
+			// This allows to remove the theme style on live preview.
+			$out->addLink( [
+				'id' => 'mw-themeloader-module',
+				'rel' => 'stylesheet',
+				'href' => wfAppendQuery( $script, [
+					'modules' => $moduleName,
+					'only' => 'styles',
+					'skin' => $skin
+				] )
+			] );
+		} else {
+			// Add the CSS file via ResourceLoader.
+			$out->addModuleStyles( $moduleName );
+		}
 	}
 
 	/**
