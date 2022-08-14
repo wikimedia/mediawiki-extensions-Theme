@@ -134,9 +134,9 @@
 		 * for more info.
 		 */
 		var widget, lastChosenValue,
-			// Theme initially loaded by ResourceLoader
-			// @todo FIXME: The overwrite by the URL parameter `usetheme` is not detected.
-			themeLoaded = mw.user.options.get( 'theme' ),
+			// Theme initially loaded on server side
+			themeLoaded = null,
+			themeStyle = document.getElementById( 'mw-themeloader-module' ),
 			addedStyle = null,
 			$target = $root.find( '#mw-input-wptheme' ),
 			$previewNote = null;
@@ -149,6 +149,11 @@
 		}
 
 		widget = OO.ui.infuse( $target );
+
+		// Detect the initially loaded theme on server side.
+		if ( themeStyle ) {
+			themeLoaded = themeStyle.dataset.theme;
+		}
 
 		/**
 		 * @param {string} chosenValue Theme name, e.g. "dark", "stellarbook", etc.
@@ -187,10 +192,7 @@
 				themeLoaded !== chosenValue
 			) {
 				// Remove the theme style added on server side.
-				var themeStyle = document.getElementById( 'mw-themeloader-module' );
-				if ( themeStyle ) {
-					themeStyle.remove();
-				}
+				themeStyle.remove();
 				themeLoaded = null;
 			}
 

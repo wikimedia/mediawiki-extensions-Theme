@@ -64,6 +64,7 @@ class Hooks implements
 			// This allows to remove the theme style on live preview.
 			$out->addLink( [
 				'id' => 'mw-themeloader-module',
+				'data-theme' => $theme,
 				'rel' => 'stylesheet',
 				'href' => wfAppendQuery( $script, [
 					'modules' => $moduleName,
