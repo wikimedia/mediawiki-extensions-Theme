@@ -159,8 +159,6 @@
 		 * @param {string} chosenValue Theme name, e.g. "dark", "stellarbook", etc.
 		 */
 		function updateThemeLabel( chosenValue ) {
-			var userTheme = mw.user.options.get( 'theme' );
-
 			lastChosenValue = chosenValue;
 			// Per Samantha, show a note indicating that the change hasn't been
 			// saved yet and has to be explicitly saved by the user
@@ -173,7 +171,7 @@
 			// If a user has chosen e.g. Pink MonoBook theme, do _not_ show the note when pink is
 			// chosen (which it'll be by default if it's their theme of choice, d'oh!)
 			// Instead only show this for other themes (like default, dark and stellarbook)
-			if ( userTheme !== null && userTheme !== 'default' && chosenValue !== userTheme ) {
+			if ( chosenValue !== mw.user.options.get( 'theme', 'default' ) ) {
 				// @todo FIXME: Should use OOUI's LabelWidget or somesuch for slightly better
 				// styling?
 				$previewNote = $( '<tr>' ).append(
