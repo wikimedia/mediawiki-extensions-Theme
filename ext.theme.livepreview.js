@@ -132,10 +132,9 @@
 		 * for more info.
 		 */
 		var widget, lastChosenValue,
-			// Theme initially loaded on server side
+			// Currently loaded theme.
 			themeLoaded = null,
 			themeStyle = document.getElementById( 'mw-themeloader-module' ),
-			addedStyle = null,
 			$target = $root.find( '#mw-input-wptheme' ),
 			$previewNote = null;
 
@@ -180,25 +179,18 @@
 				$target.after( $previewNote );
 			}
 
-			// User is currently using a non-default theme and wants to preview a theme?
-			// We need to rebuild the ResourceLoader-generated <link> element in the page
-			// <head> to prevent the CSS stacking issue (HT SamanthaNguyen)
-			if ( themeLoaded !== null &&
-				themeLoaded !== 'default' &&
-				themeLoaded !== chosenValue
-			) {
-				// Remove the theme style added on server side.
-				themeStyle.remove();
-				themeLoaded = null;
+			if ( chosenValue === themeLoaded ) {
+				return;
 			}
 
 			if ( chosenValue === 'default' ) {
-				// Remove already added theme <style> element from <head>
-				if ( addedStyle ) {
-					addedStyle.remove();
-					addedStyle = null;
+				// Remove the theme `<link>` or `<style>` element from `<head>`.
+				if ( themeStyle ) {
+					themeStyle.remove();
+					themeStyle = null;
 				}
-				// No need to load anything if we chose 'default'
+				themeLoaded = null;
+				// No need to load anything if we chose 'default'.
 				return;
 			}
 
@@ -207,12 +199,13 @@
 				// Check if the chosen theme is still the last chosen theme.
 				// This fails if the drop down menu gets changed while the theme is loading.
 				if ( chosenValue === lastChosenValue ) {
-					// Remove already added theme <style> element from <head>
-					if ( addedStyle ) {
-						addedStyle.remove();
+					// Remove the theme `<link>` or `<style>` element from `<head>`.
+					if ( themeStyle ) {
+						themeStyle.remove();
 					}
 					// Apply the style.
-					addedStyle = mw.loader.addStyleTag( css );
+					themeStyle = mw.loader.addStyleTag( css );
+					themeLoaded = chosenValue;
 				}
 			} );
 		}
