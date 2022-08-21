@@ -40,7 +40,12 @@
 	"ResourceModules": {
 		"ext.theme.livepreview": {
 			"scripts": "ext.theme.livepreview.js",
-			"dependencies": [ "mediawiki.user", "mediawiki.util" ],
+			"dependencies": [
+				"mediawiki.api",
+				"mediawiki.util",
+				"oojs-ui-core",
+				"user.options"
+			],
 			"messages": [ "theme-livepreview-note" ]
 		},
 		"ext.theme.preferences": {
