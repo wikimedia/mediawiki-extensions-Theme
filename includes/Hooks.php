@@ -132,7 +132,7 @@ class Hooks implements
 			} else {
 				// Use i18n; it's much nicer to display formatted theme names if and when
 				// a theme name contains spaces, uppercase characters, etc.
-				$themeDisplayName = $themeDisplayNameMsg->escaped();
+				$themeDisplayName = $themeDisplayNameMsg->text();
 			}
 			$themeArray[$themeDisplayName] = $theme;
 		}
