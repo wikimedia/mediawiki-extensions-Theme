@@ -121,25 +121,25 @@ class Hooks implements
 		$skin = Skin::normalizeKey( $skin );
 
 		$themes = Theme::getAvailableThemes( $skin );
-		// Braindead code needed to make the theme *names* show up
-		// Without this they show up as "0", "1", etc. in the UI
-		$themeArray = [];
-		foreach ( $themes as $theme ) {
-			$themeDisplayNameMsg = $ctx->msg( 'theme-name-' . $skin . '-' . $theme );
-			if ( $themeDisplayNameMsg->isDisabled() ) {
-				// No i18n available for this -> use the key as-is
-				$themeDisplayName = $theme;
-			} else {
-				// Use i18n; it's much nicer to display formatted theme names if and when
-				// a theme name contains spaces, uppercase characters, etc.
-				$themeDisplayName = $themeDisplayNameMsg->text();
-			}
-			$themeArray[$themeDisplayName] = $theme;
-		}
-
-		$defaultTheme = $ctx->getConfig()->get( 'DefaultTheme' );
-		$defaultTheme = $this->userOptionsLookup->getOption( $user, 'theme', $defaultTheme );
 		if ( count( $themes ) > 1 ) {
+			// Braindead code needed to make the theme *names* show up
+			// Without this they show up as "0", "1", etc. in the UI
+			$themeArray = [];
+			foreach ( $themes as $theme ) {
+				$themeDisplayNameMsg = $ctx->msg( 'theme-name-' . $skin . '-' . $theme );
+				if ( $themeDisplayNameMsg->isDisabled() ) {
+					// No i18n available for this -> use the key as-is
+					$themeDisplayName = $theme;
+				} else {
+					// Use i18n; it's much nicer to display formatted theme names if and when
+					// a theme name contains spaces, uppercase characters, etc.
+					$themeDisplayName = $themeDisplayNameMsg->text();
+				}
+				$themeArray[$themeDisplayName] = $theme;
+			}
+
+			$defaultTheme = $ctx->getConfig()->get( 'DefaultTheme' );
+			$defaultTheme = $this->userOptionsLookup->getOption( $user, 'theme', $defaultTheme );
 			$defaultPreferences['theme'] = [
 				'type' => 'select',
 				'options' => $themeArray,
