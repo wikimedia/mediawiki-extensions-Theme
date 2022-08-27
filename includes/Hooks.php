@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\Theme;
 
 use Config;
+use IContextSource;
 use MediaWiki\Hook\BeforePageDisplayHook;
 use MediaWiki\Hook\OutputPageBodyAttributesHook;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
@@ -44,42 +45,15 @@ class Hooks implements
 	public function onBeforePageDisplay( $out, $sk ): void {
 		$this->addJSonPreferences( $out, $sk );
 
-		$request = $out->getRequest();
-		$config = $out->getConfig();
+		$theme = $this->getTheme( $out );
 
-		// User's personal theme override, if any
-		$theme = $this->userOptionsLookup->getOption( $out->getUser(), 'theme' );
-		$theme = $request->getRawVal( 'usetheme', $theme );
-		$skin = $request->getRawVal( 'useskin' );
-
-		if ( $skin === null ||
-			!array_key_exists( strtolower( $skin ), $config->get( 'ValidSkinNames' ) )
-		) {
-			// so we don't load themes for skins when we can't actually load the skin
-			$skin = $sk->getSkinName();
-		}
-		// @phan-suppress-next-line PhanTypeMismatchArgumentNullableInternal
-		$skin = strtolower( $skin );
-
-		if ( $theme ) {
-			$themeName = $theme;
-		} elseif ( $config->has( 'DefaultTheme' ) &&
-			$config->get( 'DefaultTheme' ) !== 'default'
-		) {
-			$themeName = $config->get( 'DefaultTheme' );
-		} else {
-			$themeName = false;
-		}
-
-		// Check that we have something to include later on; if not, bail out
-		$resourceLoader = $out->getResourceLoader();
-		if ( !$themeName || !Theme::skinHasTheme( $skin, $themeName, $resourceLoader ) ) {
+		if ( $theme === 'default' ) {
 			return;
 		}
 
-		$prefix = ( $skin !== 'monaco' ? 'themeloader.' : '' );
-		$moduleName = $prefix . 'skins.' . $skin . '.' .
-			strtolower( $themeName );
+		$skin = $sk->getSkinName();
+		$prefix = $skin !== 'monaco' ? 'themeloader.' : '';
+		$moduleName = $prefix . "skins.$skin.$theme";
 
 		// Add the CSS file via ResourceLoader.
 		$out->addModuleStyles( $moduleName );
@@ -114,11 +88,7 @@ class Hooks implements
 	 */
 	public function onGetPreferences( $user, &$defaultPreferences ) {
 		$ctx = RequestContext::getMain();
-		$skin = $ctx->getRequest()->getRawVal( 'useskin' ) ??
-			$this->userOptionsLookup->getOption( $user, 'skin' );
-		// Normalize the key; this'll return the default skin in case if the user
-		// requested a skin that is *not* installed but for which Theme has themes
-		$skin = Skin::normalizeKey( $skin );
+		$skin = $ctx->getSkin()->getSkinName();
 
 		$themes = Theme::getAvailableThemes( $skin );
 		if ( count( $themes ) > 1 ) {
@@ -126,7 +96,7 @@ class Hooks implements
 			// Without this they show up as "0", "1", etc. in the UI
 			$themeArray = [];
 			foreach ( $themes as $theme ) {
-				$themeDisplayNameMsg = $ctx->msg( 'theme-name-' . $skin . '-' . $theme );
+				$themeDisplayNameMsg = $ctx->msg( "theme-name-$skin-$theme" );
 				if ( $themeDisplayNameMsg->isDisabled() ) {
 					// No i18n available for this -> use the key as-is
 					$themeDisplayName = $theme;
@@ -170,21 +140,7 @@ class Hooks implements
 	 * @return void This hook must not abort, it must return no value
 	 */
 	public function onOutputPageBodyAttributes( $out, $sk, &$bodyAttrs ): void {
-		// Check the following things in this order:
-		// 1) value of $wgDefaultTheme (set in site configuration)
-		// 2) user's personal preference/override
-		// 3) per-page usetheme URL parameter
-		$theme = $out->getConfig()->get( 'DefaultTheme' );
-		$theme = $this->userOptionsLookup->getOption( $out->getUser(), 'theme', $theme );
-		$theme = $out->getRequest()->getRawVal( 'usetheme', $theme );
-
-		// Paranoia
-		$theme = strtolower( $theme );
-
-		$resourceLoader = $out->getResourceLoader();
-		if ( !Theme::skinHasTheme( $sk->getSkinName(), $theme, $resourceLoader ) ) {
-			return;
-		}
+		$theme = $this->getTheme( $out );
 
 		if ( $theme !== 'default' ) {
 			$bodyAttrs['class'] .= ' theme-' . Sanitizer::escapeClass( $theme );
@@ -202,6 +158,34 @@ class Hooks implements
 	 */
 	public function onResourceLoaderGetConfigVars( array &$vars, $skin, Config $config ): void {
 		$vars['wgDefaultTheme'] = $config->get( 'DefaultTheme' );
+	}
+
+	/**
+	 * Detect the theme
+	 *
+	 * @param IContextSource $context
+	 * @return string Name of the theme
+	 */
+	private function getTheme( IContextSource $context ): string {
+		// Check the following things in this order:
+		// 1) value of $wgDefaultTheme (set in site configuration)
+		// 2) user's personal preference/override
+		// 3) per-page usetheme URL parameter
+		$theme = $context->getConfig()->get( 'DefaultTheme' );
+		$theme = $this->userOptionsLookup->getOption( $context->getUser(), 'theme', $theme );
+		$theme = $context->getRequest()->getRawVal( 'usetheme', $theme );
+
+		// Support any case of the theme name.
+		$theme = strtolower( $theme );
+
+		// Fall back to 'default' if the skin has no theme with this theme name.
+		$skinName = $context->getSkin()->getSkinName();
+		$resourceLoader = $context->getOutput()->getResourceLoader();
+		if ( !Theme::skinHasTheme( $skinName, $theme, $resourceLoader ) ) {
+			$theme = 'default';
+		}
+
+		return $theme;
 	}
 
 }
