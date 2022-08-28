@@ -65,4 +65,24 @@ class Theme {
 
 		return false;
 	}
+
+	/**
+	 * Get skins with themes.
+	 *
+	 * @param array $skins Array with all skin names
+	 * @return array Array containing skin names which supports themes
+	 */
+	public static function getSkinsWithThemes( $skins ) {
+		$skinsWithThemes = [];
+		$themes = ExtensionRegistry::getInstance()->getAttribute( 'ThemeModules' );
+
+		foreach ( $skins as $skin ) {
+			if ( isset( $themes[$skin] ) ) {
+				$skinsWithThemes[] = $skin;
+			}
+		}
+
+		return $skinsWithThemes;
+	}
+
 }
