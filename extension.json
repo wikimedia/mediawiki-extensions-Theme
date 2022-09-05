@@ -48,9 +48,6 @@
 			],
 			"messages": [ "theme-livepreview-note" ]
 		},
-		"ext.theme.preferences": {
-			"styles": "ext.theme.preferences.css"
-		},
 		"themeloader.skins.monobook.dark": {
 			"styles": {
 				"monobook/dark.css": {

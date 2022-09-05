@@ -74,8 +74,6 @@ class Hooks implements
 		) {
 			// Only load this JS on Special:Preferences/Special:GlobalPreferences
 			$out->addModules( 'ext.theme.livepreview' );
-			// Stupid CSS hack
-			$out->addModuleStyles( 'ext.theme.preferences' );
 		}
 	}
 
