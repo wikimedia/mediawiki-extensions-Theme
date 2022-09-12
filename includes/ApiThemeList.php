@@ -5,7 +5,6 @@ namespace MediaWiki\Extension\Theme;
 use ApiBase;
 use ApiMain;
 use ApiResult;
-use MediaWiki\Languages\LanguageNameUtils;
 use SkinFactory;
 
 /**
@@ -22,24 +21,18 @@ class ApiThemeList extends ApiBase {
 	/** @var SkinFactory */
 	private $skinFactory;
 
-	/** @var LanguageNameUtils */
-	private $languageNameUtils;
-
 	/**
 	 * @param ApiMain $main
 	 * @param string $action
 	 * @param SkinFactory $skinFactory
-	 * @param LanguageNameUtils $languageNameUtils
 	 */
 	public function __construct(
 		ApiMain $main,
 		$action,
-		SkinFactory $skinFactory,
-		LanguageNameUtils $languageNameUtils
+		SkinFactory $skinFactory
 	) {
 		parent::__construct( $main, $action );
 		$this->skinFactory = $skinFactory;
-		$this->languageNameUtils = $languageNameUtils;
 	}
 
 	/**
@@ -65,21 +58,8 @@ class ApiThemeList extends ApiBase {
 			// $themes = Skin::getAvailableThemes( $skin );
 			foreach ( $themes as $idx => $themeKey ) {
 				$msg = $this->msg( "theme-name-{$skin}-{$themeKey}" );
-				// added @ because I was getting
-				// Notice: Undefined index: inlanguagecode in ../includes/api/ApiBase.php on line 879
-				// on my 1.34alpha devbox; that is not a problem with the code in
-				// https://gerrit.wikimedia.org/r/465451/
-				// @phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged
-				$code = @$this->getParameter( 'inlanguagecode' );
-				if ( $code && $this->languageNameUtils->isValidCode( $code ) ) {
-					$msg->inLanguage( $code );
-				} else {
-					$msg->inContentLanguage();
-				}
-				$themeDisplayName = $themeKey;
-				if ( $msg->exists() ) {
-					$themeDisplayName = $msg->text();
-				}
+				$msg->inLanguage( $this->getLanguage() );
+				$themeDisplayName = $msg->exists() ? $msg->text() : $themeKey;
 				$theme = [ 'code' => $themeKey ];
 				ApiResult::setContentValue( $theme, 'name', $themeDisplayName );
 				if ( $themeKey === $defaultTheme && $skin === $defaultSkin ) {

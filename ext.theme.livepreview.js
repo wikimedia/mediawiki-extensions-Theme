@@ -44,7 +44,8 @@
 				meta: 'siteinfo',
 				siprop: 'themes'
 				*/
-				action: 'themelist'
+				action: 'themelist',
+				uselang: mw.config.get( 'wgUserLanguage' )
 			} ).then( function ( data ) {
 				return data.query.themes;
 			} );
