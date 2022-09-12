@@ -125,6 +125,7 @@
 		"ThemeHooks": {
 			"class": "MediaWiki\\Extension\\Theme\\Hooks",
 			"services": [
+				"SkinFactory",
 				"UserOptionsLookup"
 			]
 		}

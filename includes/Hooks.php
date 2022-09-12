@@ -13,6 +13,7 @@ use OutputPage;
 use RequestContext;
 use Sanitizer;
 use Skin;
+use SkinFactory;
 use User;
 
 class Hooks implements
@@ -22,15 +23,21 @@ class Hooks implements
 	ResourceLoaderGetConfigVarsHook
 {
 
+	/** @var SkinFactory */
+	private $skinFactory;
+
 	/** @var UserOptionsLookup */
 	private $userOptionsLookup;
 
 	/**
+	 * @param SkinFactory $skinFactory
 	 * @param UserOptionsLookup $userOptionsLookup
 	 */
 	public function __construct(
+		SkinFactory $skinFactory,
 		UserOptionsLookup $userOptionsLookup
 	) {
+		$this->skinFactory = $skinFactory;
 		$this->userOptionsLookup = $userOptionsLookup;
 	}
 
@@ -108,42 +115,48 @@ class Hooks implements
 		$skin = $ctx->getSkin()->getSkinName();
 
 		$themes = Theme::getAvailableThemes( $skin );
-		if ( count( $themes ) > 1 ) {
-			// Braindead code needed to make the theme *names* show up
-			// Without this they show up as "0", "1", etc. in the UI
-			$themeArray = [];
-			foreach ( $themes as $theme ) {
-				$themeDisplayNameMsg = $ctx->msg( "theme-name-$skin-$theme" );
-				if ( $themeDisplayNameMsg->isDisabled() ) {
-					// No i18n available for this -> use the key as-is
-					$themeDisplayName = $theme;
-				} else {
-					// Use i18n; it's much nicer to display formatted theme names if and when
-					// a theme name contains spaces, uppercase characters, etc.
-					$themeDisplayName = $themeDisplayNameMsg->text();
-				}
-				$themeArray[$themeDisplayName] = $theme;
+		// Braindead code needed to make the theme *names* show up
+		// Without this they show up as "0", "1", etc. in the UI
+		$themeArray = [];
+		foreach ( $themes as $theme ) {
+			$themeDisplayNameMsg = $ctx->msg( "theme-name-$skin-$theme" );
+			if ( $themeDisplayNameMsg->isDisabled() ) {
+				// No i18n available for this -> use the key as-is
+				$themeDisplayName = $theme;
+			} else {
+				// Use i18n; it's much nicer to display formatted theme names if and when
+				// a theme name contains spaces, uppercase characters, etc.
+				$themeDisplayName = $themeDisplayNameMsg->text();
 			}
-
-			$defaultTheme = $ctx->getConfig()->get( 'DefaultTheme' );
-			$defaultTheme = $this->userOptionsLookup->getOption( $user, 'theme', $defaultTheme );
-			$defaultPreferences['theme'] = [
-				'type' => 'select',
-				'options' => $themeArray,
-				'default' => $defaultTheme,
-				'label-message' => 'theme-prefs-label',
-				'section' => 'rendering/skin',
-			];
-		} else {
-			// If a skin has no themes (besides "default"),
-			// show only an informative message instead
-			$defaultPreferences['theme'] = [
-				'type' => 'info',
-				'label-message' => 'theme-prefs-label',
-				'default' => $ctx->msg( 'theme-unsupported-skin' )->text(),
-				'section' => 'rendering/skin',
-			];
+			$themeArray[$themeDisplayName] = $theme;
 		}
+
+		$skinsWithThemes = Theme::getSkinsWithThemes( $this->skinFactory->getSkinNames() );
+		$showIf = [ 'OR' ];
+		foreach ( $skinsWithThemes as $skin ) {
+			$showIf[] = [ '===', 'skin', $skin ];
+		}
+
+		$defaultTheme = $ctx->getConfig()->get( 'DefaultTheme' );
+		$defaultTheme = $this->userOptionsLookup->getOption( $user, 'theme', $defaultTheme );
+		$defaultPreferences['theme'] = [
+			'type' => 'select',
+			'options' => $themeArray,
+			'default' => $defaultTheme,
+			'label-message' => 'theme-prefs-label',
+			'section' => 'rendering/skin',
+			'hide-if' => [ 'NOT', $showIf ],
+		];
+
+		// If a skin has no themes (besides "default"),
+		// show only an informative message instead
+		$defaultPreferences['notheme'] = [
+			'type' => 'info',
+			'label-message' => 'theme-prefs-label',
+			'default' => $ctx->msg( 'theme-unsupported-skin' )->text(),
+			'section' => 'rendering/skin',
+			'hide-if' => $showIf,
+		];
 	}
 
 	/**
