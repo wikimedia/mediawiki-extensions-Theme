@@ -133,7 +133,6 @@
 				// @todo FIXME: When core-ifying this code again, remove this stupid special case
 				// hack
 				prefix = skin !== 'monaco' ? 'themeloader.' : '',
-				cacheKey = skin + '-' + chosenValue,
 				match, moduleName, originalStyleHref, re;
 
 			// Per Samantha, show a note indicating that the change hasn't been
@@ -181,8 +180,8 @@
 					$( 'head link[rel="stylesheet"]' ).attr( 'href', originalStyleHref.replace( '%7C' + moduleName, '' ) );
 				} else if ( chosenValue === userTheme ) {
 					// Try cache anyway
-					if ( cacheKey in cache ) {
-						mw.loader.addStyleTag( cache[ cacheKey ] );
+					if ( chosenValue in cache ) {
+						mw.loader.addStyleTag( cache[ chosenValue ] );
 						return;
 					}
 
@@ -203,8 +202,8 @@
 							skin: skin
 						} )
 					} ).done( function ( css ) {
-						if ( !( cacheKey in cache ) ) {
-							cache[ cacheKey ] = css;
+						if ( !( chosenValue in cache ) ) {
+							cache[ chosenValue ] = css;
 						}
 						mw.loader.addStyleTag( css );
 					} );
@@ -217,9 +216,9 @@
 			}
 
 			// Try cache first
-			if ( cacheKey in cache ) {
+			if ( chosenValue in cache ) {
 				// Yes, we got a cache hit! Inject the cached CSS, then.
-				mw.loader.addStyleTag( cache[ cacheKey ] );
+				mw.loader.addStyleTag( cache[ chosenValue ] );
 				// Return because there's nothing to be done here, we already have
 				// the proper CSS (and calling ResourceLoader again below
 				// would just load some Tipsy CSS or w/e and we don't want to pollute
@@ -232,8 +231,8 @@
 			mw.loader.using(
 				prefix + 'skins.' + skin + '.' + chosenValue
 			).then( function () {
-				if ( !( cacheKey in cache ) ) {
-					cache[ cacheKey ] = $( 'head style' ).last().text();
+				if ( !( chosenValue in cache ) ) {
+					cache[ chosenValue ] = $( 'head style' ).last().text();
 				}
 			} );
 		}
