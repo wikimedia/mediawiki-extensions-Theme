@@ -17,13 +17,20 @@
 				// @todo FIXME: When core-ifying this code again,
 				// remove this stupid special case hack
 				prefix = skin !== 'monaco' ? 'themeloader.' : '',
-				moduleName = prefix + 'skins.' + skin + '.' + theme;
-			cache[ theme ] = $.ajax( {
-				url: mw.util.wikiScript( 'load' ) + '?' + $.param( {
+				moduleName = prefix + 'skins.' + skin + '.' + theme,
+				params = {
+					// Use alphabetical order.
+					debug: 1,
 					modules: moduleName,
 					only: 'styles',
 					skin: skin
-				} )
+				};
+			if ( mw.config.get( 'debug' ) !== 1 ) {
+				// The delete keeps the alphabetical order.
+				delete params.debug;
+			}
+			cache[ theme ] = $.ajax( {
+				url: mw.util.wikiScript( 'load' ) + '?' + $.param( params )
 			} );
 		}
 		return cache[ theme ];
