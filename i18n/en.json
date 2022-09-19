@@ -8,5 +8,7 @@
 	"theme-prefs-label": "Theme:",
 	"theme-livepreview-note": "Note that you are only previewing the $1 theme. To make the changes permanent, press the \"save\" button below.",
 	"theme-unsupported-skin": "The skin you are currently using does not support themes. Please use another skin if you wish to use a non-default theme.",
+	"theme-name-monobook-stellarbook": "StellarBook",
+	"theme-name-vector-deepsea": "DeepSea",
 	"theme-desc": "Controls the installation of CSS variants of the wiki's skins"
 }
