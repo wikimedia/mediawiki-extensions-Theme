@@ -69,10 +69,14 @@ class Theme {
 	/**
 	 * Get skins with themes.
 	 *
-	 * @param array $skins Array with all skin names
+	 * @param array $skins Array with all skin names (skin key -> i18ned/human-friendly name)
 	 * @return array Array containing skin names which supports themes
 	 */
 	public static function getSkinsWithThemes( $skins ) {
+		// We only want the internal values, not the potentially i18n'ed (or CamelCased or
+		// whatever), human-friendly names
+		$skins = array_keys( $skins );
+
 		$skinsWithThemes = [];
 		$themes = ExtensionRegistry::getInstance()->getAttribute( 'ThemeModules' );
 
