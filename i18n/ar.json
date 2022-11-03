@@ -5,6 +5,8 @@
 			"ديفيد"
 		]
 	},
+	"apihelp-themelist-summary": "احصل على قائمة بجميع الأشكال وموضوعاتها",
+	"apihelp-themelist-example-1": "احصل على قائمة بجميع الأشكال وموضوعاتها",
 	"theme-extensionname": "مظهر",
 	"theme-prefs-label": "السمة:",
 	"theme-livepreview-note": "لاحظ أنك تقوم بمعاينة السمة $1 فقط، لإجراء التغييرات بشكل دائم; اضغط على الزر \"حفظ\" أدناه.",
