@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"McDutchie"
+		]
+	},
+	"apihelp-themelist-summary": "Obtener le lista de tote le apparentias e lor themas",
+	"apihelp-themelist-example-1": "Obtener le lista de tote le apparentias e lor themas",
+	"theme-prefs-label": "Thema:",
+	"theme-livepreview-note": "Nota que isto es solmente un previsualisation del thema $1. Pro render le cambiamentos permanente, preme le button \"salveguardar\" hic infra.",
+	"theme-unsupported-skin": "Le apparentia que tu usa in iste momento non supporta le themas. Per favor usa un altere apparentia si tu vole usar un thema non predefinite.",
+	"theme-desc": "Controla le installation de variantes CSS del apparentias del wiki"
+}
