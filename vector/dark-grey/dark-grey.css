@@ -24,6 +24,10 @@
  * =========================
  */
 
+:root {
+	--right-margin: 20px;
+}
+
 html body {
 	position: relative;
 	margin-left: auto;
@@ -32,16 +36,16 @@ html body {
 }
 
 #p-personal {
-	right: 0;
+	right: var(--right-margin);
 }
 
 #p-search {
-	margin-right: 0;
+	margin-right: var(--right-margin);
 }
 
 .suggestions {
 	/* We can't get around !important here due to inline CSS. */
-	right: 0 !important;
+	right: var(--right-margin) !important;
 }
 
 /* For Extension:UniversalLanguageSelector */
@@ -49,59 +53,67 @@ html body {
 	position: fixed;
 }
 
+#content {
+	margin-right: var(--right-margin);
+}
+
 /*
  * =======================
  * = Color configuration =
  * =======================
  */
+
 :root {
-	--bg-main:   rgb(35, 35, 35);
-	--bg-main2:  rgb(42, 42, 42);
-	--bg-main3:  rgb(48, 48, 48);
-	--bg-dark:   rgb(27, 27, 27);
-	--bg-darker: rgb(20, 20, 20);
+	--bg-main:   rgb(35 35 35);
+	--bg-main2:  rgb(42 42 42);
+	--bg-main3:  rgb(48 48 48);
+	--bg-dark:   rgb(27 27 27);
+	--bg-darker: rgb(20 20 20);
 
-	--bdr-white: rgb(160, 160, 160);
-	--bdr-color: rgb(120, 80, 0);
-	--bdr-hl:    rgb(180, 80, 0);
+	--bdr-white: rgb(160 160 160);
+	--bdr-color: rgb(120  80   0);
+	--bdr-hl:    rgb(180  80   0);
 
-	--fg:       rgb(210, 210, 210);
-	--fg-light: rgb(240, 240, 240);
-	--fg-dark:  rgb(150, 150, 150);
+	--fg:       rgb(210 210 210);
+	--fg-light: rgb(240 240 240);
+	--fg-dark:  rgb(150 150 150);
 
-	--link:     rgb(230, 130, 15);
-	--link-vis: rgb(185, 85, 0);
-	--link-new: rgb(220, 70, 70);
+	--link:     rgb(230 130 15);
+	--link-vis: rgb(185  85  0);
+	--link-new: rgb(220  70 70);
 
-	--btn-bg:  rgb(45, 45, 45);
-	--btn-bdr: rgb(160, 160, 160);
-	--btn-fg:  rgb(210, 210, 210);
-	--btn-bg-hl:  rgb(40, 40, 40);
-	--btn-bdr-hl: rgb(120, 80, 0);
-	--btn-fg-hl:  rgb(210, 210, 210);
+	--btn-bg:  rgb( 45  45  45);
+	--btn-bdr: rgb(160 160 160);
+	--btn-fg:  rgb(210 210 210);
+
+	--btn-bg-hl:  rgb( 40  40  40);
+	--btn-bdr-hl: rgb(120  80   0);
+	--btn-fg-hl:  rgb(210 210 210);
 
 	/* Not for :active but the OOUI active class */
-	--btn-active-bg:  rgb(210, 80, 0);
-	--btn-active-bdr: rgb(210, 80, 0);
-	--btn-active-fg:  rgb(240, 240, 240);
+	--btn-active-bg:  rgb(210  80   0);
+	--btn-active-bdr: rgb(210  80   0);
+	--btn-active-fg:  rgb(240 240 240);
 
-	--btn-prim-bg:  rgb(210, 80, 0);
-	--btn-prim-bdr: rgb(210, 80, 0);
-	--btn-prim-fg:  rgb(240, 240, 240);
-	--btn-prim-bg-hl:  rgb(180, 60, 0);
-	--btn-prim-bdr-hl: rgb(180, 60, 0);
-	--btn-prim-fg-hl:  rgb(240, 240, 240);
+	--btn-prim-bg:  rgb(210  80   0);
+	--btn-prim-bdr: rgb(210  80   0);
+	--btn-prim-fg:  rgb(240 240 240);
 
-	--btn-destr-bg:  rgb(50, 50, 50);
-	--btn-destr-bdr: rgb(210, 60, 60);
-	--btn-destr-fg:  rgb(210, 60, 60);
-	--btn-destr-bg-hl: rgb(40, 40, 40);
-	--btn-destr-bdr-hl: rgb(120, 80, 0);
-	--btn-destr-fg-hl:  rgb(210, 60, 60);
+	--btn-prim-bg-hl:  rgb(180  60   0);
+	--btn-prim-bdr-hl: rgb(180  60   0);
+	--btn-prim-fg-hl:  rgb(240 240 240);
 
-	--btn-disabled-bg:  rgb(60, 60, 60);
-	--btn-disabled-bdr: rgb(150, 150, 150);
-	--btn-disabled-fg:  rgb(150, 150, 150);
+	--btn-destr-bg:  rgb( 50 50 50);
+	--btn-destr-bdr: rgb(210 60 60);
+	--btn-destr-fg:  rgb(210 60 60);
+
+	--btn-destr-bg-hl:  rgb( 40 40 40);
+	--btn-destr-bdr-hl: rgb(120 80  0);
+	--btn-destr-fg-hl:  rgb(210 60 60);
+
+	--btn-disabled-bg:  rgb( 60  60  60);
+	--btn-disabled-bdr: rgb(150 150 150);
+	--btn-disabled-fg:  rgb(150 150 150);
 
 	--checkbox-bg-unchecked:  var(--bg-dark);
 	--checkbox-bdr-unchecked: var(--bdr-white);
@@ -117,16 +129,16 @@ html body {
 	--radio-bdr-checked:   var(--btn-prim-bg-hl);
 	--radio-bdr-hover:     var(--btn-prim-bg);
 
-	--diff-bdr-add: rgb(180, 255, 180);
-	--diff-bdr-del: rgb(255, 180, 180);
-	--diff-bdr-ntr: rgb(190, 190, 190);
-	--diff-text-add-bg: rgb(140, 255, 140);
-	--diff-text-add-fg: rgb(0, 0, 0);
-	--diff-text-del-bg: rgb(255, 140, 140);
-	--diff-text-del-fg: rgb(0, 0, 0);
+	--diff-bdr-add: rgb(180 255 180);
+	--diff-bdr-del: rgb(255 180 180);
+	--diff-bdr-ntr: rgb(190 190 190);
+	--diff-text-add-bg: rgb(140 255 140);
+	--diff-text-add-fg: rgb(0 0 0);
+	--diff-text-del-bg: rgb(255 140 140);
+	--diff-text-del-fg: rgb(0 0 0);
 
-	--diff-count-pos: rgb(0, 200, 0);
-	--diff-count-neg: rgb(240, 70, 70);
+	--diff-count-pos: rgb(  0 200  0);
+	--diff-count-neg: rgb(240  70 70);
 }
 
 /*
@@ -134,8 +146,10 @@ html body {
  * = Standard HTML elements =
  * ==========================
  */
+
 html body {
 	background: var(--bg-dark);
+	color: var(--fg);
 }
 
 :focus {
@@ -143,15 +157,23 @@ html body {
 }
 
 /*
- * Headers
+ * Headers and paragraphs
  */
 h1, h2, h3, h4, h5, h6 {
 	color: var(--fg);
+}
+
+h1, h2, h3 {
+	font-family: 'Linux Libertine', 'Georgia', 'Times', serif;
 	border-bottom: 1px solid var(--bdr-color);
 }
 
-h3, h4, h5, h6 {
+h4, h5, h6 {
 	border-bottom: none;
+}
+
+p {
+	color: var(--fg);
 }
 
 /*
@@ -162,7 +184,13 @@ table {
 	color: var(--fg);
 }
 
-input:not([type]) {
+/*
+ * Inputs
+ */
+input[type=text],
+input:not([type]),
+select,
+option {
 	background: var(--bg-dark);
 	border: 1px solid var(--bdr-color);
 	color: var(--fg);
@@ -263,6 +291,56 @@ fieldset {
 /* We add a gratuitous .oo-ui-widget in some places to increase the weight of the selectors. */
 
 /*
+ * Classic UI widgets
+ */
+.ui-widget-overlay {
+	background: rgb(0 0 0 / .3) !important;
+}
+
+.ui-widget-content {
+	/* Have to use !important to override inline style. */
+	color: var(--fg) !important;
+}
+
+.ui-widget.ui-widget-content {
+	background: var(--bg-main);
+	color: var(--fg);
+}
+
+body .ui-dialog .ui-dialog-titlebar.ui-widget-header,
+body .ui-dialog .ui-dialog-buttonpane.ui-widget-content {
+	/* Have to use !important to override another one, ugh. */
+	background: var(--bg-main3) !important;
+	color: var(--fg);
+}
+
+.ui-widget .ui-widget-header {
+	border: 1px solid var(--bdr-color);
+}
+
+body .ui-button.ui-widget {
+	background: var(--btn-bg) !important;
+	border: 1px solid var(--btn-bdr) !important;
+	color: var(--btn-fg);
+	box-shadow: none;
+}
+
+body .ui-button.ui-widget:is(:hover, :active, :focus) {
+	background: var(--btn-bg-hl) !important;
+	border: 1px solid var(--btn-bdr-hl) !important;
+	color: var(--btn-fg-hl);
+	box-shadow: none;
+}
+
+/*
+ * Message dialog
+ */
+.oo-ui-widget.oo-ui-messageDialog-title,
+.oo-ui-widget.oo-ui-messageDialog-message {
+	color: var(--fg);
+}
+
+/*
  * Panels
  */
 .oo-ui-panelLayout-framed {
@@ -270,20 +348,243 @@ fieldset {
 }
 
 /*
+ * Media search widget
+ */
+.oo-ui-widget.oo-ui-widget-enabled.mw-widget-mediaSearchWidget
+.mw-widget-mediaResultWidget
+.mw-widget-mediaResultWidget-overlay {
+	border: 1px solid var(--bdr-white);
+	box-shadow: none;
+}
+
+.oo-ui-widget.oo-ui-widget-enabled.mw-widget-mediaSearchWidget
+.mw-widget-mediaResultWidget:is(:hover, :active, :focus, .oo-ui-optionWidget-selected) {
+	border: none;
+	box-shadow: none;
+}
+
+.oo-ui-widget.oo-ui-widget-enabled.mw-widget-mediaSearchWidget
+.mw-widget-mediaResultWidget:is(:hover, :active, :focus, .oo-ui-optionWidget-selected)
+.mw-widget-mediaResultWidget-overlay {
+	border: 1px solid var(--bdr-color);
+	box-shadow: none;
+}
+
+/*
+ * File upload widget
+ */
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-selectFileWidget.oo-ui-selectFileWidget-dropTarget {
+	background-color: var(--bg-main);
+}
+
+.oo-ui-selectFileWidget-dropLabel,
+.oo-ui-widget.oo-ui-labelWidget.oo-ui-inline-help {
+	color: var(--fg);
+}
+
+/*
+ * Windows
+ */
+.oo-ui-windowManager.oo-ui-windowManager-modal
+.oo-ui-window.oo-ui-dialog
+.oo-ui-window-frame {
+	background-color: var(--bg-main);
+	border: 1px solid var(--bdr-white);
+	box-shadow: none;
+}
+
+.oo-ui-windowManager.oo-ui-windowManager-floating
+.oo-ui-window.oo-ui-dialog
+.oo-ui-window-frame
+.oo-ui-window-foot {
+	outline: none;
+}
+
+/*
+ * Save dialog
+ */
+.ve-ui-mwSaveDialog-savePanel .ve-ui-mwSaveDialog-summary {
+	background: transparent;
+}
+
+.ve-ui-mwSaveDialog-savePanel .ve-ui-mwSaveDialog-options {
+	background-color: var(--bg-main2);
+	border: 1px solid var(--bdr-white);
+}
+
+.ve-ui-mwSaveDialog-savePanel .ve-ui-mwSaveDialog-summaryLabel,
+.ve-ui-mwSaveDialog-savePanel .ve-ui-mwSaveDialog-license {
+	color: var(--fg);
+}
+
+/*
  * Tab select widget
  */
 .oo-ui-widget.oo-ui-widget-enabled.oo-ui-tabSelectWidget-framed {
 	background-color: var(--bg-main2);
-}
-
-.oo-ui-widget.oo-ui-widget-enabled.oo-ui-tabSelectWidget-framed
-.oo-ui-tabOptionWidget:is(:hover, .oo-ui-optionWidget-selected) {
-	background-color: var(--bg-main3);
+	box-shadow: none;
 }
 
 .oo-ui-widget.oo-ui-widget-enabled.oo-ui-tabSelectWidget-framed
 .oo-ui-tabOptionWidget {
 	color: var(--fg);
+}
+
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-tabSelectWidget-framed
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-tabOptionWidget:is(:hover, :active, :focus, .oo-ui-optionWidget-selected) {
+	background-color: var(--bg-main3);
+	box-shadow: none;
+	color: var(--fg);
+}
+
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-tabSelectWidget-frameless {
+	background-color: var(--bg-main2);
+	box-shadow: none;
+}
+
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-tabSelectWidget-frameless
+.oo-ui-tabOptionWidget {
+	color: var(--fg);
+}
+
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-tabSelectWidget-frameless
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-tabOptionWidget:is(:hover, :active, :focus, .oo-ui-optionWidget-selected) {
+	background-color: var(--bg-main3);
+	box-shadow: none;
+	color: var(--link);
+}
+
+/*
+ * Toolbar
+ */
+
+.oo-ui-toolbar
+.oo-ui-toolbar-bar {
+	background-color: var(--bg-main);
+	color: var(--fg);
+}
+
+.oo-ui-toolbar.oo-ui-toolbar-position-top
+.oo-ui-toolbar-bar {
+	border-bottom: 1px solid var(--bdr-white);
+}
+
+.oo-ui-toolbar
+.oo-ui-menuToolGroup {
+	border-left: 1px solid var(--bdr-color);
+	border-right: 1px solid var(--bdr-color);
+}
+
+.oo-ui-toolbar
+.oo-ui-menuToolGroup-tools
+.oo-ui-tool.oo-ui-tool-active {
+	background-color: var(--bg-main);
+}
+
+.oo-ui-toolbar
+.oo-ui-tool.oo-ui-widget-enabled
+.oo-ui-tool-link:is(:hover, :active, :focus) {
+	outline: none;
+	box-shadow: none;
+}
+
+.oo-ui-toolbar
+.oo-ui-toolbar-actions
+.oo-ui-popupToolGroup.oo-ui-widget-enabled
+.oo-ui-popupToolGroup-handle {
+	border-right: none;
+	outline: none;
+	box-shadow: none;
+}
+
+.oo-ui-toolbar
+.oo-ui-toolbar-actions
+.oo-ui-popupToolGroup.oo-ui-widget-enabled
+.oo-ui-popupToolGroup-handle:is(:hover, :active, :focus) {
+	border-right: none;
+	outline: none;
+	box-shadow: none;
+}
+
+.oo-ui-toolbar
+.oo-ui-tool.oo-ui-widget-enabled
+.oo-ui-tool-link:is(:hover, :active, :focus) {
+	background-color: var(--bg-main3);
+	color: var(--fg);
+}
+
+.oo-ui-toolbar
+.oo-ui-tool.oo-ui-widget-enabled.oo-ui-tool-active .oo-ui-tool-link {
+	background-color: var(--bg-main3);
+	color: var(--fg);
+}
+
+.oo-ui-toolbar
+.oo-ui-popupToolGroup.oo-ui-widget-enabled
+.oo-ui-popupToolGroup-handle {
+	border-right: none;
+	outline: none;
+	box-shadow: none;
+}
+
+.oo-ui-toolbar
+.oo-ui-popupToolGroup.oo-ui-widget-enabled
+.oo-ui-popupToolGroup-handle:is(:hover, :active, :focus) {
+	background-color: var(--bg-main3);
+	color: var(--fg);
+}
+
+.oo-ui-toolbar
+.oo-ui-popupToolGroup.oo-ui-popupToolGroup-active
+.oo-ui-popupToolGroup-handle {
+	background-color: var(--bg-main3);
+	color: var(--fg);
+}
+
+.oo-ui-toolbar
+.oo-ui-popupToolGroup-tools {
+	background-color: var(--bg-dark);
+	border: 1px solid var(--bdr-white);
+}
+
+.oo-ui-toolbar
+.oo-ui-listToolGroup-tools
+.oo-ui-tool.oo-ui-widget-enabled:is(:hover, :active, :focus) {
+	background-color: var(--bg-dark);
+	color: var(--fg);
+}
+
+.oo-ui-toolbar
+.oo-ui-popupToolGroup-tools .oo-ui-tool-active.oo-ui-widget-enabled
+.oo-ui-tool-link .oo-ui-tool-title {
+	color: var(--fg);
+}
+
+.oo-ui-toolbar
+.oo-ui-barToolGroup-tools.oo-ui-toolGroup-disabled-tools
+.oo-ui-tool.oo-ui-flaggedElement-primary .oo-ui-tool-link {
+	background: var(--btn-disabled-bg);
+	border: 1px solid var(--btn-disabled-bg); /* No border on this one */
+	color: var(--btn-disabled-fg);
+	box-shadow: none;
+}
+
+.oo-ui-toolbar
+.oo-ui-tool.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-progressive
+.oo-ui-tool-link {
+	background: var(--btn-prim-bg);
+	border: 1px solid var(--btn-prim-bdr);
+	color: var(--btn-prim-fg);
+	box-shadow: none;
+}
+
+.oo-ui-toolbar
+.oo-ui-tool.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-progressive
+.oo-ui-tool-link:is(:hover, :active, :focus) {
+	background: var(--btn-prim-bg-hl);
+	border: 1px solid var(--btn-prim-bdr-hl);
+	color: var(--btn-prim-fg-hl);
+	box-shadow: none;
 }
 
 /*
@@ -306,8 +607,10 @@ fieldset {
 .mw-ui-input:not(:disabled):is(:hover, :active, :focus),
 .oo-ui-widget.oo-ui-widget-enabled.oo-ui-textInputWidget:is(*, :hover)
 .oo-ui-inputWidget-input:is(:hover, :active, :focus) {
-	border: 1px solid var(--bdr-color);
-	box-shadow: inset 0 0 0 1px var(--bdr-hl);
+	border: 1px solid var(--bdr-hl);
+	box-shadow: none;
+	outline: none;
+	outline-offset: 0;
 }
 
 .mw-ui-input:not(:disabled)::placeholder,
@@ -360,6 +663,8 @@ fieldset {
 .oo-ui-widget.oo-ui-widget-enabled.oo-ui-buttonElement-framed.oo-ui-flaggedElement-primary
 .oo-ui-buttonElement-button,
 .oo-ui-widget.oo-ui-widget-enabled.oo-ui-buttonElement-framed.oo-ui-flaggedElement-progressive
+.oo-ui-buttonElement-button,
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-buttonElement-framed.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-progressive
 .oo-ui-buttonElement-button {
 	background: var(--btn-prim-bg);
 	border: 1px solid var(--btn-prim-bdr);
@@ -371,6 +676,8 @@ fieldset {
 .oo-ui-widget.oo-ui-widget-enabled.oo-ui-buttonElement-framed.oo-ui-flaggedElement-primary
 .oo-ui-buttonElement-button:is(:hover, :active, :focus),
 .oo-ui-widget.oo-ui-widget-enabled.oo-ui-buttonElement-framed.oo-ui-flaggedElement-progressive
+.oo-ui-buttonElement-button:is(:hover, :active, :focus),
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-buttonElement-framed.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-progressive
 .oo-ui-buttonElement-button:is(:hover, :active, :focus) {
 	background: var(--btn-prim-bg-hl);
 	border: 1px solid var(--btn-prim-bdr-hl);
@@ -472,6 +779,30 @@ fieldset {
 	box-shadow: none;
 }
 
+/* Close button of some dialogs */
+.oo-ui-processDialog-actions-safe
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-iconElement:not(.oo-ui-labelElement)
+.oo-ui-buttonElement-button {
+	background-color: transparent;
+	border: none;
+}
+
+.oo-ui-processDialog-actions-safe
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-iconElement:not(.oo-ui-labelElement)
+.oo-ui-buttonElement-button:is(:hover, :active, :focus) {
+	background-color: var(--btn-bg-hl);
+	border: none;
+}
+
+/* Button select widget */
+.oo-ui-widget.oo-ui-buttonSelectWidget.oo-ui-widget-enabled:is(:hover, :active, :focus)
+.oo-ui-buttonOptionWidget.oo-ui-optionWidget-selected
+.oo-ui-buttonElement-button {
+	border-color: var(--btn-active-bdr);
+	box-shadow: none;
+	outline: none;
+}
+
 /*
  * Dropdown Menus
  */
@@ -489,9 +820,9 @@ fieldset {
 .oo-ui-widget.oo-ui-widget-enabled.oo-ui-dropdownWidget
 .oo-ui-dropdownWidget-handle:is(:hover, :active, :focus) {
 	background: var(--bg-dark);
-	border: 1px solid var(--bdr-color);
+	border: 1px solid var(--bdr-hl);
 	color: var(--fg);
-	box-shadow: inset 0 0 0 1px var(--bdr-hl);
+	box-shadow: none;
 }
 
 .oo-ui-widget.oo-ui-widget-enabled.oo-ui-dropdownWidget.oo-ui-dropdownWidget-open
@@ -504,9 +835,9 @@ fieldset {
 .oo-ui-widget.oo-ui-widget-enabled.oo-ui-dropdownWidget.oo-ui-dropdownWidget-open
 .oo-ui-dropdownWidget-handle:is(:hover, :active, :focus) {
 	background: var(--bg-dark);
-	border: 1px solid var(--bdr-color);
+	border: 1px solid var(--bdr-hl);
 	color: var(--fg);
-	box-shadow: inset 0 0 0 1px var(--bdr-hl);
+	box-shadow: none;
 }
 
 .oo-ui-widget.oo-ui-widget-enabled.oo-ui-menuSelectWidget {
@@ -572,16 +903,16 @@ fieldset {
 /*
  * Radio buttons
  */
-.oo-ui-widget.oo-ui-widget-enabled.oo-ui-radioInputWidget[type="radio"] + span {
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-radioInputWidget [type="radio"] + span {
 	background-color: var(--radio-bg);
 	border-color: var(--radio-bdr-unchecked);
 }
 
-.oo-ui-widget.oo-ui-widget-enabled.oo-ui-radioInputWidget[type="radio"]:checked + span {
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-radioInputWidget [type="radio"]:checked + span {
 	border-color: var(--radio-bdr-checked);
 }
 
-.oo-ui-widget.oo-ui-widget-enabled.oo-ui-radioInputWidget[type="radio"]:hover + span {
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-radioInputWidget [type="radio"]:hover + span {
 	border-color: var(--radio-bdr-hover);
 }
 
@@ -605,7 +936,8 @@ fieldset {
 .mw-widget-dateInputWidget-handle:is(:hover, :active, :focus) {
 	background: var(--bg-dark);
 	color: var(--fg);
-	box-shadow: inset 0 0 0 1px var(--bdr-hl);
+	border: 1px solid var(--bdr-hl);
+	box-shadow: none;
 	transition: border-color 250ms;
 }
 
@@ -796,16 +1128,16 @@ fieldset {
 }
 
 /*
- * Anchored pop-ups
+ * Popup widget & anchor
  */
-.oo-ui-widget.oo-ui-widget-enabled.oo-ui-popupWidget-anchored
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-popupWidget
 .oo-ui-popupWidget-popup {
 	background: var(--bg-dark);
 	border: 1px solid var(--bdr-white);
 }
 
-.oo-ui-widget.oo-ui-widget-enabled.oo-ui-popupWidget-anchored
-.oo-ui-popupWidget-popup label {
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-popupWidget
+.oo-ui-popupWidget-popup label{
 	color: var(--fg);
 }
 
@@ -848,6 +1180,32 @@ fieldset {
 	color: var(--fg);
 }
 
+.oo-ui-widget.ve-ui-targetWidget-focused {
+	border: 1px solid var(--bdr-hl);
+	box-shadow: none;
+}
+
+.oo-ui-widget.oo-ui-outlineOptionWidget.oo-ui-optionWidget-highlighted,
+.oo-ui-widget.oo-ui-outlineOptionWidget.oo-ui-optionWidget-selected {
+	background-color: var(--bg-main3);
+	color: var(--fg);
+}
+
+.oo-ui-widget.oo-ui-widget-enabled.oo-ui-selectWidget
+.oo-ui-menuOptionWidget.oo-ui-optionWidget-highlighted {
+	background: var(--bg-main2);
+}
+
+.oo-ui-widget.ve-ui-targetWidget:not(.oo-ui-pendingElement-pending) {
+	background: transparent;
+}
+
+.mw-message-box-warning.mw-message-box {
+	background-color: var(--bg-main2);
+	border: 1px solid var(--bdr-color);
+	color: var(--fg);
+}
+
 /* Kind of a catch-all to make icons dark */
 .oo-ui-iconElement-icon,
 .oo-ui-indicatorElement-indicator {
@@ -859,6 +1217,7 @@ fieldset {
  * = Parts of the main MediaWiki UI =
  * ==================================
  */
+
 #mw-page-base {
 	background: transparent;
 }
@@ -910,7 +1269,7 @@ fieldset {
  * The "More [actions]" drop-down pseudo-tab
  */
 
-#mw-head .vector-menu-dropdown h3 {
+#mw-head .vector-menu-dropdown .vector-menu-heading {
 	color: var(--link);
 	background-image: none;
 	border-right: 1px solid var(--bdr-color);
@@ -942,7 +1301,7 @@ fieldset {
 }
 
 /* Arrow icon */
-#mw-head .vector-menu-dropdown h3::after {
+#mw-head .vector-menu-dropdown .vector-menu-heading::after {
 	filter: invert(100%);
 }
 
@@ -958,8 +1317,8 @@ fieldset {
 #simpleSearch #searchInput:focus,
 #simpleSearch:hover #searchInput,
 #simpleSearch:hover #searchInput:focus {
-	border: 1px solid var(--bdr-color);
-	box-shadow: inset 0 0 0 1px var(--bdr-hl);
+	border: 1px solid var(--bdr-hl);
+	box-shadow: none;
 }
 
 #searchInput::placeholder {
@@ -1004,6 +1363,15 @@ fieldset {
 
 .suggestions a.mw-searchSuggest-link .suggestions-special .special-query {
 	color: var(--fg);
+}
+
+/*
+ * Advanced search
+ */
+
+#powersearch #mw-searchoptions {
+	background: var(--bg-dark);
+	border: 1px solid var(--bdr-white);
 }
 
 /*
@@ -1073,11 +1441,19 @@ fieldset {
  * Wikitable
  */
 table.wikitable {
-	margin: 1em 1em 1em 0;
+	padding: 1em;
 	background: var(--bg-dark);
 	border: 1px solid var(--bdr-color);
 	border-collapse: collapse;
 	color: var(--fg);
+}
+
+table.wikitable caption {
+	margin-left: inherit;
+	margin-right: inherit;
+	background: var(--bg-dark);
+	border: 1px solid var(--bdr-color);
+	font-weight: bold;
 }
 
 table.wikitable :is(th, td) {
@@ -1097,12 +1473,6 @@ table.wikitable tr :is(th, td) {
 
 table.wikitable tr th {
 	background: var(--bg-dark);
-}
-
-table.wikitable caption {
-	margin-left: inherit;
-	margin-right: inherit;
-	font-weight: bold;
 }
 
 table.wikitable code {
@@ -1188,10 +1558,11 @@ li.gallerybox div.thumb {
 }
 
 /*
- * ========================
- * = Special page content =
- * ========================
+ * =========================
+ * = Special page contents =
+ * =========================
  */
+
 #contentSub, #contentSub2 {
 	color: var(--fg-dark);
 }
@@ -1362,4 +1733,79 @@ td.diff-deletedline .diffchange {
  */
 .mw-prefs-buttons {
 	background: var(--bg-main);
+}
+
+/*
+ * ===============================
+ * = Extension-specific elements =
+ * ===============================
+ */
+
+/*
+ * WikiEditor
+ */
+
+.wikiEditor-ui .wikiEditor-ui-toolbar {
+	background: var(--bg-main2);
+}
+
+.wikiEditor-ui .wikiEditor-ui-toolbar .group .label,
+.wikiEditor-ui .wikiEditor-ui-toolbar .group .tool-select .label {
+	color: var(--fg);
+}
+
+.wikiEditor-ui .wikiEditor-ui-toolbar .tabs span.tab a {
+	color: var(--link);
+}
+
+.wikiEditor-ui .wikiEditor-ui-toolbar .tabs span.tab a.current {
+	color: var(--link-vis);
+}
+
+.wikiEditor-ui .wikiEditor-ui-toolbar .tabs span.tab a::before,
+.wikiEditor-ui .wikiEditor-ui-toolbar .group .tool-select .label::after {
+	filter: invert(100%);
+}
+
+.wikiEditor-ui .wikiEditor-ui-toolbar .group .tool-select .options .option {
+	background: var(--bg-main2);
+	color: var(--fg);
+}
+
+.wikiEditor-ui .wikiEditor-ui-toolbar .group .tool-select .menu .options .option:hover {
+	background: var(--bg-main3);
+}
+
+.wikiEditor-ui .wikiEditor-ui-toolbar .booklet .index .current,
+.wikiEditor-ui .wikiEditor-ui-toolbar .booklet .index :hover,
+.wikiEditor-ui .wikiEditor-ui-toolbar .page-characters div span,
+.wikiEditor-ui .wikiEditor-ui-toolbar .page-characters div span:hover {
+	background: var(--bg-main3);
+	color: var(--fg);
+}
+
+.wikiEditor-ui .wikiEditor-ui-toolbar .page-table td {
+	color: var(--fg);
+}
+
+/*
+ * Spoilers
+ */
+
+.spoilers .spoilers-button {
+	background: var(--btn-bg);
+	border: 1px solid var(--btn-bdr);
+	color: var(--btn-fg);
+}
+
+.spoilers .spoilers-button:is(:hover, :active, :focus) {
+	background: var(--btn-bg);
+	border: 1px solid var(--btn-bdr);
+	color: var(--btn-fg);
+}
+
+.spoilers .spoilers-body {
+	background: var(--bg-dark);
+	border: 1px solid var(--bdr-color);
+	color: var(--fg);
 }
