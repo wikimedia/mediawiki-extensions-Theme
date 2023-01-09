@@ -4,5 +4,10 @@
 			"Eleassar"
 		]
 	},
-	"theme-livepreview-note": "Temo $1 samo predogledujete. Za trajno uveljavitev sprememb pritisnite spodnji gumb »Shrani«."
+	"apihelp-themelist-summary": "Pridobi seznam vseh preoblek in njihovih tem",
+	"apihelp-themelist-example-1": "Pridobi seznam vseh preoblek in njihovih tem",
+	"theme-prefs-label": "Tema:",
+	"theme-livepreview-note": "Temo $1 samo predogledujete. Za trajno uveljavitev sprememb pritisnite spodnji gumb »Shrani«.",
+	"theme-unsupported-skin": "Preobleka, ki jo trenutno uporabljate, ne podpira tem. Če želite uporabiti neprivzeto temo, uporabite drugo preobleko.",
+	"theme-desc": "Nadzoruje namestitev različic CSS preoblek vikija"
 }
