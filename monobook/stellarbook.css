@@ -1,7 +1,7 @@
 /*
 ** MediaWiki 'StellarBook' style sheet for CSS2-capable browsers.
 **
-** @date 27 February 2021
+** @date 22 January 2023
 ** @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
 ** @note Some CSS selectors are prefixed with "body " to override skins.monobook.mobile styles, which
 ** apparently in MediaWiki 1.35(+) load _after_ this file and without that selector, those styles
@@ -93,13 +93,16 @@ legend {
 	background: #313439;
 }
 abbr, acronym, .explain {
-    background: none;
-    border-bottom: 1px dotted #000;
-    color: #000;
+	background: none;
+	border-bottom: 1px dotted #000;
+	color: #000;
 }
 
 code {
-    background-color: #404043;
+	background-color: #404043;
+	/* Let's have the color be something else than #000
+	 * to at least _slightly_ improve the readability... */
+	color: #818895;
 }
 pre, .mw-code {
 	background-color: #404043;
@@ -418,6 +421,11 @@ table.mw-allmessages-table {
 	background: transparent;
 }
 
+/* Special:RecentChanges - the collapsible box explaning the acronyms */
+.mw-changeslist-legend {
+	background-color: transparent;
+}
+
 /** Social tools */
 #profile-top, .profile-info {
 	background-color: transparent !important;
@@ -439,6 +447,17 @@ div.user-board-message-from {
 
 /* navigation menu on Special:TopUsers */
 div.top-fan-nav h1 {
+	color: #818895;
+}
+
+/* Special:GiveGift - make highlighted gift's description readable */
+.g-give-all-highlight {
+	color: #000;
+}
+
+/** BlogPage */
+/* Labels on Special:CreateBlogPost */
+.create-title {
 	color: #818895;
 }
 
@@ -466,7 +485,46 @@ div.link-item-desc {
 	color: #818895;
 }
 
+/* Special:LinkSubmit */
+.link-submit-title {
+	color: #818895;
+}
+
+/** PictureGame */
+/* Picture game title */
+.imgTitle {
+	color: #818895;
+}
+
+/* "Previous Game" module below the "Submitted By" box */
+.voteStats h1 {
+	color: #818895;
+}
+
+/* New picture game creation screen */
+.pick-game-welcome-message {
+	/* Like below (for PollNY's Special:CreatePoll), maybe not ideal
+	 * but still acceptable enough...
+	 */
+	color: #000;
+}
+
+.imageOneUpload h1,
+.imageTwoUpload h1,
+.uploadTitle h1,
+.uploadedImages h1 {
+	color: #818895;
+}
+
 /** PollNY */
+/* Special:CreatePoll */
+.create-poll-top {
+	/* Maybe it'd be better to turn the background-color transparent?
+	 * But this'll do well enough to make the text readable.
+	 */
+	color: #000;
+}
+
 /* Special:ViewPoll */
 div.view-poll-top-links a,
 div.view-poll-text,
@@ -475,5 +533,5 @@ div.view-poll-user-name {
 }
 
 div.view-poll-navigation h2 {
-    color: #818895;
+	color: #818895;
 }
