@@ -2,7 +2,7 @@
 ** Dark theme for Vector
 ** Originally from ZeldaWiki.org
 **
-** @date 14 January 2014
+** @date 23 January 2023
 ** @see http://zeldawiki.org/index.php?title=MediaWiki:Vector.css&action=history
 */
 /* Framework */
@@ -172,7 +172,27 @@ div.vectorMenu ul {
 	background-color: #1d578b;
 }
 
-.vector-menu-dropdown li a {
+/* The "More" text of the "More" menu (MW 1.39+); the 1.35 one is a bit below */
+.vector-menu-dropdown .vector-menu-heading {
+	color: #d2d2d2;
+}
+
+/* Entries in the "More" menu */
+.vector-menu-dropdown li a, /* 1.35(-1.38?) */
+.vector-menu-dropdown li.mw-list-item a /* 1.39+ */ {
+	color: #f4f26b;
+}
+
+/* "More" menu arrow icon thing (MW 1.39+) */
+.vector-menu-dropdown .vector-menu-heading::after {
+	filter: invert(100%);
+}
+
+/* For MediaWiki 1.39+ because "yay" for randomly renaming stuff for no real reason...
+ * This rule targets the "More" drop-down menu items and I think it's the same as the
+ * above one, but the above one is for like 1.35(-1.38?) and this is for 1.39
+ */
+.vector-menu-dropdown .mw-list-item a {
 	color: #f4f26b;
 }
 
@@ -704,6 +724,16 @@ table.mw_metadata td {
 
 .mw-plusminus-neg, .previewnote {
 	color: #E00000;
+}
+
+/* Special:RecentChanges - the collapsible box explaining the acronyms */
+.mw-changeslist-legend {
+	background-color: transparent;
+}
+
+/* Flyout notifications ("page has been added to/removed from your watchlist", PostEdit, etc.) */
+.mw-notification-content {
+	color: #d2d2d2;
 }
 
 /* OOUI fixes */

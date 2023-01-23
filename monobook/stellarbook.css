@@ -292,7 +292,8 @@ body .portlet h6 {
 	font-weight: normal;
 	white-space: nowrap;
 }
-body .pBody {
+body.skin--responsive .pBody, /* MW 1.39+ */
+body .pBody /* MW 1.35(-1.38?) */ {
 	background-color: #313439;
 	border: none;
 	color: #FFF;
@@ -308,28 +309,36 @@ body .pBody {
 /*
 ** the personal toolbar
 */
+body.skin--responsive #p-personal li a,
 body #p-personal li a {
 	color: #133146;
 }
 
 /*
-** the page-related actions- page/talk, edit etc
+** the page-related actions- page/talk, edit etc.
+** the "body.skin--responsive" selectors are for MW 1.39+,
+** the others are for 1.35(-1.38?)
 */
+body.skin--responsive #p-cactions li,
 body #p-cactions li {
 	background: #313439;
 	border-color: #000;
 }
 
+body.skin--responsive #p-cactions li a,
 body #p-cactions li a {
 	background-color: #313439;
 	color: #a0a7c4;
 	padding-left: .8em;
 }
 
+body.skin--responsive #p-cactions li.selected,
 body #p-cactions li.selected {
 	padding: 0 0 .2em 0;
 }
 
+body.skin--responsive #p-cactions li.selected a,
+body.skin--responsive #p-cactions li a:hover,
 body #p-cactions li.selected a,
 body #p-cactions li a:hover {
 	background-color: transparent;
@@ -366,12 +375,22 @@ body #p-cactions li a:hover {
 }
 
 /* Classes for Exif data display */
-table.metadata th {
+table.mw_metadata th {
 	background-color: #404043;
 }
 
-table.metadata td {
-	background-color: #fcfcfc;
+table.mw_metadata td {
+	background-color: transparent;
+}
+
+/* File history table on File: pages */
+table.filehistory {
+	background-color: transparent;
+	color: #a5a5ec;
+}
+
+table.filehistory th {
+	background-color: transparent;
 }
 
 /* filetoc */
@@ -421,7 +440,7 @@ table.mw-allmessages-table {
 	background: transparent;
 }
 
-/* Special:RecentChanges - the collapsible box explaning the acronyms */
+/* Special:RecentChanges - the collapsible box explaining the acronyms */
 .mw-changeslist-legend {
 	background-color: transparent;
 }
