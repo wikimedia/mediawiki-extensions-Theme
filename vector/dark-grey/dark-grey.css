@@ -916,6 +916,16 @@ fieldset {
 	border-right: 1px solid var(--bdr-color);
 }
 
+/* Make the "More" menu arrow visible on MW 1.39+ */
+.vector-menu-dropdown .vector-menu-heading::after {
+	filter: invert(100%);
+}
+
+/* Also make the "More" text itself the same color as other tabs, for consistency (MW 1.39+) */
+.vector-menu-dropdown .vector-menu-heading {
+	color: var(--link);
+}
+
 /* Disable the ugly dotted outline when focused */
 #mw-head .vector-menu-dropdown-noicon input.vector-menu-checkbox:focus + h3 {
 	outline: 0;
