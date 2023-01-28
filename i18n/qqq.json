@@ -11,6 +11,5 @@
 	"theme-livepreview-note": "Note shown on Special:Preferences, in the appearance tab, when previewing a theme. $1 is the name of a theme, e.g. <code>dark</code>, <code>stellarbook</code> etc.",
 	"theme-unsupported-skin": "Note shown on Special:Preferences, in the appearance tab, instead of the theme selector if the user is using a skin which does not support themes.",
 	"theme-name-monobook-stellarbook": "{{optional}}\nName of the StellarBook theme for the MonoBook skin",
-	"theme-name-vector-deepsea": "{{optional}}\nName of the DeepSea theme for the Vector (classic) skin",
 	"theme-desc": "{{desc|name=Theme|url=https://www.mediawiki.org/wiki/Extension:Theme}}"
 }
