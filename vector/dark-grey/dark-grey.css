@@ -1366,6 +1366,13 @@ body .ui-button.ui-widget:is(:hover, :active, :focus) {
 }
 
 /*
+ * mediawiki.userSuggest, the username suggestion widget used in various places
+ */
+div.suggestions-result {
+	color: var(--fg);
+}
+
+/*
  * Advanced search
  */
 
@@ -1736,6 +1743,23 @@ td.diff-deletedline .diffchange {
 }
 
 /*
+ * The legend box on Special:RecentChanges
+ */
+.mw-changeslist-legend {
+	background-color: transparent;
+}
+
+/*
+ * Make at least database error messages more readable
+ * (without this, the text color would be var(--fg), e.g.
+ * a rather light shade of grey against a background of
+ * #fee7e6, which is fairly unreadable...)
+ */
+.mw-message-box-error p {
+	color: #000;
+}
+
+/*
  * ===============================
  * = Extension-specific elements =
  * ===============================
@@ -1808,4 +1832,16 @@ td.diff-deletedline .diffchange {
 	background: var(--bg-dark);
 	border: 1px solid var(--bdr-color);
 	color: var(--fg);
+}
+
+/*
+ * ProblemReports
+ */
+
+div#reportProblemForm {
+	background-color: transparent;
+}
+
+body .ui-dialog .ui-icon-closethick {
+	filter: invert(100%);
 }
