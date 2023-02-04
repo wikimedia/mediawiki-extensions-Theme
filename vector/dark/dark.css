@@ -2,7 +2,7 @@
 ** Dark theme for Vector
 ** Originally from ZeldaWiki.org
 **
-** @date 23 January 2023
+** @date 4 February 2023
 ** @see http://zeldawiki.org/index.php?title=MediaWiki:Vector.css&action=history
 */
 /* Framework */
@@ -113,7 +113,7 @@ td.diff-deletedline .diffchange {
 }
 
 /* Gray text on a very dark background is hard to read... */
-#pt-anonuserpage {
+li#pt-anonuserpage span {
 	color: #d2d2d2;
 }
 
