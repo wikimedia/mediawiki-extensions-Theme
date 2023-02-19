@@ -423,14 +423,14 @@ div#userlogin .captcha, div#userloginForm .captcha {
 	color: #fff;
 }
 
-#bodyContent table#allmessagestable {
+#bodyContent table#mw-allmessagestable {
 	border: 1px solid #3b587e;
 }
-#bodyContent table#allmessagestable th {
+#bodyContent table#mw-allmessagestable th {
 	background: #0a2139;
 	border: 1px solid #3b587e;
 }
-#bodyContent table#allmessagestable td {
+#bodyContent table#mw-allmessagestable td {
 	background: #1f4871;
 	border: 1px solid #3b587e;
 }
