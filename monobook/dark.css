@@ -165,8 +165,15 @@ body.skin--responsive #p-personal li,
 	color: #1f4973;
 }
 
-body.skin--responsive #p-personal li a,
-#p-personal li a {
+body.skin--responsive #p-personal li:not(#pt-talk-alert) a,
+#p-personal li:not(#pt-talk-alert) a {
+	color: #e9eda6;
+}
+
+/* With [[mw:Extension:Echo]] enabled, the orange bar of death ("you have new messages")
+appears in #p-personal. We want the text to remain readable even when hovering over the OBoD. */
+body.skin--responsive #p-personal #pt-talk-alert a:hover,
+#p-personal #pt-talk-alert a:hover {
 	color: #e9eda6;
 }
 
