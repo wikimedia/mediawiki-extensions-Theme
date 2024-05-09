@@ -3,7 +3,7 @@
 namespace MediaWiki\Extension\Theme;
 
 use ExtensionRegistry;
-use ResourceLoader;
+use MediaWiki\ResourceLoader\ResourceLoader;
 
 /**
  * Utility/helper class.

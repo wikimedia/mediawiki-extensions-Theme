@@ -1,7 +1,7 @@
 {
 	"name": "Theme",
 	"namemsg": "theme-extensionname",
-	"version": "2.3",
+	"version": "2.4",
 	"author": [
 		"Ryan Schmidt",
 		"Jack Phoenix",
@@ -11,7 +11,7 @@
 	"descriptionmsg": "theme-desc",
 	"type": "other",
 	"requires": {
-		"MediaWiki": ">= 1.35.0"
+		"MediaWiki": ">= 1.39.0"
 	},
 	"config": {
 		"DefaultTheme": "default"
