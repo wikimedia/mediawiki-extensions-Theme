@@ -22,12 +22,8 @@ class Hooks implements
 	OutputPageBodyAttributesHook,
 	ResourceLoaderGetConfigVarsHook
 {
-
-	/** @var SkinFactory */
-	private $skinFactory;
-
-	/** @var UserOptionsLookup */
-	private $userOptionsLookup;
+	private SkinFactory $skinFactory;
+	private UserOptionsLookup $userOptionsLookup;
 
 	/**
 	 * @param SkinFactory $skinFactory

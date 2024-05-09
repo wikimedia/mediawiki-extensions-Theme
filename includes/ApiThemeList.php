@@ -18,8 +18,7 @@ use SkinFactory;
  */
 class ApiThemeList extends ApiBase {
 
-	/** @var SkinFactory */
-	private $skinFactory;
+	private SkinFactory $skinFactory;
 
 	/**
 	 * @param ApiMain $main
@@ -46,7 +45,7 @@ class ApiThemeList extends ApiBase {
 	 * @param string $property
 	 * @return bool
 	 */
-	public function appendThemes( $property = 'themes' ) {
+	private function appendThemes( $property = 'themes' ): bool {
 		$data = [];
 		$config = $this->getConfig();
 		$defaultTheme = $config->get( 'DefaultTheme' );
