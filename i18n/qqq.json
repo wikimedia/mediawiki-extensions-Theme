@@ -7,7 +7,7 @@
 	"apihelp-themelist-summary": "{{doc-apihelp-summary|themelist}}",
 	"apihelp-themelist-example-1": "{{doc-apihelp-example|themelist}}",
 	"theme-extensionname": "{{name}}",
-	"theme-prefs-label": "Label shown on Special:Preferences\n{{Identical|Theme}}",
+	"theme-prefs-label": "Label of the theme settings shown on Special:Preferences, in the appearance tab",
 	"theme-livepreview-note": "Note shown on Special:Preferences, in the appearance tab, when previewing a theme. $1 is the name of a theme, e.g. <code>dark</code>, <code>stellarbook</code> etc.",
 	"theme-unsupported-skin": "Note shown on Special:Preferences, in the appearance tab, instead of the theme selector if the user is using a skin which does not support themes.",
 	"theme-name-monobook-stellarbook": "{{optional}}\nName of the StellarBook theme for the MonoBook skin",
