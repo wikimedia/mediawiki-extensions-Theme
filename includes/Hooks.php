@@ -2,19 +2,19 @@
 
 namespace MediaWiki\Extension\Theme;
 
-use Config;
-use IContextSource;
-use MediaWiki\Hook\BeforePageDisplayHook;
-use MediaWiki\Hook\OutputPageBodyAttributesHook;
+use MediaWiki\Config\Config;
+use MediaWiki\Context\IContextSource;
+use MediaWiki\Context\RequestContext;
+use MediaWiki\Output\Hook\BeforePageDisplayHook;
+use MediaWiki\Output\Hook\OutputPageBodyAttributesHook;
+use MediaWiki\Output\OutputPage;
+use MediaWiki\Parser\Sanitizer;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
 use MediaWiki\ResourceLoader\Hook\ResourceLoaderGetConfigVarsHook;
-use MediaWiki\User\UserOptionsLookup;
-use OutputPage;
-use RequestContext;
-use Sanitizer;
+use MediaWiki\User\Options\UserOptionsLookup;
+use MediaWiki\User\User;
 use Skin;
 use SkinFactory;
-use User;
 
 class Hooks implements
 	BeforePageDisplayHook,

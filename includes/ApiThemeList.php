@@ -2,9 +2,9 @@
 
 namespace MediaWiki\Extension\Theme;
 
-use ApiBase;
-use ApiMain;
-use ApiResult;
+use MediaWiki\Api\ApiBase;
+use MediaWiki\Api\ApiMain;
+use MediaWiki\Api\ApiResult;
 use SkinFactory;
 
 /**
