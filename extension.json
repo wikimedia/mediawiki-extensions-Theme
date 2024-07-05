@@ -1,7 +1,7 @@
 {
 	"name": "Theme",
 	"namemsg": "theme-extensionname",
-	"version": "2.4",
+	"version": "2.5",
 	"author": [
 		"Ryan Schmidt",
 		"Jack Phoenix",
@@ -14,7 +14,8 @@
 		"MediaWiki": ">= 1.39.0"
 	},
 	"config": {
-		"DefaultTheme": "default"
+		"DefaultTheme": "default",
+		"SkipThemes": []
 	},
 	"MessagesDirs": {
 		"Theme": [

@@ -14,13 +14,15 @@ use MediaWiki\ResourceLoader\ResourceLoader;
 class Theme {
 
 	/**
-	 * Get all the themes the given skin has.
+	 * Get all the enabled themes the given skin has.
 	 *
 	 * @param string $ourSkin Skin name, e.g. aurora, monobook, vector, etc.
 	 * @return array Array containing theme names for the skin or 'default' if
 	 *               the skin has no custom themes available
 	 */
 	public static function getAvailableThemes( string $ourSkin ): array {
+		global $wgSkipThemes;
+
 		// Paranoia
 		$ourSkin = strtolower( $ourSkin );
 
@@ -33,11 +35,19 @@ class Theme {
 		// Ensure that 'default' is always the 1st array item
 		array_unshift( $themes[$ourSkin], 'default' );
 
+		// Filter out the themes defined in $wgSkipThemes for a skin, if any
+		if ( !empty( $wgSkipThemes[$ourSkin] ) ) {
+			foreach ( $wgSkipThemes[$ourSkin] as $skippable ) {
+				unset( $themes[$ourSkin][$skippable] );
+			}
+		}
+
 		return !empty( $themes[$ourSkin] ) ? $themes[$ourSkin] : [ 'default' => 'default' ];
 	}
 
 	/**
-	 * Check if the given skin has a theme named $theme.
+	 * Check if the given skin has a theme named $theme and that it is usable
+	 * (i.e. NOT in the $wgSkipThemes configuration variable array).
 	 *
 	 * @param string $skin Skin name, e.g. aurora, monobook, vector, etc.
 	 * @param string $theme Theme name, e.g. dark, pink, etc.
@@ -45,6 +55,8 @@ class Theme {
 	 * @return bool
 	 */
 	public static function skinHasTheme( string $skin, string $theme, ResourceLoader $resourceLoader ): bool {
+		global $wgSkipThemes;
+
 		$skin = strtolower( $skin );
 		$theme = strtolower( $theme );
 
@@ -52,6 +64,16 @@ class Theme {
 		// "the skin without any custom styling"
 		if ( $theme === 'default' ) {
 			return true;
+		}
+
+		if ( !empty( $wgSkipThemes[$skin] ) ) {
+			if (
+				isset( $wgSkipThemes[$skin] ) && $wgSkipThemes[$skin] &&
+				isset( $wgSkipThemes[$skin][$theme] ) && $wgSkipThemes[$skin][$theme]
+			) {
+				// This theme for this skin is explicitly disabled in the site's configuration.
+				return false;
+			}
 		}
 
 		$moduleName = 'themeloader.skins.' . $skin . '.' . $theme;
