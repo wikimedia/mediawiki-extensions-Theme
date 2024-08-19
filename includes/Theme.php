@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\Theme;
 
 use ExtensionRegistry;
+use MediaWiki\MediaWikiServices;
 use MediaWiki\ResourceLoader\ResourceLoader;
 
 /**
@@ -21,8 +22,6 @@ class Theme {
 	 *               the skin has no custom themes available
 	 */
 	public static function getAvailableThemes( string $ourSkin ): array {
-		global $wgSkipThemes;
-
 		// Paranoia
 		$ourSkin = strtolower( $ourSkin );
 
@@ -36,8 +35,9 @@ class Theme {
 		array_unshift( $themes[$ourSkin], 'default' );
 
 		// Filter out the themes defined in $wgSkipThemes for a skin, if any
-		if ( !empty( $wgSkipThemes[$ourSkin] ) ) {
-			foreach ( $wgSkipThemes[$ourSkin] as $skippable ) {
+		$skipThemes = MediaWikiServices::getInstance()->getMainConfig()->get( 'SkipThemes' );
+		if ( !empty( $skipThemes[$ourSkin] ) ) {
+			foreach ( $skipThemes[$ourSkin] as $skippable ) {
 				unset( $themes[$ourSkin][$skippable] );
 			}
 		}
@@ -55,8 +55,6 @@ class Theme {
 	 * @return bool
 	 */
 	public static function skinHasTheme( string $skin, string $theme, ResourceLoader $resourceLoader ): bool {
-		global $wgSkipThemes;
-
 		$skin = strtolower( $skin );
 		$theme = strtolower( $theme );
 
@@ -66,10 +64,11 @@ class Theme {
 			return true;
 		}
 
-		if ( !empty( $wgSkipThemes[$skin] ) ) {
+		$skipThemes = MediaWikiServices::getInstance()->getMainConfig()->get( 'SkipThemes' );
+		if ( !empty( $skipThemes[$skin] ) ) {
 			if (
-				isset( $wgSkipThemes[$skin] ) && $wgSkipThemes[$skin] &&
-				isset( $wgSkipThemes[$skin][$theme] ) && $wgSkipThemes[$skin][$theme]
+				isset( $skipThemes[$skin] ) && $skipThemes[$skin] &&
+				isset( $skipThemes[$skin][$theme] ) && $skipThemes[$skin][$theme]
 			) {
 				// This theme for this skin is explicitly disabled in the site's configuration.
 				return false;
