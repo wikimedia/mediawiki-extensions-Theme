@@ -194,12 +194,12 @@ class Hooks implements
 	 */
 	private function getTheme( IContextSource $context ): string {
 		// Check the following things in this order:
-		// 1) value of $wgDefaultTheme (set in site configuration)
+		// 1) per-page usetheme URL parameter
 		// 2) user's personal preference/override
-		// 3) per-page usetheme URL parameter
-		$theme = $context->getConfig()->get( 'DefaultTheme' );
-		$theme = $this->userOptionsLookup->getOption( $context->getUser(), 'theme', $theme );
-		$theme = $context->getRequest()->getRawVal( 'usetheme', $theme );
+		// 3) value of $wgDefaultTheme (set in site configuration)
+		$theme = $context->getRequest()->getRawVal( 'usetheme' )
+			?? $this->userOptionsLookup->getOption( $context->getUser(), 'theme' )
+			?? $context->getConfig()->get( 'DefaultTheme' );
 
 		// Support any case of the theme name.
 		$theme = strtolower( $theme );
