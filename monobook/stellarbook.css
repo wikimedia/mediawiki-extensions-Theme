@@ -10,20 +10,20 @@
 .mw-body {
 	background: #313439;
 	border: solid 1px #5b5865;
-	color: #FFF;
+	color: #fff;
 	margin-left: 12.5em;
 	margin-right: 1em;
-	padding-top: 0px;
+	padding-top: 0;
 }
 
 #bodyContent {
-	padding: 0em 6em 0 4em;
+	padding: 0 6em 0 4em;
 }
 
 body {
 	/* @embed */
-	background: #000 url(stellarbook/headbg.jpg) 0 0 repeat-x;
-	color: #FFF;
+	background: #000 url( stellarbook/headbg.jpg ) 0 0 repeat-x;
+	color: #fff;
 }
 
 /**
@@ -37,29 +37,36 @@ body {
 table {
 	font-size: 100%;
 	background: #404043;
-	color: #FFF;
+	color: #fff;
 }
+
 body a {
 	text-decoration: none;
 	color: #a5a5ec;
 	background: none;
 }
+
 body a:visited {
 	color: #ae8c7e;
 }
+
 body a:active {
 	color: #faa700;
 }
+
 body a:hover {
 	text-decoration: underline;
 }
+
 body a.stub {
 	color: #b65b6d;
 }
+
 body a.new,
 body #p-personal a.new {
 	color: #fabd23;
 }
+
 body a.new:visited,
 body #p-personal a.new:visited {
 	color: #a28b56;
@@ -74,15 +81,17 @@ body h5,
 body h6 {
 	color: #818895;
 }
+
 body h5 {
 	font-size: 100%;
 }
+
 body h6 {
 	font-size: 80%;
 }
 
 li {
-	margin-bottom: .3em; /* @todo CHECKME */
+	margin-bottom: 0.3em; /* @todo CHECKME */
 }
 
 dd {
@@ -92,7 +101,10 @@ dd {
 legend {
 	background: #313439;
 }
-abbr, acronym, .explain {
+
+abbr,
+acronym,
+.explain {
 	background: none;
 	border-bottom: 1px dotted #000;
 	color: #000;
@@ -104,37 +116,47 @@ code {
 	 * to at least _slightly_ improve the readability... */
 	color: #818895;
 }
-pre, .mw-code {
+
+pre,
+.mw-code {
 	background-color: #404043;
 	border-color: #a6a8c8;
-	color: #FFF;
+	color: #fff;
 	line-height: 1.1em;
 }
 
 /* Some space under the headers in the content area */
-#bodyContent h1, #bodyContent h2 {
-	margin-bottom: .6em;
+#bodyContent h1,
+#bodyContent h2 {
+	margin-bottom: 0.6em;
 }
-#bodyContent h3, #bodyContent h4, #bodyContent h5 {
-	margin-bottom: .3em;
+
+#bodyContent h3,
+#bodyContent h4,
+#bodyContent h5 {
+	margin-bottom: 0.3em;
 }
+
 .firstHeading {
 	font-size: 2.5em;
-	margin: 1em 0 .1em 1em;
+	margin: 1em 0 0.1em 1em;
 	border: none;
 }
 
 /* success and error messages */
-.errorbox, .successbox {
+.errorbox,
+.successbox {
 	border: 2px solid;
 	color: #000;
 	float: left;
 	margin-bottom: 2em;
 }
+
 .errorbox {
 	background-color: #fff2f2;
 	border-color: red;
 }
+
 .successbox {
 	background-color: #dfd;
 	border-color: green;
@@ -168,7 +190,7 @@ body #pagehistory li.selected {
 	background-color: #404043;
 }
 /* text color for the currently selected row */
-body #pagehistory li.selected span:not(.mw-plusminus-pos):not(.mw-plusminus-neg) {
+body #pagehistory li.selected span:not( .mw-plusminus-pos ):not( .mw-plusminus-neg ) {
 	color: #fff;
 }
 /* minor/bot edit indicator letters in page histories */
@@ -179,25 +201,32 @@ body #pagehistory li abbr {
 /*
 ** Diff rendering
 */
-table.diff, td.diff-otitle, td.diff-ntitle {
+table.diff,
+td.diff-otitle,
+td.diff-ntitle {
 	background-color: #404043;
 }
+
 td.diff-addedline {
-	background: rgb(0, 100, 0);
+	background: rgb( 0, 100, 0 );
 	font-size: smaller;
 }
+
 td.diff-addedline .diffchange {
 	background: transparent !important;
 }
+
 td.diff-deletedline {
 	background: #bc8f29;
 	font-size: smaller;
 }
+
 td.diff-context {
 	background: #404043;
-	color: #FFF;
+	color: #fff;
 	font-size: smaller;
 }
+
 span.diffchange {
 	color: red;
 	font-weight: bold;
@@ -210,46 +239,60 @@ span.diffchange {
 #bodyContent a.external[href ^="https://"],
 .link-https {
 	/* @embed */
-	background-image: url(stellarbook/lock_icon.png);
+	background-image: url( stellarbook/lock_icon.png );
 	padding-right: 18px;
 }
-#bodyContent a.external[href ^="mailto:"],
+
+#bodyContent a.external[ href^='mailto:' ],
 .link-mailto {
 	/* @embed */
-	background-image: url(stellarbook/mail_icon.png);
+	background-image: url( stellarbook/mail_icon.png );
 }
-#bodyContent a.external[href ^="news:"] {
+
+#bodyContent a.external[ href^='news:' ] {
 	/* @embed */
-	background-image: url(stellarbook/news_icon.png);
+	background-image: url( stellarbook/news_icon.png );
 }
 #bodyContent a.external[href ^="ftp://"],
 .link-ftp {
 	/* @embed */
-	background-image: url(stellarbook/file_icon.gif);
+	background-image: url( stellarbook/file_icon.gif );
 }
 #bodyContent a.external[href ^="irc://"],
 #bodyContent a.external[href ^="ircs://"],
 .link-irc {
 	/* @embed */
-	background-image: url(stellarbook/discussionitem_icon.png);
+	background-image: url( stellarbook/discussionitem_icon.png );
 }
-#bodyContent a.external[href $=".ogg"], #bodyContent a.external[href $=".OGG"],
-#bodyContent a.external[href $=".mid"], #bodyContent a.external[href $=".MID"],
-#bodyContent a.external[href $=".midi"], #bodyContent a.external[href $=".MIDI"],
-#bodyContent a.external[href $=".mp3"], #bodyContent a.external[href $=".MP3"],
-#bodyContent a.external[href $=".wav"], #bodyContent a.external[href $=".WAV"],
-#bodyContent a.external[href $=".wma"], #bodyContent a.external[href $=".WMA"],
+
+#bodyContent a.external[ href$='.ogg' ],
+#bodyContent a.external[ href$='.OGG' ],
+#bodyContent a.external[ href$='.mid' ],
+#bodyContent a.external[ href$='.MID' ],
+#bodyContent a.external[ href$='.midi' ],
+#bodyContent a.external[ href$='.MIDI' ],
+#bodyContent a.external[ href$='.mp3' ],
+#bodyContent a.external[ href$='.MP3' ],
+#bodyContent a.external[ href$='.wav' ],
+#bodyContent a.external[ href$='.WAV' ],
+#bodyContent a.external[ href$='.wma' ],
+#bodyContent a.external[ href$='.WMA' ],
 .link-audio {
 	/* @embed */
-	background-image: url(stellarbook/audio.png);
+	background-image: url( stellarbook/audio.png );
 }
-#bodyContent a.external[href $=".ogm"], #bodyContent a.external[href $=".OGM"],
-#bodyContent a.external[href $=".avi"], #bodyContent a.external[href $=".AVI"],
-#bodyContent a.external[href $=".mpeg"], #bodyContent a.external[href $=".MPEG"],
-#bodyContent a.external[href $=".mpg"], #bodyContent a.external[href $=".MPG"],
+
+#bodyContent a.external[ href$='.ogm' ],
+#bodyContent a.external[ href$='.OGM' ],
+#bodyContent a.external[ href$='.avi' ],
+#bodyContent a.external[ href$='.AVI' ],
+#bodyContent a.external[ href$='.mpeg' ],
+#bodyContent a.external[ href$='.MPEG' ],
+#bodyContent a.external[ href$='.mpg' ],
+#bodyContent a.external[ href$='.MPG' ],
 .link-video {
 	/* @embed */
-	background-image: url(stellarbook/video.png);
+	background-image: url( stellarbook/video.png );
 }
 
 /* Interwiki styling */
@@ -267,7 +310,7 @@ span.diffchange {
 */
 body .portlet h3 {
 	background: transparent;
-	padding: 0 1em 0 .5em;
+	padding: 0 1em 0 0.5em;
 	display: inline;
 	height: 1em;
 	text-transform: lowercase;
@@ -275,11 +318,13 @@ body .portlet h3 {
 	font-weight: bold;
 	white-space: nowrap;
 }
+
 body .portlet h4 {
 	font-size: 95%;
 	font-weight: normal;
 	white-space: nowrap;
 }
+
 body .portlet h6 {
 	background: #ffae2e;
 	border: 1px solid #2f6fab;
@@ -292,11 +337,12 @@ body .portlet h6 {
 	font-weight: normal;
 	white-space: nowrap;
 }
+
 body.skin--responsive .pBody, /* MW 1.39+ */
 body .pBody /* MW 1.35(-1.38?) */ {
 	background-color: #313439;
 	border: none;
-	color: #FFF;
+	color: #fff;
 }
 
 /*
@@ -329,12 +375,12 @@ body.skin--responsive #p-cactions li a,
 body #p-cactions li a {
 	background-color: #313439;
 	color: #a0a7c4;
-	padding-left: .8em;
+	padding-left: 0.8em;
 }
 
 body.skin--responsive #p-cactions li.selected,
 body #p-cactions li.selected {
-	padding: 0 0 .2em 0;
+	padding: 0 0 0.2em 0;
 }
 
 body.skin--responsive #p-cactions li.selected a,
@@ -351,7 +397,7 @@ body #p-cactions li a:hover {
 	background-color: #191a1e;
 	font-size: 75%;
 	margin: 4em 0 1em 0;
-	padding: .4em 0 1.2em 0;
+	padding: 0.4em 0 1.2em 0;
 }
 
 /* Gallery stuff -- no idea if this is needed -- @todo FIXME/CHECKME */
@@ -365,7 +411,8 @@ body #p-cactions li a:hover {
 	color: #00d000;
 }
 
-.mw-plusminus-neg, .previewnote {
+.mw-plusminus-neg,
+.previewnote {
 	color: #e00000;
 }
 
@@ -403,26 +450,30 @@ ul#filetoc {
 .mw-ui-icon-expand::before,
 .oo-ui-icon-collapse,
 .mw-ui-icon-collapse::before {
-	filter: invert(100%);
+	filter: invert( 100% );
 }
 
 /* Login & signup form fixes */
 div#userloginForm {
 	background-color: transparent;
 }
+
 #mw-createaccount-join { /* "Join {{SITENAME}}" button */
 	box-shadow: none;
 }
+
 .mw-ui-vform > div label,
 .mw-body-content div.mw-number-text {
 	color: #fff;
 }
+
 .mw-body-content div.mw-number-text h3 {
 	color: #818895;
 }
 
 /* TablePager */
-table.mw-datatable tr:hover td, table.mw-datatable td {
+table.mw-datatable tr:hover td,
+table.mw-datatable td {
 	background-color: transparent;
 }
 
@@ -446,7 +497,8 @@ table.mw-allmessages-table {
 }
 
 /** Social tools */
-#profile-top, .profile-info {
+#profile-top,
+.profile-info {
 	background-color: transparent !important;
 }
 
@@ -455,7 +507,7 @@ div.profile-info-container div,
 div.profile-info-container b,
 div.item,
 div.user-home-links-container h2 {
-	color: #FFF;
+	color: #fff;
 }
 
 /* user board on profile pages */

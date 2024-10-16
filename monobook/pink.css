@@ -11,13 +11,13 @@
 ** would overwrite our styles defined here.
 */
 .mw-body {
-	background: #FFC0CB;
+	background: #ffc0cb;
 	color: #000;
 }
 
 body {
 	background: none !important;
-	background-color: #FFC0CB !important;
+	background-color: #ffc0cb !important;
 }
 
 /**
@@ -28,11 +28,11 @@ body {
 }
 
 body a {
-	color: #0066ff;
+	color: #06f;
 }
 
 body a:visited {
-	color: #0066ff;
+	color: #06f;
 }
 
 body a:active {
@@ -65,7 +65,7 @@ body h1 {
 #toc,
 .toc,
 .mw-warning {
-	background-color: #EEC0DC;
+	background-color: #eec0dc;
 }
 
 /* thumbnails */
@@ -77,18 +77,21 @@ div.thumb {
 /* Interwiki styling */
 body #bodyContent a.extiw,
 body #bodyContent a.extiw:active {
-	color: #00CCff;
+	color: #0cf;
 }
+
 body #bodyContent a.external {
-	color: #0066ff;
+	color: #06f;
 }
 /* Added from original Romantic Pink CSS file */
 body #bodyContent a.extiw:visited {
-	color: #0066ff;
+	color: #06f;
 }
+
 body #bodyContent a.external:visited {
-	color: #0066ff;
+	color: #06f;
 }
+
 body #bodyContent a.stub,
 body #bodyContent a.stub:visited {
 	color: #ffc0cb;
@@ -100,8 +103,8 @@ the lines w/o that are for MW 1.35(-1.38?)
 */
 body.skin--responsive .pBody,
 body .pBody {
-	background-color: #FFC0CB;
-	color: #FFC0CB;
+	background-color: #ffc0cb;
+	color: #ffc0cb;
 }
 
 body.skin--responsive #p-cactions li,
@@ -118,7 +121,7 @@ body #p-cactions li.selected {
 body.skin--responsive #p-cactions li.selected a,
 body #p-cactions li.selected a {
 	background-color: transparent;
-	padding: 0 1em .2em !important;/* @todo FIXME/CHECKME: this looks suspicious */
+	padding: 0 1em 0.2em !important;/* @todo FIXME/CHECKME: this looks suspicious */
 }
 
 /*
@@ -139,38 +142,51 @@ table.mw_metadata {
 }
 
 /** Special:Version */
-table#sv-ext, table#sv-hooks, table#sv-software {
+table#sv-ext,
+table#sv-hooks,
+table#sv-software {
 	margin: 1em;
-	padding: 0em;
+	padding: 0;
 }
 
-#sv-ext td, #sv-hooks td, #sv-software td,
-#sv-ext th, #sv-hooks th, #sv-software th {
-	border: 1px solid #A0A0A0;
+#sv-ext td,
+#sv-hooks td,
+#sv-software td,
+#sv-ext th,
+#sv-hooks th,
+#sv-software th {
+	border: 1px solid #a0a0a0;
 	padding: 0 0.15em 0 0.15em;
 }
-#sv-ext th, #sv-hooks th, #sv-software th {
-	background-color: #F0F0F0;
+
+#sv-ext th,
+#sv-hooks th,
+#sv-software th {
+	background-color: #f0f0f0;
 	color: black;
 	padding: 0 0.15em 0 0.15em;
 }
+
 tr.sv-space {
 	height: 0.8em;
 	border: none;
 }
-tr.sv-space td { display: none; }
+
+tr.sv-space td {
+	display: none;
+}
 
 /* Begin misc. hacks */
 #bodyContent {
 	background: none;
-	background-color: #FFC0CB;
-	color: #000000;
+	background-color: #ffc0cb;
+	color: #000;
 }
 
 .selected {
-	background-color: #333333;
-	color: #FFC0CB;
-	border-color: #CCCCCC;
+	background-color: #333;
+	color: #ffc0cb;
+	border-color: #ccc;
 }
 
 body.skin--responsive #p-navigation a,
@@ -180,19 +196,20 @@ body.skin--responsive #p-navigation a,
 
 body.skin--responsive #p-cactions ul li a,
 #p-cactions ul li a {
-	background-color: #FFC0CB;
-	color: #000000;
+	background-color: #ffc0cb;
+	color: #000;
 }
 
 /* I have absolutely no idea wtf this crap is */
-div.header-notice, div.warning {
+div.header-notice,
+div.warning {
 	width: 85%;
-	margin: 1.0em auto 0.5em auto;
+	margin: 1em auto 0.5em auto;
 	padding: 5px;
 	text-align: left;
-	border: 1px inset #999999;
-	background-color: #2A2A2A;
-	color: #FFFFFF;
+	border: 1px inset #999;
+	background-color: #2a2a2a;
+	color: #fff;
 	line-height: 120%;
 }
 
@@ -201,14 +218,17 @@ div.warning {
 	font-weight: bold;
 }
 
-div.notice p, div.warning p {
+div.notice p,
+div.warning p {
 	line-height: 120% !important;
 }
 
 /*
 ** Diff rendering
 */
-table.diff, td.diff-otitle, td.diff-ntitle {
+table.diff,
+td.diff-otitle,
+td.diff-ntitle {
 	background-color: transparent;
 }
 
@@ -218,5 +238,5 @@ table.diff, td.diff-otitle, td.diff-ntitle {
 
 /* testing a random fix */
 .selected {
-	color: #000000;
+	color: #000;
 }

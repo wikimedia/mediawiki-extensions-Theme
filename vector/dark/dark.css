@@ -30,7 +30,8 @@ div#content {
 }
 
 /* Not quite sure what this is for... */
-#bodyContent h1, #bodyContent h2 {
+#bodyContent h1,
+#bodyContent h2 {
 	margin-top: 0.6em !important;
 	margin-bottom: 0.6em !important;
 }
@@ -38,12 +39,12 @@ div#content {
 /* Head */
 #mw-page-base {
 	background-color: #17456e;
-	background-image: linear-gradient(#17456e 50%, #0b284f 100%);
+	background-image: linear-gradient( #17456e 50%, #0b284f 100% );
 }
 
 /* Link colors */
 .mw-body a.external {
-	color: #F4F26B;
+	color: #f4f26b;
 }
 
 .mw-body a.external:visited {
@@ -51,20 +52,23 @@ div#content {
 }
 
 .mw-body a.external:active {
-	color: #F4F26B;
+	color: #f4f26b;
 }
 
-pre, .mw-code {
-	background-color: #1D578B;
+pre,
+.mw-code {
+	background-color: #1d578b;
 	border: 1px dashed #426787;
-	color: #D2D2D2;
+	color: #d2d2d2;
 	font-size: 100% !important;
 }
 
 /*
 ** Diff rendering
 */
-table.diff, td.diff-otitle, td.diff-ntitle {
+table.diff,
+td.diff-otitle,
+td.diff-ntitle {
 	background-color: transparent;
 }
 
@@ -75,19 +79,19 @@ td.diff-context {
 }
 
 td.diff-addedline {
-	background-color: #255A81;
-	border-color: #B0FFB0;
+	background-color: #255a81;
+	border-color: #b0ffb0;
 }
 
 td.diff-deletedline {
-	background-color: #255A81;
-	border-color: #FFB0B0;
+	background-color: #255a81;
+	border-color: #ffb0b0;
 }
 
 td.diff-context {
 	background-color: transparent;
-	border-color: #BBB;
-	color: #D2D2D2;
+	border-color: #bbb;
+	color: #d2d2d2;
 }
 
 td.diff-addedline .diffchange,
@@ -98,18 +102,18 @@ td.diff-deletedline .diffchange {
 }
 
 td.diff-addedline .diffchange {
-	background: #90FF90;
+	background: #90ff90;
 }
 
 td.diff-deletedline .diffchange {
-	background: #FF7070;
+	background: #ff7070;
 }
 
 /* Namespaces and views */
 .vector-menu-tabs,
 .vector-menu-tabs li a {
 	/* @embed */
-	background-image: url('tab-break.png');
+	background-image: url( tab-break.png );
 }
 
 /* Gray text on a very dark background is hard to read... */
@@ -136,14 +140,14 @@ div.vectorTabs li a,
 div.vectorTabs li a span,
 .vector-menu-tabs li a,
 .vector-menu-tabs li a span {
-	color: #F4F26B;
+	color: #f4f26b;
 }
 
 /* @todo CHECKME: is the 1st (older) rule still needed? */
 div.vectorTabs li.selected,
 .vector-menu-tabs .selected {
 	/* @embed */
-	background-image: url('tab-current-fade.png');
+	background-image: url( tab-current-fade.png );
 }
 
 div.vectorTabs li.selected a,
@@ -152,14 +156,14 @@ div.vectorTabs li.selected a:visited,
 .vector-menu-tabs .selected a:visited {
 	color: #d2d2d2;
 	text-decoration: none;
-	background-color: #17456E;
+	background-color: #17456e;
 }
 
 div.vectorTabs li.new a,
 div.vectorTabs li.new a:visited,
 .vector-menu-tabs .new a,
 .vector-menu-tabs .new a:visited {
-	color: #FF8581;
+	color: #ff8581;
 }
 
 /* Variants and actions */
@@ -185,25 +189,25 @@ div.vectorMenu ul {
 
 /* "More" menu arrow icon thing (MW 1.39+) */
 .vector-menu-dropdown .vector-menu-heading::after {
-	filter: invert(100%);
+	filter: invert( 100% );
 }
 
 /* For MediaWiki 1.39+ because "yay" for randomly renaming stuff for no real reason...
  * This rule targets the "More" drop-down menu items and I think it's the same as the
  * above one, but the above one is for like 1.35(-1.38?) and this is for 1.39
  */
-.vector-menu-dropdown .mw-list-item a {
+.vector-menu-dropdown .mw-list-item a {
 	color: #f4f26b;
 }
 
 /* OVERRIDDEN BY COMPLIANT BROWSERS */
 div.vectorMenu li a {
-	color: #F4F26B;
+	color: #f4f26b;
 }
 
 div.vectorTabs span {
 	/* @embed */
-	background-image: url('tab-break.png');
+	background-image: url( tab-break.png );
 }
 
 div.vectorMenu li.selected a,
@@ -216,7 +220,7 @@ div.vectorMenu li.selected a:visited {
 #mw-head div.vectorMenu h3,
 #mw-head div.vectorMenu h5 {
 	/* @embed */
-	background-image: url('tab-break.png');
+	background-image: url( tab-break.png );
 }
 
 /* OVERRIDDEN BY COMPLIANT BROWSERS */
@@ -235,7 +239,7 @@ div.vectorMenu h5 a {
 
 /* Arrow image for the "More [actions]" menu... */
 .vector-menu-dropdown h3::after {
-	filter: invert(100%);
+	filter: invert( 100% );
 }
 
 /* Search */
@@ -258,10 +262,12 @@ div.vectorMenu h5 a {
 #simpleSearch input#searchInput::placeholder {
 	color: #e0e0e0;
 }
-#simpleSearch :-ms-input-placeholder#searchInput {
+
+#simpleSearch :input-placeholder#searchInput {
 	color: #e0e0e0;
 }
-#simpleSearch :-moz-placeholder#searchInput {
+
+#simpleSearch :placeholder#searchInput {
 	color: #e0e0e0;
 }
 
@@ -272,7 +278,7 @@ div.vectorMenu h5 a {
 /* Replace the magnifying glass icon */
 input#searchButton {
 	/* @embed */
-	background-image: url(search-ltr.png);
+	background-image: url( search-ltr.png );
 }
 
 /* Panel */
@@ -287,20 +293,21 @@ input#searchButton {
 */
 
 #mw-panel .portal .body ul li a {
-	color: #F4F26B;
+	color: #f4f26b;
 }
+
 #mw-panel .portal .body ul li a:visited {
-	color: #F4F26B;
+	color: #f4f26b;
 }
 
 /* Sidebar */
 #mw-panel .portal h3 {
-	color: #F4F26B;
+	color: #f4f26b;
 }
 
 #mw-panel.collapsible-nav .portal h3 a,
 #mw-panel.collapsible-nav .portal h5 a {
-	color: #E7EA12 !important;
+	color: #e7ea12 !important;
 }
 
 #mw-panel.collapsible-nav .portal {
@@ -310,7 +317,7 @@ input#searchButton {
 
 /* Make non-link texts in the sidebar, such as the NewsBox extension's contents, readable */
 #mw-panel .portal {
-	color: #FFF;
+	color: #fff;
 }
 
 /* Footer */
@@ -332,29 +339,36 @@ a,
 	color: #f4f26b;
 	background: none;
 }
+
 a:visited,
 .vector-menu-portal .vector-menu-content li a:visited {
 	color: #e7ea12;
 }
+
 a:active,
 .vector-menu-portal .vector-menu-content li a:active {
-	color: #F4F26B;
+	color: #f4f26b;
 }
+
 a:hover {
 	text-decoration: underline;
 }
+
 a.stub {
-	color: #F4F26B;
+	color: #f4f26b;
 }
 
 #bodyContent a.new {
 	color: #ff8581;
 }
 
-a.new, #p-personal a.new {
+a.new,
+#p-personal a.new {
 	color: #ff8581;
 }
-a.new:visited, #p-personal a.new:visited {
+
+a.new:visited,
+#p-personal a.new:visited {
 	color: #ff8581;
 }
 
@@ -377,18 +391,22 @@ h6 {
 	width: auto;
 }
 
-h3, h4, h5, h6 {
+h3,
+h4,
+h5,
+h6 {
 	border-bottom: none;
 	font-weight: bold;
 }
 
 code {
-	background-color: #1D578B;
+	background-color: #1d578b;
 }
+
 pre { /* @todo */
 	border: 1px dashed #426787;
 	color: #d2d2d2;
-	background-color: #1D578B;
+	background-color: #1d578b;
 }
 
 /* Tables */
@@ -398,9 +416,10 @@ table {
 	 * floated tables */
 	background-color: #17456e;
 }
+
 fieldset table {
 	/* but keep table layouts in forms clean... */
-	background: none
+	background: none;
 }
 
 .editsection { /* @todo */
@@ -410,7 +429,7 @@ fieldset table {
 ul {
 	list-style-type: disc;
 	/* @embed */
-	list-style-image: url(bullet-icon.png);
+	list-style-image: url( bullet-icon.png );
 }
 
 .mw-code {
@@ -419,8 +438,8 @@ ul {
 
 /* mediawiki.notification */
 .skin-vector .mw-notification {
-	background-color: #1D578B;
-	background-color: rgba(29, 87, 139, 0.93);
+	background-color: #1d578b;
+	background-color: rgba( 29, 87, 139, 0.93 );
 }
 
 /* Table of Contents */
@@ -452,22 +471,25 @@ div.thumb {
 	border-style: solid;
 	border-color: transparent;
 }
+
 div.thumbinner {
 	border: 1px solid #426787;
 	background-color: #1d578b;
 }
+
 html .thumbimage {
 	background-color: #17456e;
 	border: 1px solid #426787;
 }
+
 img.thumbborder { /* @todo */
-	border: 1px solid #dddddd;
+	border: 1px solid #ddd;
 }
 
 /* User message */
 .usermessage {
-	background-color: #1D578B;
-	border: 1px solid #E7EA12;
+	background-color: #1d578b;
+	border: 1px solid #e7ea12;
 	color: #d2d2d2;
 }
 
@@ -486,24 +508,28 @@ img.thumbborder { /* @todo */
 }
 
 /* Edge cases for content */
-h1, h2 {
-	margin-bottom: .6em;
+h1,
+h2 {
+	margin-bottom: 0.6em;
 	margin-top: 0.6em;
 }
 
-h3, h4, h5 {
-	margin-bottom: .3em;
+h3,
+h4,
+h5 {
+	margin-bottom: 0.3em;
 }
 
 /* Interwiki styling */
 #content a.extiw,
 #content a.extiw:active {
-	color: #F4F26B;
+	color: #f4f26b;
 	background: none;
 	padding: 0;
 }
+
 #content a.external {
-	color: #F4F26B;
+	color: #f4f26b;
 }
 
 /* Watch/Unwatch icon styling */
@@ -528,6 +554,7 @@ h3, h4, h5 {
 	margin-left: 0.4em;
 	margin-right: 0.2em;
 }
+
 #bodyContent ul#pagehistory span.minor {
 	font-weight: bold;
 }
@@ -556,28 +583,32 @@ h3, h4, h5 {
 	background-color: #17456e;
 }
 
-#content div.rss h3 a { color: #F4F26B; }
+#content div.rss h3 a {
+	color: #f4f26b;
+}
 
 /* wikitable/prettytable class for skinning normal tables */
 table.wikitable,
 table.prettytable {
 	margin: 1em 1em 1em 0;
-	background-color: #17456E;
+	background-color: #17456e;
 	border: 1px solid #426787;
 	border-collapse: collapse;
-	color: #D2D2D2;
+	color: #d2d2d2;
 }
 
-table.wikitable th, table.wikitable td,
-table.prettytable th, table.prettytable td {
-	background: #17456E;
+table.wikitable th,
+table.wikitable td,
+table.prettytable th,
+table.prettytable td {
+	background: #17456e;
 	border: 1px solid #426787;
 	padding: 0.2em;
 }
 
 table.wikitable th,
 table.prettytable th {
-	background: #1D578B;
+	background: #1d578b;
 	text-align: center;
 }
 
@@ -588,8 +619,9 @@ table.wikitable > * > tr > td {
 	border: 1px solid #426787;
 }
 
-table.wikitable > tr > th, table.wikitable > * > tr > th {
-	background: #1D578B;
+table.wikitable > tr > th,
+table.wikitable > * > tr > th {
+	background: #1d578b;
 }
 
 table.wikitable caption,
@@ -608,15 +640,15 @@ table.wikitable code {
 
 /* Galleries */
 li.gallerybox div.thumb {
-	background-color: #1D578B;
+	background-color: #1d578b;
 	border: 1px solid #426787;
 }
 
 table.gallery {/* @todo - unused? */
-	border: 1px solid #1D578B;
+	border: 1px solid #1d578b;
 	margin: 2px;
 	padding: 2px;
-	background-color: #17456E;
+	background-color: #17456e;
 }
 
 table.gallery tr {/* @todo - unused? */
@@ -625,8 +657,8 @@ table.gallery tr {/* @todo - unused? */
 
 table.gallery td {/* @todo - unused? */
 	vertical-align: top;
-	background-color: #1D578B;
-	border: solid 2px #17456E;
+	background-color: #1d578b;
+	border: solid 2px #17456e;
 }
 
 table.gallery caption {/* @todo - unused? */
@@ -649,33 +681,51 @@ div.gallerybox div.thumb {/* @todo - remove? */
   - remove line wrapping for all td and th, set background color
   - restore line wrapping for the last two table cells (description and size)
 */
-.TablePager_nav a { text-decoration: none; }
-.TablePager { border-collapse: collapse; }
-.TablePager, .TablePager td, .TablePager th {
+.TablePager_nav a {
+	text-decoration: none;
+}
+
+.TablePager {
+	border-collapse: collapse;
+}
+
+.TablePager,
+.TablePager td,
+.TablePager th {
 	border: 1px solid #426787;
 	padding: 0 0.15em 0 0.15em;
 }
-.TablePager th { background-color: #1D578B; }
-.TablePager td { background-color: #17456E; }
-.TablePager tr:hover td { background-color: #1D578B; }
 
-.imagelist .TablePager_col_links { background-color: #1D578B; }
-.imagelist th.TablePager_sort { background-color: #ccccff; }
+.TablePager th {
+	background-color: #1d578b;
+}
+
+.TablePager td {
+	background-color: #17456e;
+}
+
+.TablePager tr:hover td {
+	background-color: #1d578b;
+}
+
+.imagelist .TablePager_col_links {
+	background-color: #1d578b;
+}
+
+.imagelist th.TablePager_sort {
+	background-color: #ccf;
+}
 
 fieldset#mw-searchoptions {
 	margin: 0;
-	padding-left: 0.75em !important;
-	padding-right: 0.75em !important;
-	padding-bottom: 0.5em !important;
-	padding-top: 0.5em !important;
-	border: none;
-	background-color: #1D578B;
+	padding: 0.5em 0.75em 0.5em 0.75em !important;
+	background-color: #1d578b;
 	border: 1px solid #426787 !important;
 	border-top-width: 0 !important;
 }
 
 .mw-search-formheader {
-	background-color: #17456E;
+	background-color: #17456e;
 	margin-top: 1em;
 	border: 1px solid #426787;
 }
@@ -686,6 +736,7 @@ fieldset#mw-searchoptions div.divider {
 	padding-top: 0.5em;
 	margin-bottom: 0.5em;
 }
+
 .mw-search-formheader div.search-types ul li.current a {
 	color: #d2d2d2;
 	cursor: default;
@@ -693,37 +744,41 @@ fieldset#mw-searchoptions div.divider {
 
 /* File namespace */
 #filetoc {
-	background-color: #1D578B !important;
+	background-color: #1d578b !important;
 	border: 1px solid #426787 !important;
 }
 
-div.fullImageLink, .fullMedia {
+div.fullImageLink,
+.fullMedia {
 	text-align: center;
 }
 
-table.mw_metadata td, table.mw_metadata th {
-	border: 1px solid #3B587E;
+table.mw_metadata td,
+table.mw_metadata th {
+	border: 1px solid #3b587e;
 }
 
 table.mw_metadata th {
-	background-color: #1D578B;
+	background-color: #1d578b;
 }
 
 table.mw_metadata td {
 	background-color: transparent;
 }
 
-.filehistory a img, #file img:hover {
+.filehistory a img,
+#file img:hover {
 	background: transparent;
 }
 
 /* Recent changes */
 .mw-plusminus-pos {
-	color: #00D000;
+	color: #00d000;
 }
 
-.mw-plusminus-neg, .previewnote {
-	color: #E00000;
+.mw-plusminus-neg,
+.previewnote {
+	color: #e00000;
 }
 
 /* Special:RecentChanges - the collapsible box explaining the acronyms */
@@ -747,7 +802,7 @@ table.mw_metadata td {
 .mw-ui-icon-expand::before,
 .oo-ui-icon-collapse,
 .mw-ui-icon-collapse::before {
-	filter: invert(100%);
+	filter: invert( 100% );
 }
 
 /* Login & signup page fixes */
@@ -761,7 +816,7 @@ div.mw-number-text {
 }
 
 div.mw-number-text h3 {
-	color: #FFF;
+	color: #fff;
 }
 
 /* That stupid "benefits" thing, once again...gosh, I swear it's a problem with like every skin
@@ -776,11 +831,11 @@ div.mw-number-text h3 {
 /* Tabs */
 .tabcontainer .tab {
 	background-color: #1d578b;
-	background-image: -webkit-linear-gradient(top, #1D679B, #1A4E7D);
-	background-image: -moz-linear-gradient(top, #1D679B, #1A4E7D);
-	background-image: -ms-linear-gradient(top, #1D679B, #1A4E7D);
-	background-image: -o-linear-gradient(top, #1D679B, #1A4E7D);
-	background-image: linear-gradient(top, #1D679B, #1A4E7D);
+	background-image: -webkit-linear-gradient( top, #1d679b, #1a4e7d );
+	background-image: -moz-linear-gradient( top, #1d679b, #1a4e7d );
+	background-image: -ms-linear-gradient( top, #1d679b, #1a4e7d );
+	background-image: -o-linear-gradient( top, #1d679b, #1a4e7d );
+	background-image: linear-gradient( top, #1d679b, #1a4e7d );
 	border: 2px solid #426787;
 	cursor: pointer;
 	float: left;
@@ -792,61 +847,62 @@ div.mw-number-text h3 {
 
 .tabcontainer .tab:hover {
 	background-color: #24527c;
-	background-image: -webkit-linear-gradient(top, #305f89, #17456E);
-	background-image: -moz-linear-gradient(top, #305f89, #17456E);
-	background-image: -ms-linear-gradient(top, #305f89, #17456E);
-	background-image: -o-linear-gradient(top, #305f89, #17456E);
-	background-image: linear-gradient(top, #305f89, #17456E);
-	color: #F4F26B;
+	background-image: -webkit-linear-gradient( top, #305f89, #17456e );
+	background-image: -moz-linear-gradient( top, #305f89, #17456e );
+	background-image: -ms-linear-gradient( top, #305f89, #17456e );
+	background-image: -o-linear-gradient( top, #305f89, #17456e );
+	background-image: linear-gradient( top, #305f89, #17456e );
+	color: #f4f26b;
 }
 
 .tabcontainer .tab.active {
 	background-color: #17456e !important;
-	background-image: -webkit-linear-gradient(top, #1D578B, #17456E);
-	background-image: -moz-linear-gradient(top, #1D578B, #17456E);
-	background-image: -ms-linear-gradient(top, #1D578B, #17456E);
-	background-image: -o-linear-gradient(top, #1D578B, #17456E);
-	background-image: linear-gradient(top, #1D578B, #17456E);
-	border-bottom: 2px solid #17456E;
-	color: #F4F26B;
+	background-image: -webkit-linear-gradient( top, #1d578b, #17456e );
+	background-image: -moz-linear-gradient( top, #1d578b, #17456e );
+	background-image: -ms-linear-gradient( top, #1d578b, #17456e );
+	background-image: -o-linear-gradient( top, #1d578b, #17456e );
+	background-image: linear-gradient( top, #1d578b, #17456e );
+	border-bottom: 2px solid #17456e;
+	color: #f4f26b;
 }
 
 /* Button-like gradient background */
 .gradient {
-	background-image: -webkit-linear-gradient(top, #2D679B, #1A4E7D);
-	background-image: -moz-linear-gradient(top, #2D679B, #1A4E7D);
-	background-image: -ms-linear-gradient(top, #2D679B, #1A4E7D);
-	background-image: -o-linear-gradient(top, #2D679B, #1A4E7D);
-	background-image: linear-gradient(top, #2D679B, #1A4E7D);
+	background-image: -webkit-linear-gradient( top, #2d679b, #1a4e7d );
+	background-image: -moz-linear-gradient( top, #2d679b, #1a4e7d );
+	background-image: -ms-linear-gradient( top, #2d679b, #1a4e7d );
+	background-image: -o-linear-gradient( top, #2d679b, #1a4e7d );
+	background-image: linear-gradient( top, #2d679b, #1a4e7d );
 }
 
 .gradient:hover {
-	background-image: -webkit-linear-gradient(top, #227777, #1A4E7D);
-	background-image: -moz-linear-gradient(top, #227777, #1A4E7D);
-	background-image: -ms-linear-gradient(top, #227777, #1A4E7D);
-	background-image: -o-linear-gradient(top, #227777, #1A4E7D);
-	background-image: linear-gradient(top, #227777, #1A4E7D);
+	background-image: -webkit-linear-gradient( top, #277, #1a4e7d );
+	background-image: -moz-linear-gradient( top, #277, #1a4e7d );
+	background-image: -ms-linear-gradient( top, #277, #1a4e7d );
+	background-image: -o-linear-gradient( top, #277, #1a4e7d );
+	background-image: linear-gradient( top, #277, #1a4e7d );
 }
 
 /* Reverse gradient */
 .rgradient {
-	background-image: -webkit-linear-gradient(bottom, #2D679B, #1A4E7D);
-	background-image: -moz-linear-gradient(bottom, #2D679B, #1A4E7D);
-	background-image: -ms-linear-gradient(bottom, #2D679B, #1A4E7D);
-	background-image: -o-linear-gradient(bottom, #2D679B, #1A4E7D);
-	background-image: linear-gradient(bottom, #2D679B, #1A4E7D);
+	background-image: -webkit-linear-gradient( bottom, #2d679b, #1a4e7d );
+	background-image: -moz-linear-gradient( bottom, #2d679b, #1a4e7d );
+	background-image: -ms-linear-gradient( bottom, #2d679b, #1a4e7d );
+	background-image: -o-linear-gradient( bottom, #2d679b, #1a4e7d );
+	background-image: linear-gradient( bottom, #2d679b, #1a4e7d );
 }
 
 .rgradient:hover {
-	background-image: -webkit-linear-gradient(bottom, #227777, #1A4E7D);
-	background-image: -moz-linear-gradient(bottom, #227777, #1A4E7D);
-	background-image: -ms-linear-gradient(bottom, #227777, #1A4E7D);
-	background-image: -o-linear-gradient(bottom, #227777, #1A4E7D);
-	background-image: linear-gradient(bottom, #227777, #1A4E7D);
+	background-image: -webkit-linear-gradient( bottom, #277, #1a4e7d );
+	background-image: -moz-linear-gradient( bottom, #277, #1a4e7d );
+	background-image: -ms-linear-gradient( bottom, #277, #1a4e7d );
+	background-image: -o-linear-gradient( bottom, #277, #1a4e7d );
+	background-image: linear-gradient( bottom, #277, #1a4e7d );
 }
 
 /** CSS fixes for social tools */
-#profile-top, .profile-info {
+#profile-top,
+.profile-info {
 	background-color: transparent !important;
 }
 
