@@ -127,7 +127,10 @@ class Hooks implements
 			$themeArray[$themeDisplayName] = $theme;
 		}
 
-		$skinsWithThemes = Theme::getSkinsWithThemes( $this->skinFactory->getSkinNames() );
+		$skinsWithThemes = Theme::getSkinsWithThemes(
+			method_exists( $this->skinFactory, 'getInstalledSkins' ) ?
+				$this->skinFactory->getInstalledSkins() : $this->skinFactory->getSkinNames()
+		);
 		$showIf = [ 'OR' ];
 		foreach ( $skinsWithThemes as $skin ) {
 			$showIf[] = [ '===', 'skin', $skin ];
