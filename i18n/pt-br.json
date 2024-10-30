@@ -10,7 +10,6 @@
 	"apihelp-themelist-summary": "Obtenha a lista de todos os skins e seus temas",
 	"apihelp-themelist-example-1": "Obtenha a lista de todos os skins e seus temas",
 	"theme-extensionname": "Tema",
-	"theme-prefs-label": "Tema:",
 	"theme-livepreview-note": "Observe que você está apenas visualizando o tema $1. Para tornar as alterações permanentes, pressione o botão \"salvar\" abaixo.",
 	"theme-unsupported-skin": "A skin que você está usando atualmente não suporta temas. Por favor, use outra skin se desejar usar um tema não padrão.",
 	"theme-desc": "Controla a instalação de variantes CSS das skins da wiki"
