@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"SongNgu.xyz"
+		]
+	},
+	"apihelp-themelist-summary": "Nhận danh sách tất cả các giao diện và chủ đề của chúng",
+	"apihelp-themelist-example-1": "Nhận danh sách tất cả các giao diện và chủ đề của chúng",
+	"theme-prefs-label": "Chủ đề:",
+	"theme-livepreview-note": "Lưu ý rằng bạn chỉ đang xem trước chủ đề $1. Để thay đổi vĩnh viễn, hãy nhấn nút \"lưu\" bên dưới.",
+	"theme-unsupported-skin": "Giao diện bạn đang sử dụng không hỗ trợ giao diện. Vui lòng sử dụng giao diện khác nếu bạn muốn sử dụng giao diện không phải mặc định.",
+	"theme-desc": "Kiểm soát việc cài đặt các biến thể CSS của giao diện wiki"
+}
