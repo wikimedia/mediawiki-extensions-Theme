@@ -3,12 +3,14 @@
 		"authors": [
 			"Hwangjy9",
 			"Revi",
+			"Tensama0415",
 			"Ykhwong"
 		]
 	},
 	"apihelp-themelist-summary": "모든 스킨 및 해당 테마 목록을 가져옵니다",
 	"apihelp-themelist-example-1": "모든 스킨 및 해당 테마 목록을 가져옵니다",
 	"theme-extensionname": "테마",
+	"theme-prefs-label": "테마:",
 	"theme-livepreview-note": "$1 테마를 미리 보고 있습니다. 변경사항을 영구적으로 적용하려면 아래의 \"저장\" 버튼을 누르십시오.",
 	"theme-unsupported-skin": "현재 사용 중인 스킨은 테마를 지원하지 않습니다. 기본값이 아닌 테마를 사용하려면 다른 스킨을 사용해 주십시오.",
 	"theme-desc": "위키 스킨의 각종 CSS 설치를 제어합니다"
