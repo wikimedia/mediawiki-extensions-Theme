@@ -156,6 +156,7 @@ The lines prefixed with "body.skin--responsive " are for MW 1.39+,
 the lines w/o that are for MW 1.35(-1.38?)
 */
 body.skin--responsive .pBody,
+body.skin--responsive .mw-portlet > div, /* MW 1.43+ needs this */
 body .pBody {
 	background-color: #1d3855;
 	border: 1px solid #59697a;

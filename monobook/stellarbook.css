@@ -1,7 +1,7 @@
 /*
 ** MediaWiki 'StellarBook' style sheet for CSS2-capable browsers.
 **
-** @date 22 January 2023
+** @date 1 April 2025
 ** @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
 ** @note Some CSS selectors are prefixed with "body " to override skins.monobook.mobile styles, which
 ** apparently in MediaWiki 1.35(+) load _after_ this file and without that selector, those styles
@@ -339,7 +339,8 @@ body .portlet h6 {
 }
 
 body.skin--responsive .pBody, /* MW 1.39+ */
-body .pBody /* MW 1.35(-1.38?) */ {
+body .pBody, /* MW 1.35(-1.38?) */
+body.skin--responsive .mw-portlet > div, body.skin--responsive .pBody /* MW 1.43+ */ {
 	background-color: #313439;
 	border: none;
 	color: #fff;
