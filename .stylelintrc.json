@@ -9,6 +9,7 @@
 		"function-linear-gradient-no-nonstandard-direction": null,
 		"no-descending-specificity": null,
 		"no-duplicate-selectors": null,
+		"@stylistic/selector-list-comma-newline-after": null,
 		"selector-max-id": null,
 		"selector-pseudo-class-no-unknown": null,
 		"selector-type-no-unknown": null

@@ -4,8 +4,8 @@
 ** Developed for ShoutWiki <http://www.shoutwiki.com>
 ** @license GPL (http://www.gnu.org/copyleft/gpl.html)
 ** @author Jack Phoenix <jack@shoutwiki.com>
-** @copyright © 2007-2023 Jack Phoenix <jack@shoutwiki.com>
-** @date 22 January 2023
+** @copyright © 2007-2025 Jack Phoenix <jack@shoutwiki.com>
+** @date 1 April 2025
 ** @note Some CSS selectors are prefixed with "body " to override skins.monobook.mobile styles, which
 ** apparently in MediaWiki 1.35(+) load _after_ this file and without that selector, those styles
 ** would overwrite our styles defined here.
@@ -102,6 +102,7 @@ The lines prefixed with "body.skin--responsive " are for MW 1.39+,
 the lines w/o that are for MW 1.35(-1.38?)
 */
 body.skin--responsive .pBody,
+body.skin--responsive .mw-portlet > div, /* MW 1.43+ needs this */
 body .pBody {
 	background-color: #ffc0cb;
 	color: #ffc0cb;

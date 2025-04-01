@@ -1315,6 +1315,18 @@ div.suggestions-result {
 	color: var( --fg-dark );
 }
 
+/* New, Codex style "Powered by MediaWiki" button in MW 1.43+ */
+#footer-icons li:not( #footer-poweredbyico ) a {
+	background: transparent;
+}
+
+#footer-poweredbyico a {
+	/* Force this to have the background span the entire "button", which is more like what's
+	 * intended than the default display style
+	 */
+	display: inline-block;
+}
+
 /*
  * ==============================
  * = Regular wiki page contents =

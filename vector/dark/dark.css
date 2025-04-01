@@ -2,7 +2,7 @@
 ** Dark theme for Vector
 ** Originally from ZeldaWiki.org
 **
-** @date 4 February 2023
+** @date 1 April 2025
 ** @see http://zeldawiki.org/index.php?title=MediaWiki:Vector.css&action=history
 */
 /* Framework */
@@ -334,19 +334,23 @@ input#searchButton {
 /* Links */
 a,
 /* The following rule is not used on MW 1.35 but is needed for 1.37+ so that the sidebar links won't end up blue */
-.vector-menu-portal .vector-menu-content li a {
+.vector-menu-portal .vector-menu-content li a,
+/* and the following for MW 1.43+... */
+.vector-legacy-sidebar .vector-menu-portal .vector-menu-content li a {
 	text-decoration: none;
 	color: #f4f26b;
 	background: none;
 }
 
 a:visited,
-.vector-menu-portal .vector-menu-content li a:visited {
+.vector-menu-portal .vector-menu-content li a:visited,
+.vector-legacy-sidebar .vector-menu-portal .vector-menu-content li a:visited {
 	color: #e7ea12;
 }
 
 a:active,
-.vector-menu-portal .vector-menu-content li a:active {
+.vector-menu-portal .vector-menu-content li a:active,
+.vector-legacy-sidebar .vector-menu-portal .vector-menu-content li a:active {
 	color: #f4f26b;
 }
 
@@ -824,6 +828,16 @@ div.mw-number-text h3 {
  */
 .mw-createacct-benefits-container h3 {
 	color: #d2d2d2 !important;
+}
+
+/* New, Codex style "Powered by MediaWiki" button in MW 1.43+ */
+#footer-icons li:not( #footer-poweredbyico ) a {
+	background: transparent;
+}
+
+#footer-poweredbyico a {
+	/* Force this to have the background span the entire "button", which is more like what's intended than the default display style */
+	display: inline-block;
 }
 
 /* Custom styles made specifically for ZW */
