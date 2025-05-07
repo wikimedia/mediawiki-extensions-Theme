@@ -2,8 +2,8 @@
 
 namespace MediaWiki\Extension\Theme;
 
-use ExtensionRegistry;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\ResourceLoader\ResourceLoader;
 
 /**
