@@ -7,6 +7,7 @@
 	},
 	"apihelp-themelist-summary": "取得所有外觀與主題的清單",
 	"apihelp-themelist-example-1": "取得所有外觀與主題的清單",
+	"theme-prefs-label": "主題：",
 	"theme-livepreview-note": "請注意您目前僅是在預覽 $1 主題。要讓更改生效，請點擊下方「保存」按鍵。",
 	"theme-unsupported-skin": "您目前使用的外觀不支援主題。若您想要使用非預設的主題，請改用其它外觀。",
 	"theme-desc": "控制有關 wiki 外觀的 CSS Variant 安裝"
