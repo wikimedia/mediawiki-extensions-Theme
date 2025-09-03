@@ -2,11 +2,13 @@
 	"@metadata": {
 		"authors": [
 			"Liuxinyu970226",
-			"StarrySky"
+			"StarrySky",
+			"GuoPC"
 		]
 	},
 	"apihelp-themelist-summary": "获取所有皮肤及其主题的列表",
 	"apihelp-themelist-example-1": "获取所有皮肤及其主题的列表",
+	"theme-prefs-label": "主题：",
 	"theme-livepreview-note": "注意您只是在预览$1主题。要永久做出更改，请点击下方的“保存”按钮。",
 	"theme-unsupported-skin": "您当前正在使用的皮肤不支持主题。如果您希望使用非默认主题，请使用另一皮肤。",
 	"theme-desc": "控制wiki皮肤的CSS变体的安装"
