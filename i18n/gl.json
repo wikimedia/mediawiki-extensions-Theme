@@ -6,7 +6,10 @@
 			"Toliño"
 		]
 	},
-	"theme-livepreview-note": "Nota: está só previsualizando o tema $1. Para facer os cambios permanentes, presiona o botón de \"gardar\" de abaixo.",
-	"theme-unsupported-skin": "A pel que está a usar actualmente non soporta temas. Por favor use outra pel se desexa usar un tema non predefinido.",
-	"theme-desc": "Controla a instalación de variantes CSS das aparencias da wiki"
+	"apihelp-themelist-summary": "Obter a lista de todas as aparencias e os seus temas",
+	"apihelp-themelist-example-1": "Obter a lista de todas as aparencias e os seus temas",
+	"theme-prefs-label": "Tema:",
+	"theme-livepreview-note": "Ten en conta que só estás a previsualizar o tema $1. Para facer permanentes os cambios, dálle ao botón «Gardar» de abaixo.",
+	"theme-unsupported-skin": "A aparencia que estás a usar actualmente non admite temas. Utiliza outra aparencia se desexas usar un tema que non sexa o predeterminado.",
+	"theme-desc": "Controla a instalación de variantes CSS das aparencias do wiki"
 }
