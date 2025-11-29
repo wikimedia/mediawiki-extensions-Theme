@@ -53,6 +53,7 @@ class ApiThemeList extends ApiBase {
 		if ( method_exists( $this->skinFactory, 'getInstalledSkins' ) ) {
 			$skinNames = $this->skinFactory->getInstalledSkins();
 		} else {
+			// @phan-suppress-next-line PhanUndeclaredMethod
 			$skinNames = $this->skinFactory->getSkinNames();
 		}
 		foreach ( $skinNames as $skin => $displayName ) {
