@@ -2,12 +2,14 @@
 	"@metadata": {
 		"authors": [
 			"01miki10",
+			"Jack Phoenix",
 			"Valtlai",
 			"Valtlait"
 		]
 	},
 	"apihelp-themelist-summary": "Hae luettelo kaikista ulkoasuista ja niiden teemoista",
 	"apihelp-themelist-example-1": "Hae luettelo kaikista ulkoasuista ja niiden teemoista",
+	"theme-prefs-label": "Teema:",
 	"theme-livepreview-note": "Huomaa, että tämä on vain teeman $1 esikatselu. Tehdäksesi muutoksista pysyvän, paina alla olevaa ”tallenna”-painiketta.",
 	"theme-unsupported-skin": "Tällä hetkellä käyttämäsi ulkoasu ei tue teemoja. Käytä toista ulkoasua, jos haluat käyttää muuta kuin oletusteemaa.",
 	"theme-desc": "Hallitsee wikin ulkoasujen CSS-muunnelmien asennusta"
