@@ -1,9 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"WikiPhoenix"
+			"WikiPhoenix",
+			"Stefan2255"
 		]
 	},
+	"apihelp-themelist-summary": "Få listan över alla skins och deras teman",
+	"apihelp-themelist-example-1": "Få listan över alla skins och deras teman",
+	"theme-prefs-label": "Tema:",
 	"theme-livepreview-note": "Observera att du endast förhandsvisar temat $1. För att göra ändringar permanent, klicka på knappen \"Spara\" nedan.",
 	"theme-unsupported-skin": "Utseendet du för tillfället använder stöder inte teman. Välj ett annat utseende om du önskar att använda ett tema som inte är standard.",
 	"theme-desc": "Kontrollerar installationen för CSS-varianter av wikins utseenden"
