@@ -71,36 +71,36 @@ html body {
 	--bg-darker: rgb( 20 20 20 );
 
 	--bdr-white: rgb( 160 160 160 );
-	--bdr-color: rgb( 120  80   0 );
-	--bdr-hl: rgb( 180  80   0 );
+	--bdr-color: rgb( 120 80 0 );
+	--bdr-hl: rgb( 180 80 0 );
 
 	--fg: rgb( 210 210 210 );
 	--fg-light: rgb( 240 240 240 );
 	--fg-dark: rgb( 150 150 150 );
 
 	--link: rgb( 230 130 15 );
-	--link-vis: rgb( 185  85  0 );
-	--link-new: rgb( 220  70 70 );
+	--link-vis: rgb( 185 85 0 );
+	--link-new: rgb( 220 70 70 );
 
-	--btn-bg: rgb( 45  45  45 );
+	--btn-bg: rgb( 45 45 45 );
 	--btn-bdr: rgb( 160 160 160 );
 	--btn-fg: rgb( 210 210 210 );
 
-	--btn-bg-hl: rgb( 40  40  40 );
-	--btn-bdr-hl: rgb( 120  80   0 );
+	--btn-bg-hl: rgb( 40 40 40 );
+	--btn-bdr-hl: rgb( 120 80 0 );
 	--btn-fg-hl: rgb( 210 210 210 );
 
 	/* Not for :active but the OOUI active class */
-	--btn-active-bg: rgb( 210  80   0 );
-	--btn-active-bdr: rgb( 210  80   0 );
+	--btn-active-bg: rgb( 210 80 0 );
+	--btn-active-bdr: rgb( 210 80 0 );
 	--btn-active-fg: rgb( 240 240 240 );
 
-	--btn-prim-bg: rgb( 210  80   0 );
-	--btn-prim-bdr: rgb( 210  80   0 );
+	--btn-prim-bg: rgb( 210 80 0 );
+	--btn-prim-bdr: rgb( 210 80 0 );
 	--btn-prim-fg: rgb( 240 240 240 );
 
-	--btn-prim-bg-hl: rgb( 180  60   0 );
-	--btn-prim-bdr-hl: rgb( 180  60   0 );
+	--btn-prim-bg-hl: rgb( 180 60 0 );
+	--btn-prim-bdr-hl: rgb( 180 60 0 );
 	--btn-prim-fg-hl: rgb( 240 240 240 );
 
 	--btn-destr-bg: rgb( 50 50 50 );
@@ -108,10 +108,10 @@ html body {
 	--btn-destr-fg: rgb( 210 60 60 );
 
 	--btn-destr-bg-hl: rgb( 40 40 40 );
-	--btn-destr-bdr-hl: rgb( 120 80  0 );
+	--btn-destr-bdr-hl: rgb( 120 80 0 );
 	--btn-destr-fg-hl: rgb( 210 60 60 );
 
-	--btn-disabled-bg: rgb( 60  60  60 );
+	--btn-disabled-bg: rgb( 60 60 60 );
 	--btn-disabled-bdr: rgb( 150 150 150 );
 	--btn-disabled-fg: rgb( 150 150 150 );
 
@@ -137,8 +137,8 @@ html body {
 	--diff-text-del-bg: rgb( 255 140 140 );
 	--diff-text-del-fg: rgb( 0 0 0 );
 
-	--diff-count-pos: rgb( 0 200  0 );
-	--diff-count-neg: rgb( 240  70 70 );
+	--diff-count-pos: rgb( 0 200 0 );
+	--diff-count-neg: rgb( 240 70 70 );
 }
 
 /*
