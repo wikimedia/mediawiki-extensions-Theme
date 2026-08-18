@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"AhmedG612"
+		]
+	},
+	"apihelp-themelist-summary": "Hel liiska dhammaan muuqaalada iyo mawduucyadooda",
+	"apihelp-themelist-example-1": "Hel liiska dhammaan muuqaalada iyo mawduucyadooda",
+	"theme-prefs-label": "Mawduuca:",
+	"theme-livepreview-note": "Ogow inaad kaliya horudhac ka samaynayso mawduuca $1. Si isbeddelladu u noqdaan kuwo joogto ah, riix badhanka \"kaydi\" ee hoose.",
+	"theme-unsupported-skin": "Muuqaalka aad hadda isticmaalayso ma taageero mawduucyada. Fadlan isticmaal muuqaal kale haddii aad rabto inaad isticmaasho mawduuc aan ahayn kan caadiga ah.",
+	"theme-desc": "Waxay maamushaa rakibidda noocyada CSS ee muuqaalada wiki-ga"
+}
