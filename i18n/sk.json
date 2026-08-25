@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Wizzard"
+		]
+	},
+	"apihelp-themelist-summary": "Získať zoznam všetkých vzhľadov a ich tém",
+	"apihelp-themelist-example-1": "Získať zoznam všetkých vzhľadov a ich tém",
+	"theme-prefs-label": "Téma:",
+	"theme-livepreview-note": "Upozorňujeme, že si iba prezeráte náhľad témy $1. Ak chcete zmeny uložiť natrvalo, stlačte tlačidlo „uložiť“ nižšie.",
+	"theme-unsupported-skin": "Vzhľad, ktorý práve používate, nepodporuje témy. Ak chcete použiť inú než predvolenú tému, použite, prosím, iný vzhľad.",
+	"theme-desc": "Riadi inštaláciu CSS variantov vzhľadov wiki"
+}
