@@ -3,12 +3,14 @@
 		"authors": [
 			"Chrumps",
 			"InternerowyGołąb",
+			"PanWor",
 			"Woytecr"
 		]
 	},
 	"apihelp-themelist-summary": "Pobierz listę wszystkich skórek i ich tematów graficznych",
 	"apihelp-themelist-example-1": "Pobierz listę wszystkich skórek i ich tematów graficznych",
+	"theme-extensionname": "Motyw",
 	"theme-prefs-label": "Motyw:",
-	"theme-livepreview-note": "Miej na uwadze, że widzisz tylko podgląd skórki $1. By zmienić skórkę permanentnie, naciśnij przycisk \"zapisz\" umieszczony poniżej.",
+	"theme-livepreview-note": "Miej na uwadze, że widzisz tylko podgląd skórki $1. By zmienić skórkę permanentnie, naciśnij przycisk „zapisz” umieszczony poniżej.",
 	"theme-desc": "Zarządza instalacją wariantów CSS skórek wiki"
 }
